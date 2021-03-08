@@ -28,9 +28,18 @@ otp.core.ContextMenu =
         this.parent = parent;
         
         parent.on('contextmenu', function(event) {
+
             if(event.preventDefault) event.preventDefault();
             this_.menu.show();
             this_.menu.offset(this_.getOffset(event)).appendTo("body");
+            if(isMobile || document.body.clientWidth < 769){
+                const point = this_.map.lmap.mouseEventToLatLng(event.originalEvent);
+                if(this_.pointer != null){
+                    this_.map.lmap.removeLayer(this_.pointer)
+                }
+                this_.pointer = L.marker(point).addTo(this_.map.lmap)
+                //this_.map.lmap.panTo(point);
+            }
 
             if(menuClicked) menuClicked.call(this, event);
         });

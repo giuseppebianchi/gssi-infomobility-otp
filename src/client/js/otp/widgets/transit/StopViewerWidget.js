@@ -23,6 +23,7 @@ otp.widgets.transit.StopViewerWidget =
 
     timeIndex : null,
 
+    selectedDate: moment().format("YYYY-MM-DD"),
 
     initialize : function(id, module) {
 
@@ -72,6 +73,20 @@ otp.widgets.transit.StopViewerWidget =
         });
         this.datePicker.datepicker("setDate", currentDate);
 
+        this.mainDiv.find("#otp-stopViewer-dateInput-date")
+            .val(moment().format("YYYY-MM-DD"))
+            .blur(function(e){
+                if(e.currentTarget.value == ""){
+                    e.currentTarget.value = moment().format("YYYY-MM-DD");
+                }
+                var hrs = moment(this_.activeTime).hours();
+                var mins = moment(this_.activeTime).minutes();
+                this_.activeTime = moment(e.currentTarget.value).add('hours', hrs).add('minutes', mins).unix() * 1000;
+                this_.selectedDate = e.currentTarget.value;
+                this_.clearTimes();
+                this_.runTimesQuery();
+            })
+
         this.mainDiv.find(".otp-stopViewer-findButton").click(function() {
             this_.stopFinder.show();
             this_.stopFinder.bringToFront();
@@ -89,14 +104,14 @@ otp.widgets.transit.StopViewerWidget =
         this.stopId = stopId;
         this.clearTimes();
         //TRANSLATORS: Public transport <Stop> (stop name)
-        this.stopInfo.html("<b>" + _tr("Stop") + ":</b> " + stopName + " ("  + stopId + ")");
+        this.stopInfo.html("<b>" + _tr("Stop") + "</b><br> " + stopName + " ("  + stopId + ")");
         this.runTimesQuery();
     },
 
     runTimesQuery : function() {
         var this_ = this;
         //var startTime = moment(this.datePicker.val(), otp.config.locale.time.date_format).add("hours", -otp.config.timeOffset).unix();
-        this.module.webapp.indexApi.runStopTimesQuery(this.stopId, this.datePicker.datepicker("getDate"), this, function(data) {
+        this.module.webapp.indexApi.runStopTimesQuery(this.stopId, /*this.datePicker.datepicker("getDate")*/ this.selectedDate, this, function(data) {
             this_.times = [];
             // rearrange stoptimes, flattening and sorting;
             _.each(data, function(stopTime){
@@ -106,11 +121,15 @@ otp.widgets.transit.StopViewerWidget =
                 var count = parts.pop();
                 var directionId = parts.pop();
                 var routeId = parts.join(':');
+
                 _.each(stopTime.times,function(time){
                     if (time.stopIndex === time.stopCount - 1) return;
                     var pushTime = {};
+                    //debugger;
                     pushTime.routeShortName = this_.module.webapp.indexApi.routes[routeId].routeData.shortName;
                     pushTime.routeLongName = this_.module.webapp.indexApi.routes[routeId].routeData.longName;
+                    pushTime.tripName = time.tripName;
+                    pushTime.tripId = time.tripId;
                     pushTime.time = time.realtimeDeparture;
                     pushTime.serviceDay = time.serviceDay;
                     pushTime.headsign = time.headsign;
@@ -134,6 +153,7 @@ otp.widgets.transit.StopViewerWidget =
         var block_trans = _tr('Block');
 
         for(var i = 0; i < this.times.length; i++) {
+            //debugger;
             var time = this.times[i];
             //time.formattedTime = otp.util.Time.formatItinTime(time.time*1000, otp.config.locale.time.time_format);
             time.formattedTime = moment.utc(time.time*1000).format(otp.config.locale.time.time_format);
@@ -141,6 +161,7 @@ otp.widgets.transit.StopViewerWidget =
             //then in each call separately
             time.to = to_trans;
             time.block = block_trans;
+
             ich['otp-stopViewer-timeListItem'](time).appendTo(this.timeList);
             var diff = Math.abs(this.activeTime - (time.time + time.serviceDay)*1000);
             if(diff < minDiff) {

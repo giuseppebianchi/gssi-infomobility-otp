@@ -39,10 +39,46 @@ otp.widgets.tripoptions.TripOptionsWidget =
         this.module = module;
 
         this.controls = {};
+
+        //SIDEBAR
+        //this.addRoutesButton()
+    },
+    addRoutesButton : function() {
+        const this_ = this;
+        $('<span id="show-routes-button" class="notDraggable" style=""><a href="#"><i class="fas fa-bus"></i></a></span>')
+            .appendTo(this.mainDiv)
+            .click(function(evt) {
+                evt.preventDefault();
+                evt.stopImmediatePropagation();
+                //check if it has active class
+                //add class active
+                if(!this_.module.tripViewerWidget) {
+                    this_.module.tripViewerWidget = new otp.widgets.transit.TripViewerWidget("otp-"+this_.module.id+"-tripViewerWidget", this_.module);
+                    this_.module.tripViewerWidget.$().offset({top: evt.clientY, left: evt.clientX});
+                }
+                if(this_.module.tripViewerWidget.isOpen){
+                    this_.module.tripViewerWidget.close();
+                    //remove polyline
+                }else{
+                    this_.module.tripViewerWidget.show()
+                    //check viewport - if desktop // not necessary
+                        this_.module.tripViewerWidget.mainDiv.addClass("isOpen")
+                        $(this).addClass("active");
+                        if(!this_.module.tripViewerWidget.showWidgetButton){
+                            this_.module.tripViewerWidget.showWidgetButton = $(this);
+                        }
+                    if(this_.module.tripViewerWidget.minimized) this_.module.tripViewerWidget.unminimize();
+                    if(!this_.module.tripViewerWidget.variantSelect.val()){
+                        //get active variant for current (first) route
+                        this_.module.tripViewerWidget.newRouteSelected();
+                    }
+                    this_.module.tripViewerWidget.bringToFront();
+                }
+
+            });
     },
 
     addControl : function(id, control, scrollable) {
-
         if(scrollable) {
             if(this.scrollPanel == null) this.initScrollPanel();
             control.$().appendTo(this.scrollPanel);
@@ -57,10 +93,10 @@ otp.widgets.tripoptions.TripOptionsWidget =
 
     initScrollPanel : function() {
         this.scrollPanel = $('<div id="'+this.id+'-scollPanel" class="notDraggable" style="overflow: auto;"></div>').appendTo(this.$());
-        this.$().resizable({
+        /*this.$().resizable({
             minHeight: 80,
             alsoResize: this.scrollPanel
-        });
+        });*/
     },
 
     addSeparator : function(scrollable) {
@@ -344,6 +380,26 @@ otp.widgets.tripoptions.TimeSelector =
         });
         $('#'+this.id+'-date').datepicker("setDate", new Date());
 
+        $('#'+this.id+'-date-date').val(moment().format("YYYY-MM-DD"))
+            .change(function(e){
+                if(e.currentTarget.value == ""){
+                    e.currentTarget.value = moment().format("YYYY-MM-DD");
+                }
+                this_.tripWidget.inputChanged({
+                    date : moment(e.currentTarget.value, "YYYY-MM-DD").format("DD/MM/YYYY")
+                });
+            })
+
+        $('#'+this.id+'-time-time').val(moment().format(otp.config.locale.time.time_format))
+        .change(function(e){
+            if(e.currentTarget.value == ""){
+                e.currentTarget.value = moment().format(otp.config.locale.time.time_format);
+            }
+            this_.tripWidget.inputChanged({
+                time : e.currentTarget.value
+            });
+        });
+
         $('#'+this.id+'-time').val(moment().format(otp.config.locale.time.time_format))
         .keyup(function() {
             if(otp.config.locale.time.time_format.toLowerCase().charAt(otp.config.locale.time.time_format.length-1) === 'a') {
@@ -422,18 +478,20 @@ otp.widgets.tripoptions.WheelChairSelector =
     //TRANSLATORS: label for checkbox
     label        : _tr("Wheelchair accesible trip:"),
 
+    disabled     : true,
+
     initialize : function(tripWidget) {
 
         otp.widgets.tripoptions.TripOptionsWidgetControl.prototype.initialize.apply(this, arguments);
 
         this.id = tripWidget.id;
 
-
-        ich['otp-tripOptions-wheelchair']({
-            widgetId : this.id,
-            label : this.label,
-        }).appendTo(this.$());
-
+        if(!this.disabled) {
+            ich['otp-tripOptions-wheelchair']({
+                widgetId: this.id,
+                label: this.label,
+            }).appendTo(this.$());
+        }
     },
 
     doAfterLayout : function() {
@@ -477,7 +535,7 @@ otp.widgets.tripoptions.ModeSelector =
         this.optionLookup = {};
 
         //TRANSLATORS: Label for dropdown Travel by: [mode of transport]
-        var html = "<div class='notDraggable'>" + _tr("Travel by") + ": ";
+        var html = "<div class='notDraggable otp-modeSelector'>" + _tr("Travel by") + ": ";
         html += '<select id="'+this.id+'">';
         _.each(this.modes, function(text, key) {
             html += '<option>'+text+'</option>';
@@ -493,6 +551,7 @@ otp.widgets.tripoptions.ModeSelector =
     doAfterLayout : function() {
         var this_ = this;
         $("#"+this.id).change(function() {
+            debugger;
             this_.tripWidget.inputChanged({
                 mode : _.keys(this_.modes)[this.selectedIndex],
             });
@@ -612,7 +671,7 @@ otp.widgets.tripoptions.MaxDistanceSelector =
 
             // Show the value in miles/meters
             $('#'+this_.id+'-value').val(presetVal.toFixed(2));
-            $('#'+this_.id+'-presets option:eq(0)').prop('selected', true);
+            //$('#'+this_.id+'-presets option:eq(0)').prop('selected', true);
         });
     },
 
@@ -812,11 +871,11 @@ otp.widgets.tripoptions.BannedRoutes =
 
         var html = '<div class="notDraggable">';
         //TRANSLATORS: buton edit Banned public transport routes
-        var html = '<div style="float:right; font-size: 12px;"><button id="'+this.id+'-button">' + _tr("Edit") + '…</button></div>';
+        var html = '<div></div>';
         //TRANSLATORS: label Banned public transport Routes: (routes/None)
         //(Routes you don't want to take)
         html += _tr("Banned routes") + ': <span id="'+this.id+'-list">('+_tr("None")+')</span>';
-        html += '<div style="clear:both;"></div></div>';
+        html += '<button id="'+this.id+'-button">' + _tr("Edit") + '…</button><div style="clear:both;"></div></div>';
 
         $(html).appendTo(this.$());
 

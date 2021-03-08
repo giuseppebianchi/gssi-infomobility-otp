@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import org.opentripplanner.index.model.TripTimeShort;
 import org.opentripplanner.model.FeedScopedId;
 import org.opentripplanner.api.model.alertpatch.LocalizedAlert;
+import org.opentripplanner.model.Stop;
 import org.opentripplanner.routing.alertpatch.Alert;
 import org.opentripplanner.routing.core.TraverseMode;
 import org.opentripplanner.util.model.EncodedPolylineBean;
@@ -133,6 +135,12 @@ public class Leg {
      */
     @JsonSerialize
     public String tripShortName = null;
+
+     @JsonSerialize
+     public TripTimeShort tripDepartureStop = null;
+
+     @JsonSerialize
+     public TripTimeShort tripArrivalStop = null;
 
     /**
      * For transit leg, the trip's block ID (if one exists). For non-transit legs, null.

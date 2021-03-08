@@ -8,6 +8,7 @@ import org.opentripplanner.common.geometry.DirectionUtils;
 import org.opentripplanner.common.geometry.GeometryUtils;
 import org.opentripplanner.common.geometry.PackedCoordinateSequence;
 import org.opentripplanner.common.model.P2;
+import org.opentripplanner.index.model.TripTimeShort;
 import org.opentripplanner.model.Agency;
 import org.opentripplanner.model.Route;
 import org.opentripplanner.model.Stop;
@@ -316,7 +317,7 @@ public abstract class GraphPathToTripPlanConverter {
         TimeZone timeZone = leg.startTime.getTimeZone();
         leg.agencyTimeZoneOffset = timeZone.getOffset(leg.startTime.getTimeInMillis());
 
-        addTripFields(leg, states, requestedLocale);
+        addTripFields(leg, states, requestedLocale, graph);
 
         addPlaces(leg, states, edges, showIntermediateStops, requestedLocale);
 
@@ -567,13 +568,20 @@ public abstract class GraphPathToTripPlanConverter {
      * @param leg The leg to add the trip-related fields to
      * @param states The states that go with the leg
      */
-    private static void addTripFields(Leg leg, State[] states, Locale requestedLocale) {
+    private static void addTripFields(Leg leg, State[] states, Locale requestedLocale, Graph graph) {
         Trip trip = states[states.length - 1].getBackTrip();
 
         if (trip != null) {
             Route route = trip.getRoute();
             Agency agency = route.getAgency();
             ServiceDay serviceDay = states[states.length - 1].getServiceDay();
+
+            TripPattern pattern = graph.index.patternForTrip.get(trip);
+            //TripTimes timesList = pattern.scheduledTimetable.getTripTimes(trip);
+
+            Timetable table = graph.index.currentUpdatedTimetableForTripPattern(pattern);
+
+            List<TripTimeShort> times = TripTimeShort.fromTripTimes(table, trip);
 
             leg.agencyId = agency.getId();
             leg.agencyName = agency.getName();
@@ -590,6 +598,8 @@ public abstract class GraphPathToTripPlanConverter {
             leg.routeBrandingUrl = route.getBrandingUrl();
             leg.tripId = trip.getId();
             leg.tripShortName = trip.getTripShortName();
+            leg.tripDepartureStop = times.get(0);
+            leg.tripArrivalStop = times.get(times.size()-1);
             leg.tripBlockId = trip.getBlockId();
             leg.flexDrtAdvanceBookMin = trip.getDrtAdvanceBookMin();
             leg.flexDrtPickupMessage = trip.getDrtPickupMessage();

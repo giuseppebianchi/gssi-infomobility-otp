@@ -27,7 +27,12 @@ otp.widgets.transit.TripViewerWidget =
     routeLookup : [], // for retrieving route obj from numerical index in <select> element
 
     lastSize : null,
+    realtimeTracking : false,
+    showWidgetButton: null,
+    //SIDEBAR WIDGET
+    sidebar: false,
     //variantIndexLookup : null,
+    resizable       : false,
 
     initialize : function(id, module) {
 
@@ -53,6 +58,93 @@ otp.widgets.transit.TripViewerWidget =
             alsoResize: this.stopList,
         });
 
+        //SIDEBAR
+        if(this.sidebar){
+            this.showWidgetButton = $("#show-routes-button");
+            this.addRoutePathButton()
+            //live button is handled in variantSelected function
+            // because it needs variant's id to find realtime data
+        }
+    },
+    close : function() {
+        //check if sidebar is enabled
+        if(this.sidebar){
+            //check if this.path exists to remove polyline from map
+            //
+        }
+
+        if(typeof this.onClose === 'function') this.onClose();
+        this.isOpen = false;
+        this.hide();
+    },
+    addRoutePathButton : function() {
+        const this_ = this;
+
+        this.mainDiv.addClass("sidebar-tripwidget notDraggable")
+
+        //CLOSE ROUTE WIDGET BUTTON
+        $('<span id="close-tripViewerWidget-button" class="notDraggable" style=""><a href="#"><i class="fas fa-times"></i></a></span>').appendTo(this.mainDiv).click((e) => {
+            this_.mainDiv.removeClass("isOpen")
+            if(this_.showWidgetButton){
+                this_.showWidgetButton.removeClass("active")
+            }else {
+                $("#show-routes-button").removeClass("active")
+            }
+            this_.close()
+        })
+
+        //SHOW ROUTE PATH (PATTERN SHAPELINE)
+        $('<span id="show-route-path-button" class="notDraggable" style=""><a href="#"><i class="fas fa-road"></i></a></span>')
+            .appendTo(this.mainDiv)
+            .click(function(evt) {
+                evt.preventDefault();
+                evt.stopImmediatePropagation();
+                //if isMobile show map, closing the widget
+                if(isMobile) this_.close()
+            });
+    },
+    addRouteLiveButton : function() {
+        const this_ = this;
+        //check realtime
+        //check realtime
+        //get trips from pattern
+
+        const params = {
+            trips: this_.activeVariant.trips.map(i => i.id)
+        };
+        this_.module.webapp.indexApi.getRfidFromTripShiftByPattern(params, this_, function(result){
+            if(result.found){
+                //check realtime
+                const rfids = result.data.map(rfid => rfid.rfid_code);
+
+                this_.module.webapp.indexApi.getRealTimeDriverid(rfids, this_, function(live){
+                    if(live && live.length){
+                        //create span element by using vanilla JS, to prevent bad strings due to JSON parse
+                        let span = document.createElement("span");
+                        span.className = "notDraggable live-button";
+                        //we need to fetch only data returned by getRealTimeDriverid,
+                        // not all "rfids" provided by rfidroute because there might be offline vehicles or with driverId not updated
+                        span.dataset.unitids = JSON.stringify(live.map(i => i.unitID));
+                        span.dataset.tripname = this_.activeVariant.trip_route.join(", ");
+                        span.id="show-route-live-button";
+                        span.innerHTML = '<a href="#"><i class="fas fa-bus"></i></a>'
+                        $(span).appendTo(this_.mainDiv)
+                        .click(function(evt) {
+                            //this click should trigger live-button event
+                            //debugger;
+                            //if you are on mobile close the widget to show map
+                            //do this in the real time function, checking live-button's parent widget with otp-widget class
+                            //if(isMobile) $("#close-tripViewerWidget-button").trigger("click")
+                            //if(isMobile) this_.close()
+                        });
+                    }
+
+                })
+
+            }
+        })
+
+
     },
 
 
@@ -66,31 +158,54 @@ otp.widgets.transit.TripViewerWidget =
         var this_ = this;
         this.stopList.empty();
         var selectedStopIndex = 0;
+
+        //check if sidebar is active
+        if(this.sidebar){
+            //check realtime
+            this.addRouteLiveButton()
+            //check if is visible
+            if(!this_.mainDiv.hasClass("isOpen")){
+                this_.mainDiv.addClass("isOpen")
+            }
+            if(!this_.showWidgetButton.hasClass("active")){
+                this_.showWidgetButton.addClass("active")
+            }
+        }
+
+
         for(var i=0; i<this.activeVariant.stops.length; i++) {
             var stop = this.activeVariant.stops[i];
 
             var row = $('<div class="otp-tripViewer-stopRow" />').appendTo(this.stopList);
 
-            var stopIcon = $('<div style="width: 30px; height: 32px; overflow: hidden; float:left; margin-left: 2px;" />').appendTo(row);
+            var stopIcon = $('<div class="otp-tripViewer-stopRow-img" style="float:left;" />').appendTo(row);
+
+            var stopText = $('<div class="otp-tripViewer-stopRow-box" style="" />').appendTo(row);
 
             // use the appropriate line/stop graphic
             var lineImg;
             if(i == 0) {
-                lineImg = $('<img src="images/widget-trip-stop-first.png" />');
+                //lineImg = $('<img src="images/widget-trip-stop-first.png" />');
+                lineImg = $('<i class="far fa-circle" style="margin-top: -2px;"></i>')
             }
             else if(i == this.activeVariant.stops.length - 1) {
-                lineImg = $('<img src="images/widget-trip-stop-last.png" />');
+                //lineImg = $('<img src="images/widget-trip-stop-last.png" />');
+                lineImg = $('<i class="far fa-dot-circle"></i>')
+                stopText.css({"border-left": "none"})
             }
             else {
-                lineImg = $('<img src="images/widget-trip-stop-middle.png" />');
+                //lineImg = $('<img src="images/widget-trip-stop-middle.png" />');
+                lineImg = $('<i class="far fa-circle"></i>')
             }
 
             // append the arrow for the board/alight stop, if applicable
             if(this.activeLeg && i == this.activeLeg.from.stopIndex) {
-                $('<img src="images/mode/arrow.png" style="margin: 8px 2px;" />').appendTo(stopIcon);
+                row.css({"border-top-left-radius" : "5px", "border-top-right-radius": "5px"});
+                $('<img src="images/mode/arrow.png" style="margin-right: 4px; margin-top: -10px;" />').appendTo(stopIcon);
             }
             else if(this.activeLeg && i == this.activeLeg.to.stopIndex) {
-                $('<img src="images/mode/arrow-left.png" style="margin: 8px 2px;" />').appendTo(stopIcon);
+                row.css({"border-bottom-left-radius" : "5px", "border-bottom-right-radius": "5px"});
+                $('<img src="images/mode/arrow-left.png" style="margin-right: 4px; margin-top: -10px;" />').appendTo(stopIcon);
             }
             else {
                 lineImg.css({ marginLeft : 12 });
@@ -99,8 +214,9 @@ otp.widgets.transit.TripViewerWidget =
             lineImg.appendTo(stopIcon);
 
             // set up the stop name and id/links content
-            var stopText = $('<div style="margin-left: 40px" />').appendTo(row);
-            $('<div class="otp-tripViewer-stopRow-name"><b>'+(i+1)+'.</b> '+stop.name+'</div>').appendTo(stopText);
+
+            var stopRowName = $('<div class="otp-tripViewer-stopRow-name"><b>'+(i+1)+'.</b> '+stop.name+'</div>')
+            stopRowName.appendTo(stopText);
             var idLine = $('<div class="otp-tripViewer-stopRow-idLine" />').appendTo(stopText);
             var idHtml = '<span><i>';
             if(stop.url) idHtml += '<a href="'+stop.url+'" target="_blank">';
@@ -111,7 +227,7 @@ otp.widgets.transit.TripViewerWidget =
 
             //TRANSLATORS: Recenter map on this stop (Shown at each stop in
             //Trip viewer
-            $('<span>&nbsp;[<a href="#">' + _tr('Recenter') + '</a>]</span>').appendTo(idLine)
+            $('<span><a href="#"><i class="fas fa-crosshairs" title="' + _tr('Recenter') + '"></i></a></span>').appendTo(idLine)
             .data("stop", stop)
             .click(function(evt) {
                 var stop = $(this).data("stop");
@@ -119,7 +235,7 @@ otp.widgets.transit.TripViewerWidget =
             });
             //TRANSLATORS: Link to Stop viewer (Shown at each stop in Trip
             //viewer)
-            $('<span>&nbsp;[<a href="#">' + _tr('Viewer') + '</a>]</span>').appendTo(idLine)
+            $('<span><a href="#"><i class="fas fa-clock" title="' + _tr('Viewer') + '"></i></a></span>').appendTo(idLine)
             .data("stop", stop)
             .click(function(evt) {
                 var stop = $(this).data("stop");
@@ -135,7 +251,7 @@ otp.widgets.transit.TripViewerWidget =
 
             // highlight the boarded stops
             if(this.activeLeg && i >= this.activeLeg.from.stopIndex && i <= this.activeLeg.to.stopIndex) {
-                stopIcon.css({ background : '#bbb' });
+                row.addClass("highlighted")
             }
 
             // set up hover functionality (open popup over stop)
@@ -156,11 +272,11 @@ otp.widgets.transit.TripViewerWidget =
         // scroll to the boarded segment, if applicable
         if(this.activeLeg) {
             var scrollY = this.stopList[0].scrollHeight * this.activeLeg.from.stopIndex / (this.activeVariant.stops.length - 1);
-            this.stopList.scrollTop(scrollY);
+            this.stopList.scrollTop(scrollY -50);
+
         }
 
         // update the route link
-
         var url = variantData.route.url;
         var html = "";
         if(url) html += 'Link to: <a href="' + url + '" target="_blank">Route Info</a>';

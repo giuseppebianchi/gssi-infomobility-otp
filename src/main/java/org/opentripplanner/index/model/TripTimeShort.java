@@ -16,6 +16,7 @@ public class TripTimeShort {
 
     public static final int UNDEFINED = -1;
     public FeedScopedId stopId;
+    public String stopName;
     public int stopIndex;
     public int stopCount;
     public int scheduledArrival = UNDEFINED ;
@@ -29,6 +30,7 @@ public class TripTimeShort {
     public RealTimeState realtimeState = RealTimeState.SCHEDULED ;
     public long serviceDay;
     public FeedScopedId tripId;
+    public String tripName;
     public String blockId;
     public String headsign;
     public int continuousPickup;
@@ -41,6 +43,7 @@ public class TripTimeShort {
      */
     public TripTimeShort(TripTimes tt, int i, Stop stop) {
         stopId = stop.getId();
+        stopName = stop.getName();
         stopIndex          = i;
         stopCount          = tt.getNumStops();
         scheduledArrival   = tt.getScheduledArrivalTime(i);
@@ -63,6 +66,7 @@ public class TripTimeShort {
     public TripTimeShort(TripTimes tt, int i, Stop stop, ServiceDay sd) {
         this(tt, i, stop);
         tripId = tt.trip.getId();
+        tripName = tt.trip.getTripShortName();
         serviceDay = sd.time(0);
     }
 

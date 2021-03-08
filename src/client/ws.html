@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html dir="ltr" lang="en-US" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html dir="ltr" lang="en-US" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html dir="ltr" lang="en-US" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html dir="ltr" lang="en-US" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html dir="ltr" lang="en-US"> <!--<![endif]-->
+
+<head>
+<title>Infomobilità L'Aquila</title>
+<!-- <base href="/infomobility/"> -->
+
+<!--  Mobile Viewport Fix -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" id="font-awesome-5-css" href="https://pro.fontawesome.com/releases/v5.9.0/css/all.css?ver=2.2.6.3" type="text/css" media="all">
+<link rel="stylesheet" id="fl-builder-google-fonts-06615338d649712f41926b9a506e9893-css" href="//fonts.googleapis.com/css?family=Roboto+Condensed%3A300%2C400%2C700&amp;ver=5.3" type="text/css" media="all">
+<link rel="stylesheet" href="js/lib/jquery-ui/css/smoothness/jquery-ui-1.9.1.custom.css" />
+<link rel="stylesheet" href="js/lib/jquery-ui/addons/jquery-ui-timepicker.css" />
+<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" /> -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+<link rel="stylesheet" href="js/otp/widgets/widget-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/modules/planner/planner-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/modules/bikeshare/bikeshare-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/modules/multimodal/multimodal-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/modules/calltaker/calltaker-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/modules/analyst/analyst-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/modules/alerts/alerts-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/modules/alerts/alerts-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/modules/fieldtrip/fieldtrip-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/widgets/tripoptions/tripoptions-style.css?v=1" />
+<link rel="stylesheet" href="js/otp/widgets/transit/widgets-transit-style.css?v=1" />
+<link rel="stylesheet" href="style.css?v=1" />
+  <link rel="stylesheet" href="opendata/autoptimize.css" />
+  <link rel="stylesheet" href="opendata/autoptimize_single.css" />
+  <link rel="stylesheet" href="opendata/style.css" />
+
+<!--Loads jquery, underscore, json2, momentjs and raphael makes 7 requests less-->
+<script src="//cdn.jsdelivr.net/g/jquery@1.9.1,underscorejs@1.4.2,json2@0.1,momentjs@1.7.2,raphael@2.1.2"></script>
+
+<!--
+leaflet cannot be loaded with other scripts. it breaks the L.Icon.Default.imagePath regular expression
+Analyst's webinterface was broken by that
+-->
+<!-- <script src="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js"></script> -->
+<!-- <script src="js/lib/leaflet.js"></script> -->
+
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+          integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+          crossorigin=""></script>
+
+
+<!-- jquery-ui -->
+<script src="js/lib/jquery-ui/js/jquery-ui-1.9.1.custom.min.js"></script>
+<script src="js/lib/jquery-ui/addons/jquery-ui-timepicker.js"></script>
+
+<script src="./js/lib/jquery-ui/i18n/jquery.ui.datepicker-sl.js"></script>
+<script src="./js/lib/jquery-ui/i18n/jquery.ui.datepicker-de.js"></script>
+<script src="./js/lib/jquery-ui/i18n/jquery.ui.datepicker-fr.js"></script>
+<script src="./js/lib/jquery-ui/i18n/jquery.ui.datepicker-it.js"></script>
+<script src="./js/lib/jquery-ui/i18n/jquery.ui.datepicker-ca.js"></script>
+<script src="./js/lib/jquery-ui/i18n/jquery.ui.datepicker-pl.js"></script>
+<script src="./js/lib/jquery-ui/i18n/jquery.ui.datepicker-es.js"></script>
+<script src="./js/lib/jquery-ui/i18n/jquery.ui.datepicker-pt.js"></script>
+
+<!-- backbone -->
+<script src="js/lib/backbone.js"></script>
+
+<!-- Mustache/ICanHaz -->
+<script src="//cdn.jsdelivr.net/mustache.js/0.7.2/mustache.js"></script>
+<script src="js/lib/ICanHaz.js"></script>
+
+
+
+<!-- otp-specific imports -->
+<script src="js/otp/otp.js?v=1"></script>
+
+<!-- otp-locales -->
+<script language="javascript" src="js/lib/i18next-1.7.3.min.js"></script>
+<script src="js/otp/locale/English.js?v=1"></script>
+<script src="js/otp/locale/French.js?v=1"></script>
+<script src="js/otp/locale/German.js?v=1"></script>
+<script src="js/otp/locale/Slovenian.js?v=1"></script>
+<script src="js/otp/locale/Italian.js?v=1"></script>
+<script src="js/otp/locale/Catalan.js?v=1"></script>
+<script src="js/otp/locale/Polish.js?v=1"></script>
+<script src="js/otp/locale/Spanish.js?v=1"></script>
+<script src="js/otp/locale/Portuguese.js?v=1"></script>
+
+<script src="js/otp/config.js?v=1"></script>
+
+<script src="js/otp/debug.js?v=1"></script>
+<script src="js/otp/templates.js?v=1"></script>
+
+<script src="js/otp/util/DataStorage.js?v=1"></script>
+<script src="js/otp/util/Geo.js?v=1"></script>
+<script src="js/otp/util/Itin.js?v=1"></script>
+<script src="js/otp/util/Logger.js?v=1"></script>
+<script src="js/otp/util/Text.js?v=1"></script>
+<script src="js/otp/util/Time.js?v=1"></script>
+<script src="js/otp/util/Imperial.js?v=1"></script>
+
+<script src="js/otp/core/Webapp.js?v=1"></script>
+<script src="js/otp/core/Map.js?v=1"></script>
+<script src="js/otp/core/QueryLogger.js?v=1"></script>
+<script src="js/otp/core/PopupMenu.js?v=1"></script>
+<script src="js/otp/core/ContextMenu.js?v=1"></script>
+<script src="js/otp/core/MapContextMenu.js?v=1"></script>
+<script src="js/otp/core/WidgetManagerMenu.js?v=1"></script>
+<script src="js/otp/core/Geocoder.js?v=1"></script>
+  <script src="js/otp/core/GeocoderInfomobility.js?v=1"></script>
+<script src="js/otp/core/GeocoderBuiltin.js?v=1"></script>
+<script src="js/otp/core/GeocoderBag.js?v=1"></script>
+<script src="js/otp/core/SOLRGeocoder.js?v=1"></script>
+<script src="js/otp/core/TransitIndex.js?v=1"></script>
+<script src="js/otp/core/IndexApi.js?v=1"></script>
+<script src="js/otp/core/TrinetSessionManager.js?v=1"></script>
+<script src="js/otp/core/DefaultSessionManager.js?v=1"></script>
+
+<script src="js/otp/widgets/Widget.js?v=1"></script>
+<script src="js/otp/widgets/WidgetManager.js?v=1"></script>
+<script src="js/otp/widgets/Dialogs.js?v=1"></script>
+
+<script src="js/otp/modules/Module.js?v=1"></script>
+
+<script src="js/otp/modules/planner/PlannerModule.js?v=1"></script>
+<script src="js/otp/modules/planner/IconFactory.js?v=1"></script>
+<script src="js/otp/modules/planner/TripPlan.js?v=1"></script>
+<script src="js/otp/modules/planner/Itinerary.js?v=1"></script>
+<script src="js/otp/modules/planner/ItinerariesWidget.js?v=1"></script>
+
+<script src="js/otp/modules/multimodal/MultimodalPlannerModule.js?v=1"></script>
+
+<!--Loads some javascript modules only if they are enabled in config.js-->
+<script type="text/javascript">
+	//Which modules needs which files
+	var modules = {
+		'otp.modules.bikeshare.BikeShareModule':
+			[
+			'js/otp/modules/bikeshare/BikeShareModule.js?v=1',
+			'js/otp/modules/bikeshare/BikeStationsWidget.js?v=1'
+		],
+		'otp.modules.analyst.AnalystModule':
+			[
+			'js/otp/modules/analyst/AnalystModule.js?v=1',
+			'js/otp/modules/analyst/AnalystLegendWidget.js?v=1',
+		],
+		'otp.modules.calltaker.CallTakerModule':
+			[
+			'js/lib/jspdf.min.js',
+			'js/otp/modules/calltaker/CallTakerModule.js?v=1',
+			'js/otp/modules/calltaker/CallHistoryWidget.js?v=1',
+			'js/otp/modules/calltaker/MailablesWidget.js?v=1',
+			'js/otp/modules/calltaker/calltaker-models.js?v=1',
+			],
+		'otp.modules.annotations.AnnotationsModule':
+			[
+			'js/otp/modules/annotations/AnnotationsModule.js?v=1'
+		],
+		'otp.modules.alerts.AlertsModule':
+			[
+			'js/otp/modules/alerts/AlertsModule.js?v=1',
+			'js/otp/modules/alerts/AlertsWidget.js?v=1',
+			'js/otp/modules/alerts/EntitiesWidget.js?v=1',
+			'js/otp/modules/alerts/alerts-models.js?v=1',
+		],
+		'otp.modules.fieldtrip.FieldTripModule':
+			[
+			'js/otp/modules/fieldtrip/FieldTripModule.js?v=1',
+			'js/otp/modules/fieldtrip/FieldTripManagerWidget.js?v=1',
+			'js/otp/modules/fieldtrip/FieldTripRequestWidget.js?v=1',
+			'js/otp/modules/fieldtrip/FieldTripGeocoderWidget.js?v=1',
+			'js/otp/modules/fieldtrip/SaveFieldTripWidget.js?v=1',
+			'js/otp/modules/fieldtrip/SearchWidget.js?v=1'
+			]
+
+	}
+	for (var moduleIndex = 0; moduleIndex < otp.config.modules.length; moduleIndex++) {
+		var curModuleClass = otp.config.modules[moduleIndex]["className"]
+		//console.log(curModuleClass);
+		if (curModuleClass in modules) {
+			var modulesScripts = modules[curModuleClass];
+			for (var scriptIndex = 0; scriptIndex < modulesScripts.length; scriptIndex++) {
+				$.ajax({
+					url: modulesScripts[scriptIndex],
+					dataType: "script",
+					cache: true,
+					async: false
+				})
+				.fail(function(jqxhr, settings, exception) {
+					console.error(settings);
+					console.error(jqxhr.error());
+					console.error(exception);
+				});
+			}
+		}
+	}
+
+</script>
+
+
+
+<script src="js/otp/widgets/InfoWidget.js?v=1"></script>
+<script src="js/otp/widgets/tripoptions/RoutesSelectorWidget.js?v=1"></script>
+<script src="js/otp/widgets/tripoptions/TripOptionsWidget.js?v=1"></script>
+<script src="js/otp/widgets/tripoptions/BikeTrianglePanel.js?v=1"></script>
+
+<script src="js/otp/widgets/transit/RouteBasedWidget.js?v=1"></script>
+<script src="js/otp/widgets/transit/StopViewerWidget.js?v=1"></script>
+<script src="js/otp/widgets/transit/StopFinderWidget.js?v=1"></script>
+<script src="js/otp/widgets/transit/TripViewerWidget.js?v=1"></script>
+
+<script src="js/otp/layers/StopsLayer.js?v=1"></script>
+
+<!-- make legacy Internet Explorer play nice(r) -->
+<!--[if lt IE 9]>
+  <script src="//cdn.jsdelivr.net/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="//cdn.jsdelivr.net/respond/0.1/respond.min.js"></script>
+<![endif]-->
+
+
+<!-- load ICH templates and create the webapp at startup -->
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+    var realtime_marker, alert_realtime = $("#alert-realtime"), last_gps_datetime, realtime_interval, multirfid, realtime_markers_layer = L.featureGroup(), bus_list = {}, driverids, busposition_ws, tripname_realtime, fitmap, map_bounds = new L.LatLngBounds(), connection_attempts = 0, last_results;
+    const EXPIRATION_TIME = 13000, MAX_CONNECTION_ATTEMPTS = 5; //set expiration time for not updated bus positions
+    const TEMPLATES = {
+      REALTIME_INFO: {
+        start: (trip) => {
+          return '<span class="text-success">Real Time</span><br>Linea: <strong>' + trip + '</strong><br><span class="text-warning state-alert-realtime">Connessione in corso...</span><span class="close-alert-realtime">✕</span>'
+        },
+        success: (trip) => {
+          return '<span class="text-success">Real Time</span><br>Linea: <strong>' + trip + '</strong><br><span class="text-success state-alert-realtime">Posizione aggiornata</span><span class="close-alert-realtime">✕</span>'
+        },
+        error: (trip) => {
+          return '<span class="text-danger">Real Time</span><br>Linea: <strong>' + trip + '</strong><br><span class="text-warning state-alert-realtime">Problema di rete. Riprova più tardi.</span><span class="close-alert-realtime">✕</span>'
+        },
+        offline: (trip) => {
+          return '<span class="text-success">Real Time</span><br>Linea: <strong>' + trip + '</strong><br><span class="text-danger state-alert-realtime">Posizione non aggiornata</span><span class="close-alert-realtime">✕</span>'
+        },
+
+      }
+    }
+
+    var realTimeBusIcon = L.divIcon({
+      //iconUrl: otp.config.resourcePath + 'images/bus-icon.svg',
+      shadowUrl: '',
+      iconSize:     [40, 40], // size of the icon
+      //shadowSize:   [50, 64], // size of the shadow
+      iconAnchor:   [18, 38], // point of the icon which will correspond to marker's location
+      //shadowAnchor: [4, 62],  // the same for the shadow
+      popupAnchor:  [2, -90], // point from which the popup should open relative to the iconAnchor
+      className: 'realtime-bus-marker bg-label',
+      html: '<div class="realtime-bus-bg"></div><img class="realtime-bus-icon" src="' + otp.config.resourcePath + 'images/bus-icon.svg">'
+    });
+	//Sets datepicker language based on selected/detected language in config.js
+	$.datepicker.setDefaults($.datepicker.regional[otp.config.locale.config.datepicker_locale_short]);
+    var templateUrls = [ //new Array(
+        'js/otp/layers/layers-templates.html',
+        'js/otp/widgets/widget-templates.html',
+        'js/otp/widgets/tripoptions/tripoptions-templates.html',
+        'js/otp/widgets/transit/widgets-transit-templates.html',
+    ];
+
+    var loadedTemplates = 0;
+
+    for(var i = 0; i < templateUrls.length; i++) {
+        $.get(templateUrls[i])
+        .success(function(html) {
+            $('<div style="display:none;"></div>').appendTo($("body")).html(html);
+            loadedTemplates++;
+            if(loadedTemplates == templateUrls.length) {
+                ich.grabTemplates();
+                new otp.core.Webapp();
+            }
+        });
+    }
+    $("body").on("click", "#planner-itinWidget .otp-widget-header-button, #otp-itinsWidget-header-hidden .otp-widget-header-button", function(e){
+      /* #BUSPOSITION */
+      if(multirfid){
+        //remove realtime_markers_layer
+        realtime_markers_layer.remove();
+        realtime_markers_layer.eachLayer(layer => {
+          realtime_markers_layer.remove(layer)
+        })
+      }else{
+        if(realtime_marker){
+          realtime_marker.remove();
+        }
+      }
+      clearInterval(realtime_interval);
+      alert_realtime.hide().html("Real Time").removeClass("alert-danger");
+      global_itineraries.module.clearTrip();
+      global_itineraries.close();
+      $("#otp-itinsWidget-header-hidden").removeClass("show-navigation-header");
+    });
+
+    $("body").on("click", ".live-button", function(e){
+      /* CLICK ON REAL TIME BUTTON*/
+      e.stopPropagation();
+      e.preventDefault();
+
+      //CHECK IF BUTTON IS ACTIVE
+      // SO STOP CURRENT TRACKING
+      if($(e.currentTarget).hasClass("active")){
+        //USER WANTS TO STOP REAL TIME POSITIONING
+
+        //CLOSE STREAM AND SOCKET
+        closeStream(e);
+        //REMOVE ALL MARKERS
+        removeBusMarkers();
+
+        $(e.currentTarget).removeClass("active");
+        alert_realtime.hide().html("Real Time");
+        return;
+      }
+
+      //CHECK IF A DIFFERENT BUTTON IS ACTIVE
+      const active_button = $(".live-button.active")
+      if(active_button.length){
+        active_button.removeClass("active")
+      }
+      //CHECK IF A DIFFERENT ROUTE IS CURRENTLY TRACKED
+      if(!($.isEmptyObject(bus_list))){
+        //CLOSE STREAM AND SOCKET
+        closeStream(e);
+        removeBusMarkers()
+      }
+
+      /* OPEN WEB SOCKET TO GET STREAM */
+
+      driverids = $(e.currentTarget).data("driverids");
+      tripname_realtime = $(e.currentTarget).data("tripname");
+
+      $(e.currentTarget).addClass("active");
+      fitmap = true; //to fit map on first update // after that set fit map to false
+      last_results = 0;
+      alert_realtime.show()
+      startStream();
+      //show map if it's on mobile
+      if(document.body.clientWidth < 769){
+        $("#show-on-map-button").trigger("click");
+      }
+    })
+
+    const startStream = (fitmap) => {
+      alert_realtime.html(TEMPLATES.REALTIME_INFO.start(tripname_realtime))
+
+      if(busposition_ws && (busposition_ws.readyState == busposition_ws.OPEN)){
+        return;
+      }
+      // Create WebSocket connection.
+      busposition_ws = new WebSocket(otp.config.busposition_ws_url);
+      busposition_ws.active = true;
+
+      // Connection opened
+      busposition_ws.addEventListener('open', function (event) {
+        connection_attempts = 0;
+        console.log('Connected to BusPositionWS Server')
+        sendDriverIds(driverids)
+      });
+      // Connection opened
+      busposition_ws.addEventListener('close', function (event) {
+        console.log("close event", event)
+        setMarkersLabel(null, "reset")
+      });
+      // Connection error
+      busposition_ws.addEventListener('error', function (err) {
+        console.log('Socket Error', err);
+        if(busposition_ws.active){
+          //all markers are not valid anymore
+          setMarkersLabel(null, "reset");
+          //set a limit to timeout calls
+          if(connection_attempts < MAX_CONNECTION_ATTEMPTS){
+            console.log('Socket was active. Reconnect will be attempted in 10 second.', err.message);
+            setTimeout(function() {
+              connection_attempts++;
+              startStream();
+            }, 10000);
+          }else{
+            // closeStream("close")
+            // trig the stop button and show connection error message
+            //print "problema di rete. Real time non disponibile. prova più tardi."
+            alert_realtime.html(TEMPLATES.REALTIME_INFO.error(tripname_realtime))
+            //rimuovi realtime buttons
+          }
+
+        }
+
+      });
+
+      // Listen for messages
+      busposition_ws.addEventListener('message', async function (event) {
+        //console.log("message event")
+        let results;
+        try{
+          results = await JSON.parse(event.data);
+          //update marker
+          //console.log('Message from server: ', results);
+        }catch(err){
+          console.log('Error while parsing Message from server: ', err);
+        }
+        updateMarkers(results)
+
+      });
+
+      const sendDriverIds = () => {
+        //debugger;
+        busposition_ws.send(JSON.stringify({
+          //rfids: ["003A008ACF05", "232222222222"]
+          rfids: driverids
+        }));
+      }
+    };
+
+    const closeStream = (e) => {
+      if(busposition_ws && e){
+        busposition_ws.active = false;
+        //remove all markers
+      }
+      busposition_ws.close()
+    };
+    const removeBusMarkers = () => {
+      for(k in bus_list){
+        clearTimeout(bus_list[k].expired);
+        global_map.removeLayer(bus_list[k].marker);
+        delete bus_list[k]
+      }
+    }
+    const setMarkersLabel = (driverID, state, time) => {
+      //check socket state, if it's closed don't change labels
+      //console.log(busposition_ws.active, driverID, state)
+      if(!busposition_ws.active && state != "reset"){
+        return
+      }
+      switch (state){
+        case "reset":
+          for(k in bus_list){
+            clearTimeout(bus_list[k].expired);
+            $(bus_list[k].marker._icon).addClass('not-updated');
+            bus_list[k].expired = null;
+            console.log("reset ", k, bus_list[k])
+          }
+          break;
+        case "active":
+          //remove not updated class from marker
+          $(bus_list[driverID].marker._icon).removeClass('not-updated');
+          bus_list[driverID].expired = setTimeout(setMarkersLabel, EXPIRATION_TIME, driverID, "inactive",  new Date().getTime());
+          console.log("active", driverID,  new Date().getTime(), "n. " + bus_list[driverID].expired)
+          break;
+        case "inactive":
+          console.log("inactive",driverID, time)
+          //add not updated class to marker
+          clearTimeout(bus_list[driverID].expired);
+          $(bus_list[driverID].marker._icon).addClass('not-updated');
+          bus_list[driverID].expired = null;
+          //check if all bus are not transmitting
+          /*if(!checkBusTransmission()){
+            //if nono of buses are tstill transmitting change alert template
+            alert_realtime.html(TEMPLATES.REALTIME_INFO.offline(tripname_realtime))
+          }*/
+          break;
+        default:
+      }
+    };
+    const checkBusTransmission = () => {
+      for(k in bus_list){
+        if(bus_list[k].expired != null){
+          return true
+        }
+      }
+      return false;
+    };
+    const updateMarkers = (results) => {
+      //add markers to map
+      //check results == 0
+      if(results.length == 0){
+        if(last_results == 0){
+          alert_realtime.html(TEMPLATES.REALTIME_INFO.offline(tripname_realtime))
+        }
+        return;
+      }else{
+        if(last_results == 0){
+          alert_realtime.html(TEMPLATES.REALTIME_INFO.success(tripname_realtime))
+        }
+      }
+
+      //alert_realtime.html('Real Time <br>Linea: <strong>' + tripname_realtime + '</strong><br><span>Ultimo aggiornamento: <strong>' + moment().startOf('hour').fromNow();  + '</strong></span><span>X</span>')
+      results.map((unit) => {
+        if(bus_list.hasOwnProperty(unit.driverID)){
+          //check if unit is transmitting or is expired
+          if(bus_list[unit.driverID].expired){
+            //if timer is set
+            clearTimeout(bus_list[unit.driverID].expired);
+            //set new timeout to check if bus is updateting its position
+            bus_list[unit.driverID].expired = setTimeout(setMarkersLabel, EXPIRATION_TIME, unit.driverID, "inactive", new Date().getTime());
+            console.log("update ", unit.driverID,  new Date().getTime(), bus_list[unit.driverID].expired)
+          }else{
+            //bus is transmitting again
+            //change marker's label
+            setMarkersLabel(unit.driverID, "active")
+          }
+
+          // new position incoming, so update marker
+          bus_list[unit.driverID].marker.setLatLng(new L.LatLng(unit.latitude, unit.longitude));
+
+        }else{
+          //NEW UNIT CONNECTED
+          //CREATE NEW MARKER
+          const marker = L.marker([unit.latitude, unit.longitude], {icon: realTimeBusIcon}).addTo(global_map);
+          /*.bindPopup('Linea: ' + tripname_realtime, {
+            minWidth: "0",
+            width: 50,
+            closeButton: true
+          })*/
+          bus_list[unit.driverID] = {
+            expired: setTimeout(setMarkersLabel, EXPIRATION_TIME, unit.driverID, "inactive"),
+            marker: marker
+          }
+          //use marker to calculate bounds to fit map
+          if(fitmap){
+            map_bounds.extend(marker.getLatLng());
+          }
+        }
+      });
+      //check first time to fit the map
+      if(fitmap){
+        fitmap = false;
+        //fit map bounds
+        if(results.length > 1){
+          global_map.fitBounds(map_bounds, {padding: [100, 100]})
+        }else{
+          global_map.flyTo([results[0].latitude, results[0].longitude], global_map.getZoom(), {
+            animate: true,
+            duration: 1
+          });
+        }
+      }
+
+
+
+      /*realtime_marker = L.marker([bus_data[1].latitude, bus_data[1].longitude], {icon: realTimeBusIcon}).bindPopup('Linea: ' + tripname_realtime, {
+        minWidth: "0",
+        width: 100,
+        closeButton: false
+      }).addTo(global_map);
+      global_map.flyTo(realtime_marker.getLatLng(), global_map.getZoom(), {
+        animate: true,
+        duration: 1
+      });*/
+
+
+    };
+    //prevent refreshing bus position when page is not active
+    onVisibilityChange(function(visible) {
+      //console.log('the page is now', visible ? 'focused' : 'unfocused');
+      if(busposition_ws && busposition_ws.active){
+        visible ? startStream() : closeStream()
+      }
+
+    });
+    function onVisibilityChange(callback) {
+      var visible = true;
+
+      if (!callback) {
+        throw new Error('no callback given');
+      }
+
+      function focused() {
+        if (!visible) {
+          callback(visible = true);
+        }
+      }
+
+      function unfocused() {
+        if (visible) {
+          callback(visible = false);
+        }
+      }
+
+      // Standards:
+      if ('hidden' in document) {
+        document.addEventListener('visibilitychange',
+                function() {(document.hidden ? unfocused : focused)()});
+      }
+      if ('mozHidden' in document) {
+        document.addEventListener('mozvisibilitychange',
+                function() {(document.mozHidden ? unfocused : focused)()});
+      }
+      if ('webkitHidden' in document) {
+        document.addEventListener('webkitvisibilitychange',
+                function() {(document.webkitHidden ? unfocused : focused)()});
+      }
+      if ('msHidden' in document) {
+        document.addEventListener('msvisibilitychange',
+                function() {(document.msHidden ? unfocused : focused)()});
+      }
+      // IE 9 and lower:
+      if ('onfocusin' in document) {
+        document.onfocusin = focused;
+        document.onfocusout = unfocused;
+      }
+      // All others:
+      window.onpageshow = window.onfocus = focused;
+      window.onpagehide = window.onblur = unfocused;
+    };
+
+    $("body").on("click", ".live-button2", function(e){
+      /* #BUSPOSITION */
+      e.stopPropagation();
+      e.preventDefault();
+      if($(e.currentTarget).hasClass("active")){
+        if(multirfid){
+          //remove realtime_markers_layer
+          realtime_markers_layer.remove();
+          realtime_markers_layer.eachLayer(layer => {
+            realtime_markers_layer.remove(layer)
+          })
+        }else{
+          if(realtime_marker){
+            realtime_marker.remove();
+          }
+        }
+        clearInterval(realtime_interval);
+        $(e.currentTarget).removeClass("active");
+        alert_realtime.hide().html("Real Time").removeClass("alert-danger");
+        return
+      }
+      multirfid = $(e.currentTarget).data("multirfid");
+      const driverID = $(e.currentTarget).data("driverid");
+      const tripname = $(e.currentTarget).data("tripname");
+      //debugger;
+      if(realtime_marker){
+        realtime_marker.remove();
+        $(".live-button.active").removeClass("active")
+      }
+      $(e.currentTarget).addClass("active");
+      debugger
+
+      var url = "";
+      var getdata = null;
+      var multidata = "";
+
+      if(multirfid){
+        url = otp.config.multi_realtime_api;
+        getdata = getMultiRealTimeData;
+        multidata = JSON.stringify({
+          rfids: driverID
+        })
+      }else{
+        url = otp.config.realtime_api + driverID;
+        getdata = getRealTimeData;
+      }
+      //var url = "http://51.145.149.130/gpsdata/api/realtime/driverid/007C0053A3D5";
+
+      getdata(false, url, tripname, multidata);
+
+      //show map if it's on mobile
+      if(document.body.clientWidth < 769){
+        $("#show-on-map-button").trigger("click");
+      }
+      //get Vehicle Position every 6s
+      realtime_interval = setInterval(function(getdata){
+
+        getdata(true, url, tripname, multidata) //true means the marker has to be updated
+
+      }, 7000, getdata);
+
+    })
+
+    function getRealTimeData(i, url, trip){
+      /* #BUSPOSITION */
+      $.ajax({
+        type: "GET",
+        url: url,
+        cache: false
+      }).done(function(gps_message) {
+        //console.log(gps_message)
+        //debugger;
+        //check if it's stil live
+        if(!gps_message.length){
+          alert_realtime.html('<strong>'+trip+'</strong> - Attenzione!! Posizione non aggiornata').addClass("alert-danger");
+          return
+        }
+        if(i == false){
+
+          alert_realtime.html('<strong>'+trip+'</strong> - Real Time').show();
+
+          realtime_marker = L.marker([gps_message[0].latitude, gps_message[0].longitude], {icon: realTimeBusIcon}).bindPopup('Linea: ' + trip, {
+            minWidth: "0",
+            width: 100,
+            closeButton: false
+          }).addTo(global_map);
+
+          global_map.panTo(realtime_marker.getLatLng());
+
+          last_gps_datetime = gps_message[0].datetime;
+
+        }else{
+          //Check if bus is transmitting
+          if(gps_message[0].datetime == last_gps_datetime){
+            alert_realtime.html('<strong>'+trip+'</strong> - Attenzione!! Posizione non aggiornata').addClass("alert-danger");
+          }else{
+            if(alert_realtime.hasClass("alert-danger")){
+              alert_realtime.html('<strong>'+trip+'</strong> - Real Time').removeClass("alert-danger")
+            }
+            if(realtime_marker){
+              realtime_marker.setLatLng(new L.LatLng(gps_message[0].latitude, gps_message[0].longitude))
+            }
+            last_gps_datetime = gps_message[0].datetime;
+          }
+
+        }
+
+      })
+    }
+
+  function getMultiRealTimeData(i, url, trip, multidata){
+    /* #BUSPOSITION */
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: multidata,
+      cache: false,
+    }).done(function(gps_message) {
+      //console.log(gps_message)
+      //debugger;
+
+      //check if bus is still live
+      if(!gps_message.length){
+        alert_realtime.html('<strong>'+trip+'</strong> - Attenzione!! Posizione non aggiornata').addClass("alert-danger");
+        return
+      }
+      if(i == false){
+
+        alert_realtime.html('<strong>'+trip+'</strong> - Real Time').show();
+        for(let i = 0; i < gps_message.length; i++){
+          realtime_markers_layer.addLayer(L.marker([gps_message[i].latitude, gps_message[i].longitude], {icon: realTimeBusIcon}).bindPopup('Linea: ' + trip, {
+            minWidth: "0",
+            width: 100,
+            closeButton: false
+          }))
+        }
+        realtime_markers_layer.addTo(global_map)
+
+        global_map.fitBounds(realtime_markers_layer.getBounds());
+
+        last_gps_datetime = gps_message[0].datetime;
+
+      }else{
+        //Check if bus is transmitting
+        if(gps_message[0].datetime == last_gps_datetime){
+          alert_realtime.html('<strong>'+trip+'</strong> - Attenzione!! Posizione non aggiornata').addClass("alert-danger");
+        }else{
+          if(alert_realtime.hasClass("alert-danger")){
+            alert_realtime.html('<strong>'+trip+'</strong> - Real Time').removeClass("alert-danger")
+          }
+
+          realtime_markers_layer.remove()
+          realtime_markers_layer.eachLayer(layer => {
+            realtime_markers_layer.remove(layer)
+          })
+
+          for(let i = 0; i < gps_message.length; i++){
+            realtime_markers_layer.addLayer(L.marker([gps_message[i].latitude, gps_message[i].longitude], {icon: realTimeBusIcon}).bindPopup('Linea: ' + trip, {
+              minWidth: "0",
+              width: 100,
+              closeButton: false
+            }))
+          }
+          realtime_markers_layer.addTo(global_map)
+
+          last_gps_datetime = gps_message[0].datetime;
+        }
+
+      }
+
+    })
+  }
+
+
+});
+
+
+
+</script>
+
+</head>
+<body>
+
+<header id="branding" role="banner" class="clearfix">
+
+  <!--  <hgroup id="logo">
+      <div class="ribbon">
+        <h1 id="site-title"><span><a href="/" title="cibi.me" rel="home">cibi.me</a></span></h1>
+        <h2 id="site-description">Where can you bike to?</h2>
+      </div>
+    </hgroup>-->
+
+  <!--<p id="splash-text"><span>Bike share is coming to NYC this summer!</span> <span>How will you use it to get around?</span></p>-->
+
+ <!--
+  <div class="search">
+
+    <input type="text" name="location_search" placeholder="Search for a location&hellip;" />
+  </div>
+ -->
+</header>  <!-- #branding -->
+
+<!-- OPEN DATA HEADER -->
+<div class="fl-builder fl-theme-builder-footer fl-framework-bootstrap-4 fl-preset-default fl-full-width fl-nav-mobile-offcanvas fl-offcanvas-overlay-right fl-shrink-header-enabled fl-responsive-nav-enabled">
+  <div id="fl-page" class="fl-page" style="padding-top: 0px;">
+    <header class="fl-page-header fl-page-header-primary fl-page-nav-right fl-page-nav-toggle-icon fl-page-nav-toggle-visible-medium-mobile headroom fl-shrink-header-transition headroom--not-bottom headroom--pinned headroom--top" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
+      <div class="fl-page-header-wrap">
+        <div class="fl-page-header-container container">
+          <div class="fl-page-header-row d-flex justify-content-between">
+            <div class="fl-page-header-logo-col flex-shrink-1">
+              <div class="fl-page-header-logo" itemscope="itemscope" itemtype="https://schema.org/Organization">
+                <a href="https://www.opendatalaquila.it/" itemprop="url"> <img alt="open data L'AQUILA" class="fl-logo-img" height="88" itemscope="" itemtype="https://schema.org/ImageObject" src="https://www.opendatalaquila.it/wp-content/themes/cuim-2018/images/open_data_laquila.svg" style="max-height: 88px;" width="180"></a>
+                <a href="https://www.comune.laquila.it/" itemprop="url" style="position: absolute; margin-left: 20px;"> <img alt="Comune dell'Aquila" height="88" class="fl-logo-img"  src="images/comune-laquila.jpg" style="max-width: 50px;"></a>
+              </div>
+            </div>
+            <div class="fl-page-nav-col">
+              <div class="fl-page-nav-wrap">
+                <nav aria-label="Menu testata" class="fl-page-nav fl-nav navbar navbar-default navbar-expand-md"
+                     itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
+                  <button id="fl-button-open-mobile-menu" class="navbar-toggle navbar-toggler" data-target=".fl-page-nav-collapse" data-toggle="collapse"
+                          type="button"><span><i aria-hidden="true" class="fas fa-bars"></i><span
+                          class="sr-only">Menu</span></span></button>
+                  <div id="fl-nav-offcanvas-collapse" class="fl-page-nav-collapse collapse navbar-collapse">
+                    <div id="fl-button-close-mobile-menu" class="fl-button-close"><button class="fl-offcanvas-close"><i class="fas fa-times"></i></button></div>
+                    <ul class="nav navbar-nav navbar-right menu fl-theme-menu" id="menu-primario">
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-98 nav-item" id="menu-item-98">
+                        <a class="nav-link" href="https://www.opendatalaquila.it/">Home</a>
+                      </li>
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1028 nav-item" id="menu-item-1028">
+                        <a class="nav-link" href="https://www.opendatalaquila.it/il-progetto/">Il progetto</a>
+                      </li>
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1029 nav-item" id="menu-item-1029">
+                        <a class="nav-link" href="https://www.opendatalaquila.it/la-squadra/">La squadra</a>
+                      </li>
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-1092 nav-item current-menu-item" id="menu-item-1092">
+                        <a class="nav-link" href="https://www.opendatalaquila.it/appsmaps/">Apps&amp;Maps</a>
+                      </li>
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1056 nav-item" id="menu-item-1056">
+                        <a class="nav-link" href="https://www.opendatalaquila.it/focus/">Focus</a>
+                      </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-921 nav-item" id="menu-item-921">
+                        <a class="nav-link" href="https://ckan.opendatalaquila.it/dataset" rel="noopener noreferrer" target="_blank">I dati</a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+            <div>
+              <div id="navbar-main-right">
+                <div class="widget widget_text" id="text-3">
+                  <div class="textwidget">
+                    <p>
+                      <a class="d-lg-block d-none" href="https://www.gssi.it/" rel="noopener noreferrer" target="_blank">
+                        <img alt="" class="size-full wp-image-1238 alignright" src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/gssi-quadrato.svg" width="70">
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<!-- OPEN DATA HEADER END -->
+
+
+
+<div id="otp-itinsWidget-header-hidden" class="otp-widget otp-widget-nonTransparent otp-defaultItinsWidget ui-resizable ui-draggable"><div class="otp-widget-header" id="show-directions-button"><i class="fas fa-directions"></i></div><div class="otp-widget-header-button">×<div></div></div></div>
+
+<div id="map"></div>
+
+<!-- OPEN DATA FOOTER -->
+<footer id="opendata-footer">
+<div id="opendata-footer-box">
+<div id="opendata-footer-about" class="footer-about-hidden fl-builder-content fl-builder-content-852 fl-builder-global-templates-locked" data-post-id="852"
+        itemscope="itemscope" itemtype="http://schema.org/WPFooter" data-type="footer">
+  <div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-5de13f8030e06" data-node="5de13f8030e06">
+    <div class="fl-row-content-wrap">
+      <div class="fl-row-content fl-row-fixed-width fl-node-content">
+        <div class="fl-col-group fl-node-5de13f7ff2c91" data-node="5de13f7ff2c91">
+          <div class="fl-col fl-node-5de13f7ff2c96" data-node="5de13f7ff2c96">
+            <div class="fl-col-content fl-node-content">
+              <div class="fl-module fl-module-html fl-node-5de13f7ff2c97" data-node="5de13f7ff2c97">
+                <div class="fl-module-content fl-node-content">
+                  <div class="fl-html">
+                    <div class="row no-gutters align-items-start">
+                      <div class="col-md-2">
+                        <p class="text-primary text-18 color-333">Un progetto</p>
+                        <a href="https://www.gssi.it/" target="_blank" rel="noopener">
+                          <img class="alignnone w-75"
+                               src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/gssi-quadrato.svg" alt=""
+                               style="max-width:60%">
+                        </a>
+                      </div>
+                      <div class="col-md">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-md-12">
+                            <p class="text-primary text-18 color-333">In collaborazione con</p>
+                          </div>
+                          <div class="col-md">
+                            <a href="http://home.infn.it/it/" target="_blank" rel="noopener">
+                              <img class="alignnone w-75"
+                                   src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/infn-lngs1.svg" alt=""
+                                   style="max-width:60%">
+                            </a>
+                          </div>
+                          <div class="col-md">
+                            <a href="http://www.ingv.it/it/" target="_blank" rel="noopener">
+                              <img class="alignnone w-75"
+                                   src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/ingv.svg" alt=""
+                                   style="max-width:60%">
+                            </a>
+                          </div>
+                          <div class="col-md">
+                            <a href="https://www.univaq.it" target="_blank" rel="noopener">
+                              <img class="alignnone w-75"
+                                   src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/univaq.svg" alt=""
+                                   style="max-width:50%">
+                            </a>
+                          </div>
+                          <div class="w-100"></div>
+                          <div class="col-md">
+                            <a href="http://www.comune.laquila.it" target="_blank" rel="noopener">
+                              <img class="alignnone w-75"
+                                   src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/comune-laquila.svg"
+                                   alt="" style="max-height:80px">
+                            </a>
+                          </div>
+                          <div class="col-md">
+                            <a href="http://usra.it" target="_blank" rel="noopener">
+                              <img class="alignnone w-75"
+                                   src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/usra-colorato.png"
+                                   alt="" style="max-width:60%">
+                            </a>
+                          </div>
+                          <div class="col-md">
+                            <a href="http://usrc.it" target="_blank" rel="noopener">
+                              <img class="alignnone w-75"
+                                   src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/usrc.svg" alt=""
+                                   style="max-height:80px">
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p class="text-primary text-18 color-333">Con il contributo di</p>
+                          </div>
+                          <div class="col-md-12">
+                            <a href="https://www.actionaid.it" target="_blank" rel="noopener">
+                              <img class="alignnone w-100"
+                                   src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/Actionaid_logo.svg"
+                                   alt="" style="max-width:60%">
+                            </a>
+                          </div>
+                          <div class="col-md-12">
+                            <a href="https://www.openpolis.it" target="_blank" rel="noopener">
+                              <img class="alignnone w-100"
+                                   src="https://www.opendatalaquila.it/wp-content/uploads/2019/12/openpolis.svg" alt=""
+                                   style="max-width:60%">
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+  <div id="opendata-footer-fixed" class="fl-row fl-row-full-width fl-row-bg-color fl-node-5dd7d0983196c" data-node="5dd7d0983196c">
+    <div class="fl-row-content-wrap">
+      <div class="fl-row-content fl-row-fixed-width fl-node-content">
+        <div class="fl-col-group fl-node-5dd7d09840387" data-node="5dd7d09840387">
+          <div class="fl-col fl-node-5dd7d09840519" data-node="5dd7d09840519">
+            <div class="fl-col-content fl-node-content">
+              <div class="fl-module fl-module-rich-text fl-node-5dd7d0d6e54bf" data-node="5dd7d0d6e54bf">
+                <div class="fl-module-content fl-node-content">
+                  <div class="fl-rich-text"><p>Center for Urban Informatics and Modeling | Gran Sasso Science Institute | <a href="#" id="show-footer-about"> About <i class="fas fa-chevron-circle-up"></i></a>
+                    | <a href="https://www.gssi.it/privacy" target="_blank" rel="noopener">Privacy Policy</a></p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fl-col fl-node-5dd7d0984051e fl-col-small" data-node="5dd7d0984051e">
+            <div class="fl-col-content fl-node-content">
+              <div class="fl-module fl-module-rich-text fl-node-5dd7d262e1143" data-node="5dd7d262e1143">
+                <div class="fl-module-content fl-node-content">
+                  <div class="fl-rich-text"><p><a href="https://creativecommons.org/licenses/by/4.0/deed.it"
+                                                  target="_blank" rel="noopener"><img style="margin-top: 1em;"
+                          class="size-full wp-image-891 alignright"
+                          src="https://www.opendatalaquila.it/wp-content/uploads/2019/11/logo-creative-commons.png"
+                          alt="" width="121" height="40"></a></p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- OPEN DATA FOOTER END -->
+<div id="otp-minimize-tray"></div>
+
+<div id="otp-spinner"><img src="images/spinner.gif"></div>
+
+<script>
+
+</script>
+
+<script type="text/javascript">
+  /*window.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+  };*/
+  var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
+  //Collapsed = Open
+  $(document).ready(function(){
+    let footer_about = $("#opendata-footer-about");
+    let screen_size_alert = $("#screen-size-alert");
+    if(isMobile){
+      screen_size_alert.append(ngettext("Screen size not supported"))
+    }else{
+      screen_size_alert.append(ngettext("Expand your Browser window"))
+    }
+
+    let fl_page = $("#fl-page"); let fl_page_nav_collapse = $(".fl-page-nav-collapse");
+    let options_widget_collapsed = false;
+    let itin_widget_hidden = false;
+    let option_widget = null;
+    let collapseButton = null;
+    let itin_widget = null;
+    let navigation_header = $("#otp-itinsWidget-header-hidden");
+    let show_directions_button = $("#show-directions-button").append(" " + ngettext("Show Directions"))
+
+    $("body").on("focus", "#otp-planner-optionsWidget-locSelector-start, #otp-planner-optionsWidget-locSelector-end", function(e) {
+      if(document.body.clientWidth < 769){
+        if(option_widget === null) {
+          option_widget = $("#otp-planner-optionsWidget")
+          collapseButton = $("#otp-planner-optionsWidget-locSelector-collapseButton");
+        }
+        if (!options_widget_collapsed) {
+          option_widget.addClass("collapsed-widget")
+          collapseButton.addClass("flip");
+          options_widget_collapsed = true;
+        }
+      }
+    });
+    $("body").on("click", "#otp-planner-optionsWidget-locSelector-collapseButton", function(e) {
+      if(option_widget === null) {
+        option_widget = $("#otp-planner-optionsWidget")
+        collapseButton = $("#otp-planner-optionsWidget-locSelector-collapseButton");
+      }
+      if(options_widget_collapsed){
+        option_widget.removeClass("collapsed-widget")
+        collapseButton.removeClass("flip")
+        options_widget_collapsed = false;
+      }else{
+        option_widget.addClass("collapsed-widget")
+        collapseButton.addClass("flip")
+        options_widget_collapsed = true;
+      }
+    });
+    $("body").on("click", "#show-on-map-button", function(e) {
+      if(itin_widget === null){
+        itin_widget = $("#planner-itinWidget")
+        itin_widget.addClass("hidden-widget")
+        navigation_header.addClass("show-navigation-header")
+      }else{
+        itin_widget.addClass("hidden-widget")
+        navigation_header.addClass("show-navigation-header")
+      }
+
+      //itin_widget = $(e.currentTarget)
+    })
+
+    $("#show-directions-button").click(function () {
+      itin_widget.removeClass("hidden-widget")
+      navigation_header.removeClass("show-navigation-header")
+    })
+    $("body").on("click", "#otp-planner-optionsWidget-submit-button", function(e) {
+      if(document.body.clientWidth < 769 && options_widget_collapsed){
+        option_widget.removeClass("collapsed-widget")
+        collapseButton.removeClass("flip");
+        options_widget_collapsed = false;
+      }
+    })
+    $("#map").click(function () {
+      if(document.body.clientWidth < 769 && options_widget_collapsed){
+        option_widget.removeClass("collapsed-widget")
+        collapseButton.removeClass("flip");
+        options_widget_collapsed = false;
+      }
+    });
+
+    /* */
+
+    $("#show-footer-about").click(function(e){
+        if(footer_about.hasClass("footer-about-hidden")){
+          footer_about.removeClass("footer-about-hidden")
+          $(this).addClass("flip")
+        }else{
+          footer_about.addClass("footer-about-hidden")
+          $(this).removeClass("flip")
+        }
+    })
+
+    $("#fl-button-close-mobile-menu").click(function(e){
+        fl_page.removeClass("fl-nav-offcanvas-active")
+        fl_page_nav_collapse.removeClass("fl-nav-offcanvas-collapse")
+    });
+    $("#fl-button-open-mobile-menu").click(function(e){
+      fl_page.addClass("fl-nav-offcanvas-active")
+      fl_page_nav_collapse.addClass("fl-nav-offcanvas-collapse")
+    });
+  })
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-8102379-22']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<div id="alert-dialog-box"><p>Gli orari potrebbero non essere allineati con l'esercizio aggiornato della compagnia di trasporto AMA</p></div>
+<div id="alert-realtime">Real Time</div>
+
+<div id="overlay-screen-size-alert">
+  <div class="overlay-screen-size-alert-container">
+    <div class="overlay-screen-size-alert-content">
+      <img src="images/open_data_laquila.svg">
+    </div>
+    <div class="overlay-screen-size-alert-content">
+      <span id="screen-size-alert"></span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

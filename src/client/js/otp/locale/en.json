@@ -42,6 +42,8 @@
     "Multimodal Trip Planner": "Multimodal Trip Planner",
     "Itineraries": "Itineraries",
     "%d Itinerary Returned": "%d Itinerary Returned",
+    "Show Map": "Show Map",
+    "Show Directions": "Show Directions",
     "%d Itinerary Returned_plural": "%d Itineraries Returned",
     "Link to search": "Link to search",
     "First": "First",
@@ -218,10 +220,16 @@
     "A Shared Bike": "A Shared Bike",
     "Plan Your Trip": "Plan Your Trip",
     " to _direction": " to ",
+    " from _stop": "From ",
+    " to _stop": " to ",
     " to _bus_direction": " to ",
     "Start_template": "Start",
     "Depart_itinerary": "Depart",
     "depart_itinerary": "depart",
     "Start_popup": "Start",
-    "Depart_tripoptions": "Depart"
+    "Depart_tripoptions": "Depart",
+    "This itinerary departs on a different day from the previous one": "This itinerary departs on a different day from the previous one",
+    "This itinerary departs on a different day than the one searched for": "This itinerary departs on a different day than the one searched for",
+    "Screen size not supported": "Screen size not supported",
+    "Expand your Browser window": "Expand your Browser window"
 }

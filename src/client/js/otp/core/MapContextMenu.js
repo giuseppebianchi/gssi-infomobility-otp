@@ -21,6 +21,7 @@ otp.core.MapContextMenu =
     map : null,
     moduleItems : null,
     contextMenuLatLng : null,
+    pointer : null,
     
     initialize : function(map, menuClicked) {
         var this_ = this;
@@ -29,19 +30,23 @@ otp.core.MapContextMenu =
             this_.contextMenuLatLng = event.latlng;
         });
 
+
+
         this.map = map;
         this.moduleItems = $("<div />").appendTo(this.menu);
 
-        //TRANSLATORS: Context menu
-        this.addItem(_tr("Recenter Map Here"), function() {
-            this_.map.lmap.panTo(this_.contextMenuLatLng);
-        //TRANSLATORS: Context menu
-        }).addItem(_tr("Zoom In"), function() {
-            this_.map.lmap.zoomIn();
-        //TRANSLATORS: Context menu
-        }).addItem(_tr("Zoom Out"), function() {
-            this_.map.lmap.zoomOut();
-        });
+        //TRANSLATORS: Context menu only on desktop
+        if(!isMobile || document.body.clientWidth > 769) {
+            this.addItem(_tr("Recenter Map Here"), function () {
+                this_.map.lmap.panTo(this_.contextMenuLatLng);
+                //TRANSLATORS: Context menu
+            }).addItem(_tr("Zoom In"), function () {
+                this_.map.lmap.zoomIn();
+                //TRANSLATORS: Context menu
+            }).addItem(_tr("Zoom Out"), function () {
+                this_.map.lmap.zoomOut();
+            });
+        }
         
         
     },

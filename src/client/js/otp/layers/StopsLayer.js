@@ -15,12 +15,19 @@
 otp.namespace("otp.layers");
 
 var StopIcon20 = L.Icon.extend({
-    options: {
+    /*options: {
         iconUrl: resourcePath + 'images/stop20.png',
         shadowUrl: null,
         iconSize: new L.Point(20, 20),
         iconAnchor: new L.Point(10, 10),
         popupAnchor: new L.Point(0, -5)
+    }*/
+    options: {
+        iconUrl: resourcePath + 'images/stop-circle.svg',
+        shadowUrl: null,
+        iconSize: new L.Point(15, 15),
+        iconAnchor: new L.Point(8, 8),
+        popupAnchor: new L.Point(0, 0)
     }
 });
 
@@ -29,7 +36,7 @@ otp.layers.StopsLayer =
 
     module : null,
 
-    minimumZoomForStops : 15,
+    minimumZoomForStops : 16,
 
     initialize : function(module) {
         var this_ = this;
@@ -40,6 +47,8 @@ otp.layers.StopsLayer =
 
         this.module.addLayer("stops", this);
         this.module.webapp.map.lmap.on('dragend zoomend', $.proxy(this.refresh, this));
+
+
     },
 
     refresh : function() {
@@ -60,7 +69,6 @@ otp.layers.StopsLayer =
     updateStops : function(stops) {
         var stops = _.values(this.stopsLookup);
         var this_ = this;
-
         for(var i=0; i<stops.length; i++) {
 
             var stop = stops[i];
@@ -76,18 +84,32 @@ otp.layers.StopsLayer =
             m._stopId = stop.id;
             m.addTo(this)
              .bindPopup('')
-             .on('click', function() {
+             .on('click', function(e) {
                 var stopId = this._stopId;
                 var stopIdArr = stopId.split(':');
                 var agencyId = stopIdArr.shift();
                 var gtfsStopId = stopIdArr.join(':');
                 var marker = this;
+
+                let point = this_._map.mouseEventToLatLng({
+                    clientX: e.originalEvent.clientX,
+                    clientY: e.originalEvent.clientY - 200, //200px because of inputs box
+                })
+
+                //this_._map.panTo(this_._map.mouseEventToLatLng(point));
                 this_.module.webapp.indexApi.loadStopById(agencyId, gtfsStopId, this_, function(detailedStop) {
                     marker.setPopupContent(this_.getPopupContent(detailedStop));
                     this_.module.webapp.indexApi.loadRoutesForStop(stopId, this_, function(data) {
+                        if(data != null && data.length > 0){
+                            $('#routeForStopLabel').text(data.length);
+                        }
                         _.each(data, function(route) {
                             ich['otp-stopsLayer-popupRoute'](route).appendTo($('.routeList'));
                         });
+
+                        if(document.body.clientWidth < 769 || document.body.clientHeight < 668){
+                            this_._map.panTo(point);
+                        }
                     });
                 });
              });
@@ -98,7 +120,6 @@ otp.layers.StopsLayer =
 
     getPopupContent : function(stop) {
         var this_ = this;
-
         var stop_viewer_trans = _tr('Stop Viewer');
         //TRANSLATORS: Plan Trip [From Stop| To Stop] Used in stoplayer popup
         var plan_trip_trans = _tr('Plan Trip');

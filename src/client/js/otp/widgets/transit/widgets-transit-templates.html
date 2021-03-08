@@ -5,8 +5,8 @@
 			{{no_stops_selected}}
         </div>
 
-        <div style="margin-top: 4px; text-align: center;">
-			<b>{{date}}</b>: <input type='text' class="otp-stopViewer-dateInput" />
+        <div style="margin-top: 15px; text-align: center;">
+			<!--<b>{{date}}</b>: --><input type='hidden' class="otp-stopViewer-dateInput" /><input type='date' id="otp-stopViewer-dateInput-date" />
         </div>
         <div class="otp-stopViewer-timeList"></div>
         <div class="otp-stopViewer-findButtonRow">
@@ -22,18 +22,19 @@
         <div class="otp-stopViewer-timeRow">
             {{formattedTime}}
         </div>
+        <div class="otp-stopViewer-routeRow-short">
+            {{tripName}}
+        </div>
+        {{#headsign}}
+        <div class="otp-stopViewer-headsignRow">
+            <span>{{to}}</span>{{headsign}}
+        </div>
+        {{/headsign}}
         <div class="otp-stopViewer-routeRow">
-            {{#routeShortName}}
-                ({{routeShortName}})
-            {{/routeShortName}}
             {{routeLongName}}
         </div>
 
-        {{#headsign}}
-            <div class="otp-stopViewer-headsignRow">
-				{{to}}{{headsign}}
-            </div>
-        {{/headsign}}
+
 
         {{#blockId}}
             <div class="otp-stopViewer-blockRow">

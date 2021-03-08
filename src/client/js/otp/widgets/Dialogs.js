@@ -25,6 +25,7 @@ otp.widgets.Dialogs = {
             appendTo: 'body',
             modal: true,
             zIndex: 100000,
+            dialogClass: "otp-modal-okDialog otp-widget"
         });
         
         dialog.find(".okButton").button().click(function() {

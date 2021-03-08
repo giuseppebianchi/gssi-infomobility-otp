@@ -12,16 +12,12 @@
         {{/desc}}
 
         <div style="font-size: 10px;">
-            [
-			<a href="#" class="stopViewerLink">{{stop_viewer}}</a>
-            {{#url}}
-                | <a href="{{url}}" target="_blank">{{agencyStopLinkText}}</a>
-            {{/url}}
-            ]
+            <a href="#" class="stopViewerLink timeline-button"><i class="far fa-clock"></i> {{stop_viewer}}</a>
+            {{#url}}<a href="{{url}}" target="_blank">{{agencyStopLinkText}}</a>{{/url}}
         </div>
-		<div style="margin-top: 6px;"><b>{{plan_trip}}</b>: [ <a href="#" class="planFromLink">{{from_stop}}</a> | <a href="#" class="planToLink">{{to_stop}}</a> ]</div>
+		<div style="margin: 10px 0; height: 50px"><b style="display: block">{{plan_trip}}: </b><a href="#" class="planFromLink btn btn-default btn-sm">{{from_stop}}</a> <a href="#" class="planToLink btn btn-default btn-sm">{{to_stop}}</a></div>
         <div style="margin-top: 6px;" >
-			<b>{{routes_on_stop}}</b>:
+			<b>{{routes_on_stop}}</b>: <span id="routeForStopLabel"></span>
             <ul class="routeList"/>
         </div>
     </div>
@@ -29,8 +25,8 @@
 
 <script id="otp-stopsLayer-popupRoute" type="text/html">
     <li style="margin: 0px;">
-        {{#shortName}}
-            ({{shortName}})
+        <b>{{#shortName}}
+            {{shortName}}</b> -
         {{/shortName}}
         {{longName}}
     </li>

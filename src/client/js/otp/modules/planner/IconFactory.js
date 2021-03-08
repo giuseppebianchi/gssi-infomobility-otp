@@ -334,6 +334,32 @@ otp.modules.planner.IconFactory = otp.Class({
             html: html 
         });
     },
+    getModeBubbleBus : function(quadrant, time, mode, isOrigin, highlight, route) {
+        quadrant = quadrant.toLowerCase();
+        mode = mode.toLowerCase();
+        highlight = highlight || false;
+        var html = '<div class="otp-itin-div-icon-topRow-'+quadrant[0]+'">';
+        //if(!isOrigin) html += '<img src="'+otp.config.resourcePath+'images/mode/arrow.png" style="margin-right:2px;">';
+        html += '<i class="fas fa-bus" style="color: #009acc; display: block;"></i><span class="otp-itinsAccord-header-segment-showlabel busLabel-onPath">' + route + '</span>';
+        //if(isOrigin) html += '<img src="'+otp.config.resourcePath+'images/mode/arrow.png" style="margin-left:2px;">';
+        html += '</div>';
+        //Removes AM/PM at the end of time if it exists (Time is too long
+        //otherwise)
+        var time_format = (otp.config.locale.time.time_format.slice(-1) === 'a') ? otp.config.locale.time.time_format.slice(0, -1) : otp.config.locale.time.time_format;
+        html +=  '<span class="timeBusLabel-onPath">' + otp.util.Time.formatItinTime(time, time_format) + '</span>'
+
+        if(quadrant === 'nw') anchor = [40,55];
+        if(quadrant === 'ne') anchor = [0,44];
+        if(quadrant === 'sw') anchor = [32,0];
+        if(quadrant === 'se') anchor = [0,0];
+
+        return L.divIcon({
+            className: 'otp-itin-div-icon '+'otp-itin-div-icon-'+quadrant+(highlight ? "-highlight" : ""),
+            iconSize: [40,55],
+            iconAnchor: anchor,
+            html: html
+        });
+    },
                 
     CLASS_NAME : "otp.modules.planner.IconFactory"
 });    

@@ -100,7 +100,7 @@ public final class Trip extends IdentityBean<FeedScopedId> {
     }
 
     public String getTripShortName() {
-        return tripShortName;
+        return this.tripShortName;
     }
 
     public void setTripShortName(String tripShortName) {

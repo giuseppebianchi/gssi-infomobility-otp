@@ -1,0 +1,1732 @@
+* { /* to prevent select html elements from smartphones while long tap*/
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    -webkit-touch-callout: none; /* to prevent 3d touch or imgs saving from smartphones */
+    text-shadow: none !important;
+}
+input{
+    user-select: text; /* supported by Chrome and Opera */
+    -webkit-user-select: text; /* Safari */
+    -khtml-user-select: text; /* Konqueror HTML */
+    -moz-user-select: text; /* Firefox */
+    -ms-user-select: text; /* Internet Explorer/Edge */
+}
+div{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+h1, h2, h3, h4, h5, h6{
+    text-shadow: none;
+}
+html {
+    height: 100%;
+    width: 100%;
+}
+body, html{
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+}
+/*div {
+    margin: auto;
+    padding: unset;
+    border: none;
+    outline: none;
+    font-size: unset;
+    vertical-align: unset;
+    background: none;
+}*/
+/*Open Data Style */
+.align-center{
+    right: 50%;
+    transform: translateX(50%);
+}
+#map.leaflet-container{
+    background: url(../images/blur_map.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+#otp-minimize-tray{
+    display: none;
+}
+#fl-button-close-mobile-menu{
+    display: none;
+}
+.fl-nav-mobile-offcanvas.fl-responsive-nav-enabled.fl-shrink-header-enabled .fl-page-header{
+    /*z-index: 99999;*/
+    z-index: 999;
+    width: 100%;
+}
+.fl-nav-mobile-offcanvas.fl-responsive-nav-enabled.fl-shrink-header-enabled .fl-page-header{
+    position: fixed;
+    box-shadow: 0 0 5px #ddd;
+}
+.fl-nav-mobile-offcanvas.fl-responsive-nav-enabled.fl-offcanvas-overlay-right .fl-page.fl-nav-offcanvas-active .fl-nav-offcanvas-collapse{
+    overflow: auto !important;
+    width: 300px;
+    height: 100vh !important;
+}
+.path-circle-icon{
+    background: #fff;
+    border-radius: 50%;
+}
+.otp-itin-div-icon-nw .otp-itin-div-icon-topRow-n,
+.otp-itin-div-icon-ne .otp-itin-div-icon-topRow-n,
+.otp-itin-div-icon-se .otp-itin-div-icon-topRow-n,
+.otp-itin-div-icon-sw .otp-itin-div-icon-topRow-n {
+    height: 15px;
+    margin-top: 6px;
+}
+.otp-itin-div-icon{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#branding{
+    display: none;
+}
+.ui-resizable-handle{
+    /*display: none !important;*/
+}
+.otp-defaultItinsWidget{
+    height: 600px;
+    padding-bottom: 30px;
+    width: auto;
+    top: 150px;
+}
+#opendata-footer{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+}
+#opendata-footer-box{
+    overflow: hidden;
+}
+#opendata-footer-about{
+    position: absolute;
+    bottom: 70px;
+    display: block;
+    background: #fff;
+    z-index: 99998;
+    -webkit-transition: ease-in-out 1s;
+    -o-transition: ease-in-out 1s;
+    transition: ease-in-out 1s;
+    width: 100%;
+}
+#opendata-footer-about.footer-about-hidden{
+    -webkit-transform: translate(0px, 620px);
+    -ms-transform: translate(0px, 620px);
+    transform: translate(0px, 620px);
+}
+#opendata-footer-fixed{
+    display: block;
+    position: relative;
+    bottom: 0;
+    z-index: 99999;
+    width: 100%;
+}
+#opendata-footer .fl-rich-text a{
+    color: #fff;
+    padding: 5px;
+}
+#opendata-footer #show-footer-about > i{
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+#opendata-footer #show-footer-about.flip > i{
+    -moz-transform:    scaleY(-1); /* Gecko */
+    -o-transform:      scaleY(-1); /* Opera */
+    -webkit-transform: scaleY(-1); /* Webkit */
+    transform:         scaleY(-1); /* Standard */
+}
+
+/* Open Trip Planner Style */
+.otp-itinAlertRow{
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 12px;
+    background: #e63b3b;
+    border-radius: 5px;
+}
+.btn, .ui-button {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.btn-default, .ui-button-text-only {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #cccccc;
+}
+.btn-primary {
+    color: #ffffff;
+    background-color: #009ddc;
+    border-color: #0682b3;
+}
+.ui-button-text-only .ui-button-text{
+    padding: unset;
+}
+.fl-preset-default.fl-full-width.fl-nav-mobile-offcanvas.fl-offcanvas-overlay-right.fl-shrink{
+    z-index: 999;
+    position: relative;
+}
+.otp-widget{
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+}
+.otp-widget .otp-widget-header{
+    padding: 12px 15px;
+    text-shadow: none;
+}
+.otp-widget .otp-widget-header-buttons{
+    top: 10px;
+    right: 2em;
+    color: #f6f6f6;
+}
+.otp-widget .otp-widget-header-button-minimize{
+    display: none;
+}
+#otp-planner-optionsWidget .otp-widget-header-button{
+    display: none
+}
+#otp-planner-optionsWidget{
+    background: #fff;
+    padding: 0;
+    bottom: 90px; /* beacause of Footer */
+}
+#otp-planner-optionsWidget-scollPanel > div:first-child > div:first-child{
+    display:none;
+}
+#otp-tripOptions-inputLocations{
+    background-color: #f6f6f6;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 15px 0 15px;
+}
+#otp-tripOptions-inputLocations .otp-tripOptions-loc-dropdownBtn{
+    display: none;
+}
+#otp-tripOptions-inputLocations .otp-tripOptions-inputLocations-field{
+    width: 90%;
+    position: relative;
+    margin-bottom: 10px;
+}
+#otp-tripOptions-inputLocations .otp-tripOptions-inputLocations-field .otp-tripOptions-loc-input{
+    border-radius: 6px;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    height: 35px;
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 35px;
+    outline: none;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#otp-tripOptions-inputLocations .otp-tripOptions-inputLocations-field .otp-tripOptions-loc-input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,0.6);
+}
+#otp-tripOptions-inputLocations .otp-tripOptions-inputLocations-field .otp-tripOptions-loc-input-placeholder{
+    position: absolute;
+    font-size: 14px;
+    font-weight: 600;
+    top: 9px;
+    left: 10px;
+}
+#otp-planner-optionsWidget-locSelector-reverseButton{
+    background: none;
+    border: none;
+    color: #009ddc;
+}
+#otp-planner-optionsWidget-timeSelector-timeSelector{
+    padding: 10px 15px;
+}
+#otp-planner-optionsWidget-timeSelector-timeSelector > #otp-planner-optionsWidget-timeSelector-depArr{
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 15px;
+    height: 2em;
+}
+#otp-planner-optionsWidget-timeSelector-timeSelector #otp-planner-optionsWidget-timeSelector-time,
+#otp-planner-optionsWidget-timeSelector-timeSelector #otp-planner-optionsWidget-timeSelector-time-time{
+    width:35%;
+    float: left;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+#otp-planner-optionsWidget-timeSelector-timeSelector #otp-planner-optionsWidget-timeSelector-date,
+#otp-planner-optionsWidget-timeSelector-timeSelector #otp-planner-optionsWidget-timeSelector-date-date{
+    width: 50%;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin-left: 15%;
+    display: inline-block;
+    background: #fff;
+    -webkit-transition: all linear .5s;
+    -o-transition: all linear .5s;
+    transition: all linear .5s;
+}
+#otp-planner-optionsWidget-timeSelector-timeSelector #otp-planner-optionsWidget-timeSelector-date:hover,
+#otp-planner-optionsWidget-timeSelector-timeSelector #otp-planner-optionsWidget-timeSelector-time:hover{
+    border-color: #009acc;
+}
+#otp-planner-optionsWidget-timeSelector-timeSelector #otp-planner-optionsWidget-timeSelector-date:focus,
+#otp-planner-optionsWidget-timeSelector-timeSelector #otp-planner-optionsWidget-timeSelector-time:focus{
+    background-color: #009acc;
+    color: #fff;
+}
+#otp-planner-optionsWidget-timeSelector-nowButton{
+    display: none;
+}
+.ui-datepicker.ui-widget{
+    font-size: 0.8em;
+}
+.ui-datepicker.ui-widget .ui-datepicker-header{
+    background: #f6f6f6;
+}
+.ui-datepicker.ui-widget .ui-state-default,
+.ui-widget-content .ui-datepicker.ui-widget .ui-state-default,
+.ui-datepicker.ui-widget .ui-widget-header .ui-state-default{
+    background: #f6f6f6;
+    opacity: 0.7;
+    border: none;
+}
+.ui-datepicker.ui-widget .ui-state-hover, .ui-widget-content .ui-datepicker.ui-widget .ui-state-hover, .ui-datepicker.ui-widget .ui-widget-header .ui-state-hover{
+    background: #f6f6f6;
+    opacity: 1;
+}
+.ui-datepicker.ui-widget .ui-datepicker-calendar tr{
+    border-color: #fff;
+}
+.ui-datepicker.ui-widget .ui-state-highlight{
+    background: #fff !important;
+}
+.ui-datepicker.ui-widget .ui-state-active{
+    background: #009acc !important;
+    color: #fff;
+}
+.otp-modeSelector{
+    font-size: 16px;
+    padding: 10px 15px;
+}
+.ui-autocomplete.ui-menu{
+    font-size: 16px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #cccccc;
+}
+.ui-autocomplete.ui-menu .ui-menu-item{
+    background: none;
+    padding: 0;
+    border-bottom: 1px solid #f6f6f6;
+}
+.ui-autocomplete.ui-menu .ui-menu-item a{
+    background: none;
+    border-radius: 0;
+    /*padding: 4px 0.5em;*/
+    padding: 8px 0.5em;
+    font-size: 0.9em;
+    border: none;
+}
+.ui-autocomplete.ui-menu .ui-menu-item .ui-state-focus{
+    background: #f6f6f6;
+    margin: 0;
+    border: none;
+}
+#otp-planner-optionsWidget-modeSelector-widgets{
+    margin-top: 10px;
+    font-size: 16px;
+}
+#otp-planner-optionsWidget-modeSelector{
+    outline: none;
+}
+#otp-planner-optionsWidget-maxWalkSelector-presets{
+    outline: none;
+}
+#otp-planner-optionsWidget-preferredRoutes-button, #otp-planner-optionsWidget-bannedRoutes-button{
+    color: #009acc;
+    background: none;
+    border: none;
+}
+#otp-planner-optionsWidget-submit-button{
+    width: 90%;
+    margin-bottom: 20px;
+    background: #009acc;
+    border: 1px solid transparent;
+    color: #fff;
+    padding: 10px;
+}
+#otp-planner-optionsWidget-submit-button:hover{
+    background: #fff;
+    color: #009acc;
+    border: 1px solid #009acc;
+}
+.otp-popupMenu{
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+}
+.otp-popupMenu-pointer{
+    width: 40px;
+    height: 45px;
+    background-image: url(../images/013-pin-7.png);
+    background-size: contain;
+    background-position: center center;
+    position: fixed;
+    background-repeat: no-repeat;
+    z-index: 10001;
+}
+.otp-popupMenu .otp-popupMenu-item{
+    padding: 15px 30px;
+    border: 1px solid #f6f6f6;
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-transition: .15s;
+    -o-transition: .15s;
+    transition: .15s;
+}
+.otp-popupMenu .otp-popupMenu-item:hover{
+    background-color: #009acc;
+    color: #fff;
+}
+#planner-itinWidget .otp-itinsWidget-footer .ui-button{
+    background: none;
+    border: none;
+    color: #009acc;
+    opacity: 0.5;
+    -webkit-transition: .15s;
+    -o-transition: .15s;
+    transition: .15s;
+    font-size: 12px;
+}
+#planner-itinWidget .otp-itinsWidget-footer .ui-button:hover{
+    border:none;
+    opacity: 1;
+}
+#planner-itinWidget .ui-state-default, #planner-itinWidget .ui-widget-content .ui-state-default, #planner-itinWidget .ui-widget-header .ui-state-default{
+    background: #f6f6f6;
+    border: none;
+}
+#planner-itinWidget-itinsAccord > .ui-accordion-header{
+    padding: 15px 25px;
+    border-radius: 4px;
+    border: 2px solid #f6f6f6;
+}
+.otp-itinsAccord-header-segment-showlabel{
+    margin: 0;
+    float: right;
+    margin-left: 5px;
+    margin-top: -2px;
+    background: #fff;
+    /* color: #009acc; */
+    border: 1px solid #aaa;
+    padding: 0 5px;
+}
+.otp-itinsAccord-header-segment-showlabel.busLabel-onPath{
+    display: block;
+    margin: 2px auto;
+    width: 80%;
+    padding: 0;
+    float: none;
+    color: #000;
+}
+.timeBusLabel-onPath{
+    display: none;
+}
+.otp-itin-div-ne-highlight,
+.otp-itin-div-nw-highlight,
+.otp-itin-div-se-highlight,
+.otp-itin-div-sw-highlight {
+    background-size: cover;
+}
+.otp-itin-div-ne-highlight .timeBusLabel-onPath,
+.otp-itin-div-nw-highlight .timeBusLabel-onPath,
+.otp-itin-div-se-highlight .timeBusLabel-onPath,
+.otp-itin-div-sw-highlight .timeBusLabel-onPath{
+    display: block;
+}
+.otp-itinsWidget-footer .otp-itinsButtonRow > button:first-child, .otp-itinsWidget-footer .otp-itinsButtonRow > button:last-child{
+    display: none;
+}
+.otp-itinsWidget-footer .prev-button-widget{
+    float: left;
+}
+.otp-itinsWidget-footer .next-button-widget{
+    float: right;
+}
+#otp-planner-optionsWidget-preferredRoutes-selectorWidget-routeList{
+    font-size: 16px;
+}
+#otp-planner-optionsWidget-preferredRoutes-list{
+    font-weight: 600;
+    /*color: #28a745;*/
+}
+#otp-planner-optionsWidget-bannedRoutes-list{
+    font-weight: 600;
+    color: #dc3545;
+}
+#planner-itinWidget #planner-itinWidget-itinsAccord > .ui-accordion-content{
+    border: none;
+//border-left: 2px solid #009acc;
+    border-radius: 0;
+}
+#planner-itinWidget #planner-itinWidget-itinsAccord > h3.ui-accordion-header > div > .otp-itinsAccord-header-content{
+    padding-right: 65px;
+}
+.otp-itinsAccord-header-time{
+    font-size: 14px;
+    color: #000;
+    background: none;
+    width: 40px;
+    top: 0;
+    display: inline-block;
+    position: relative;
+    height: auto;
+    width: auto;
+}
+.otp-itinsAccord-header-segment{
+    top: 0;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    margin-right: 10px;
+    height: auto;
+    width: auto;
+}
+.otp-itinsAccord-header-number{
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+}
+#planner-itinWidget #planner-itinWidget-itinsAccord > .ui-accordion-content .otp-itinAccord > .ui-accordion .ui-accordion-header{
+    background: none;
+    margin: 0;
+    padding: 0 0 10px 2.2em;
+}
+#planner-itinWidget #planner-itinWidget-itinsAccord > .ui-accordion-content .otp-itinAccord > .ui-accordion .ui-accordion-content{
+    border: none;
+    padding: 0 0 25px 15px;
+}
+#planner-itinWidget #planner-itinWidget-itinsAccord > .ui-accordion-content .otp-itinAccord > .ui-accordion.otp-itinAccord-bus .ui-accordion-content{
+    border: none;
+    padding: 0 0 25px 25px;
+}
+#planner-itinWidget #planner-itinWidget-itinsAccord .otp-itin-step-row{
+    background: none !important;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 0.5em 0 0.5em 0.3em;
+}
+#planner-itinWidget #planner-itinWidget-itinsAccord .ui-state-hover .otp-itin-step-row{
+    background: #f6f6f6 !important;
+}
+.otp-itinAccord > .ui-accordion:first-child{
+    padding-top: 20px;
+}
+.otp-itinAccord .otp-itinAccord-walk{
+    position: relative;
+    border-left: 5px dotted #009acc;
+}
+.otp-itinAccord .otp-itinAccord-bus{
+    border-left: 5px solid #009acc;
+    position: relative;
+}
+.otp-itinAccord .otp-itinAccord-icon{
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    font-size: 14px;
+    background: #fff;
+}
+.otp-itinAccord .ui-accordion h3 .otp-itinAccord-details-row1{
+    margin-bottom: 5px;
+    display: block;
+    height: 20px;
+    position: absolute;
+    margin-top: -5px;
+}
+.otp-itinAccord .ui-accordion h3 .otp-itinAccord-details-row1 > b{
+    color: #000;
+    float:left;
+    margin-left: 10px;
+    line-height: 2em;
+}
+.otp-itinAccord .ui-accordion h3 .otp-itinAccord-details-row1 > i{
+    float:left;
+    font-size: 22px;
+}
+.otp-itinAccord .ui-accordion h3 .otp-itinAccord-details-row1 > .otp-itinsAccord-header-segment-showlabel{
+    float: left;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.otp-itinAccord .ui-accordion h3 .otp-itinAccord-details-row2{
+    font-size: 13px;
+    padding-top: 25px;
+    padding-left: 10px;
+    clear: both;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.otp-itinAccord .ui-accordion h3.ui-state-active .otp-itinAccord-details-row2{
+    white-space: unset;
+}
+.otp-itinAccord .ui-accordion h3 .otp-itinAccord-details-row2 > b{
+    font-weight: 600;
+    color: #aaa;
+}
+/*.otp-itinAccord .otp-itinAccord-bus h3.ui-state-active .otp-itinAccord-details-row2{
+    margin-bottom: 0;
+}*/
+.otp-itinAccord .ui-accordion .ui-accordion-header .ui-accordion-header-icon{
+    left: 1.5em;
+    margin-top: -8px;
+    color: #f6f6f6;
+    top: 35px;
+}
+.otp-itinAccord .otp-itinAccord-bus.ui-accordion .ui-accordion-header .ui-accordion-header-icon{
+    /*margin-top: 0;*/
+}
+.otp-itinAccord .ui-accordion-header-details-icon{
+
+}
+.otp-itinAccord .otp-itin-step-text{
+    font-size: 1em;
+    line-height: 2.5em;
+    margin: 0px 30px;
+}
+.otp-itinAccord .otp-itinAccord-bus .otp-itin-leg-leftcol{
+    background: #009AC8;
+    color: #fff;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+.otp-itinStartRow, .otp-itinEndRow{
+    position:relative;
+    margin: 0;
+}
+.otp-itinStartRow > i{
+    position: absolute;
+    left: -6px;
+    font-size: 16px;
+    top: 3px;
+    background: #fff;
+    z-index: 9;
+}
+.otp-itinStartRow > p{
+    padding-left: 25px;
+    margin: 0;
+}
+.otp-itinStartRow > p > b{
+    font-weight: 600;
+    color: #009acc;
+}
+.otp-itinEndRow > i{
+    position: absolute;
+    left: -6px;
+    font-size: 16px;
+    top: 3px;
+    background: #fff;
+    z-index: 9;
+}
+.otp-itinEndRow > p{
+    padding-left: 25px;
+    margin: 0;
+}
+.otp-itinEndRow > p > b{
+    font-weight: 600;
+    color: #009acc;
+}
+.otp-itinTripSummary{
+    padding: 10px 25px;
+    border: none;
+    background: #f6f6f6;
+    border-radius: 6px;
+}
+.otp-itin-leg-endpointDesc{
+    font-size: 1em;
+    border-left: 2px solid #f6f6f6;
+}
+.otp-itin-leg-endpointDescSub{
+    font-size: 1em;
+    border-left: 2px solid #f6f6f6;
+    display: inline-block;
+}
+.otp-itin-leg-buffer{
+    border-left: 2px solid #f6f6f6;
+}
+.otp-itin-leg-elapsedDesc{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1em;
+    /*border-left: 2px solid #f6f6f6;*/
+    border: none;
+    margin: 0;
+    width: 40%;
+    display: inline;
+}
+.otp-itin-leg-elapsedDesc > .otp-itin-tripViewerButton > a{
+    background: #f6f6f6;
+    color: #009AC8;
+    font-size: 12px;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.otp-itin-num-of-stops{
+    color: #000;
+    font-weight: 400;
+}
+.otp-itin-leg-endpointDesc-legName{
+    font-weight: 600;
+    font-family: Roboto Condensed;
+    font-size: 13px;
+}
+#otp-planner-tripViewerWidget{
+    /*height: 500px;*/
+    height: auto;
+    width: 350px;
+    min-height: 500px;
+}
+#otp-planner-tripViewerWidget.sidebar-tripwidget{
+    right: 0 !important;
+    bottom: 55px !important;
+    top: 125px !important;
+    left: unset !important;
+    z-index: 2!important;
+    border-right: 0;
+    border-top: 0;
+    transform: translateX(400px);
+    transition: transform 0.5s;
+}
+#otp-planner-tripViewerWidget.sidebar-tripwidget.isOpen{
+    transform: translateX(0);
+}
+#otp-planner-tripViewerWidget.sidebar-tripwidget .otp-widget-header-buttons{
+    display: none;
+}
+#otp-planner-tripViewerWidget.sidebar-tripwidget .otp-tripViewer-stopList{
+    height: auto;
+    position: absolute;
+    top: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 0;
+    border-top: 2px solid #f6f6f6;
+}
+#otp-planner-tripViewerWidget #close-tripViewerWidget-button{
+    top: 15px;
+    right: 2em;
+    color: #000;
+    position: absolute;
+
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-select {
+    padding: 5px 15px;
+}
+.otp-tripViewer-select-text{
+    font-weight: 400;
+}
+.otp-tripViewer-select-list{
+    /*margin-left: 65px !important; to show label inline*/
+    margin-left: 0 !important;
+}
+.otp-tripViewer-select-list > select{
+    height: 2em;
+}
+.otp-tripViewer-select-list > #otp-planner-tripViewerWidget-variantSelect{
+    font-size: 1em;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow{
+    height: unset;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow.highlighted{
+    background: #f6f6f6;
+    font-weight: 400;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow.highlighted .otp-tripViewer-stopRow-name{
+    color: #009acc;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow .otp-tripViewer-stopRow-box{
+    /*margin-left: 19px;
+    border-left: 10px solid #009acc;*/
+    margin-left: 22px;
+    border-left: 5px solid #009acc;
+    padding: 0 10px 10px 20px;
+    font-family: Verdana, sans-serif;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow .otp-tripViewer-stopRow-name{
+    font-size: 0.9em;
+    padding-top: 0;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow .otp-tripViewer-stopRow-img{
+    height: 57px;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow .otp-tripViewer-stopRow-img > i{
+    background: #fff;
+    font-size: 25px;
+    border-radius: 50%;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow .otp-tripViewer-stopRow-idLine{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+#otp-planner-tripViewerWidget .otp-tripViewer-stopRow .otp-tripViewer-stopRow-idLine i{
+    margin: 0 5px 0 10px;
+    color: #ccc;
+}
+.otp-stopViewer{
+    width: 340px;
+    height: 550px;
+    min-height: 500px;
+}
+.otp-stopViewer-findButton{
+    display: none;
+}
+.otp-stopViewer-container{
+    top: 40px;
+    bottom: 35px;
+    left: 15px;
+    right: 15px;
+}
+.otp-stopViewer-container > img{
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.otp-stopViewer-stopInfo{
+    border: none;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 10px;
+}
+.otp-stopViewer-timeList{
+    top: 135px;
+    border: 2px solid #f6f6f6;
+    border-radius: 5px;
+}
+.otp-stopViewer-timeListItem{
+    text-align: left;
+    padding: 10px 0px;
+    border-bottom: 2px solid #f6f6f6;
+}
+.otp-stopViewer-timeRow{
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 10px;
+    width: 50px;
+}
+.otp-stopViewer-routeRow-short{
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 5px;
+    background: #fff;
+    border: 1px solid #aaa;
+    padding: 0 5px;
+    width: auto;
+    font-weight: 600;
+}
+.otp-stopViewer-routeRow{
+    font-size: 0.8em;
+    font-family: 'Roboto Condensed';
+    font-weight: 400;
+    padding-left: 110px;
+    text-align: left;
+    color: #bebebe;
+}
+.otp-stopViewer-headsignRow{
+    padding-left: 110px;
+    text-align: left;
+    font-size: 0.8em;
+    color: #009acc;
+    font-weight: 400;
+}
+.otp-stopViewer-headsignRow > span{
+    color: #000;
+}
+.otp-stopViewer-dateInput.hasDatepicker,
+#otp-stopViewer-dateInput-date{
+    width: 100px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin: 0 auto;
+    display: inline-block;
+    background: #fff;
+    -webkit-transition: all linear .5s;
+    -o-transition: all linear .5s;
+    transition: all linear .5s;
+    text-align: center;
+}
+#otp-stopViewer-dateInput-date{
+    width: 200px;
+}
+.otp-stopViewer-dateInput.hasDatepicker:hover{
+    border-color: #009acc;
+}
+.otp-stopViewer-dateInput.hasDatepicker:focus{
+    background-color: #009acc;
+    color: #fff;
+}
+.otp-tripViewer-stopList{
+    border: 2px solid #f6f6f6;
+    border-radius: 5px;
+    height: 350px;
+    min-height: 295px;
+    width: 100% !important;
+    padding: 20px 8px;
+}
+.otp-modal-okDialog{
+
+}
+.otp-modal-okDialog .ui-resizable-handle{
+    display: none !important;
+}
+.otp-modal-okDialog .ui-dialog-titlebar.ui-widget-header{
+    background: #f6f6f6;
+    border: none;
+}
+.otp-modal-okDialog .ui-dialog-titlebar .ui-dialog-title{
+    font-size: 16px;
+    text-transform: capitalize;
+}
+.otp-modal-okDialog .ui-dialog-titlebar-close{
+    right: 15px;
+}
+.otp-modal-okDialog .ui-dialog-titlebar-close:hover{
+    border:none;
+    padding: 1px;
+}
+.otp-modal-okDialog .otp-dialogContent{
+    position: relative !important;
+    padding: 10px 0 15px !important;
+    font-size: 14px;
+    top: unset;
+    left: unset;
+    right: unset;
+    bottom: unset;
+    text-align: justify;
+}
+.otp-modal-okDialog .otp-dialogButtonRow{
+    position: relative !important;
+    margin-top: 15px;
+}
+.otp-modal-okDialog .otp-dialogButtonRow .okButton{
+    background: #f6f6f6;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    border: 2px solid transparent;
+}
+.otp-modal-okDialog .otp-dialogButtonRow .okButton:hover{
+    background: #f6f6f6;
+    border: 2px solid #999;
+}
+#otp-planner-optionsWidget-locSelector-collapseButton-div{
+    display: none;
+    position: absolute;
+    width: 15px;
+    height: 20px;
+}
+#otp-planner-optionsWidget-locSelector-collapseButton{
+    background: none;
+    border: none;
+    color: #009ddc;
+    -webkit-transition: all linear .3s;
+    -o-transition: all linear .3s;
+    transition: all linear .3s;
+}
+#otp-planner-optionsWidget-locSelector-collapseButton.flip > i{
+    -moz-transform:    scaleY(-1); /* Gecko */
+    -o-transform:      scaleY(-1); /* Opera */
+    -webkit-transform: scaleY(-1); /* Webkit */
+    transform:         scaleY(-1); /* Standard */
+}
+#show-on-map-button {
+    color: #009ddc;
+    cursor: pointer;
+    float: right;
+    display: none;
+    text-shadow: none;
+    border-color: #009DD7;
+    margin-right: 32px;
+}
+#otp-itinsWidget-header-hidden{
+    border-radius: 0;
+    background: #009acc;
+    left: 0;
+    right: 0;
+    border: none;
+    z-index: 8;
+    height: 50px;
+    top: 115px;
+    visibility: hidden;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    -webkit-transition: all linear .5s;
+    -o-transition: all linear .5s;
+    transition: all linear .5s;
+}
+#otp-itinsWidget-header-hidden > .otp-widget-header-button{
+    font-size: 24px;
+    top: 11px;
+    /*right: 22px;*/
+    right: 5%;
+    position: absolute;
+    color: #fff;
+}
+#otp-itinsWidget-header-hidden > .otp-widget-header{
+    margin-right: 45px;
+    color: #fff;
+}
+.leaflet-container .leaflet-popup-content-wrapper a.timeline-button, .timeline-button{
+    padding: 5px 35px 5px 15px;
+    background: #f6f6f6;
+    color: #009AC8 !important;
+    font-size: 12px;
+    text-shadow: none;
+    line-height: 40px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+}
+.leaflet-container .leaflet-popup-content-wrapper a.timeline-button{
+    font-size: 14px;
+    padding: 5px 15px;
+}
+.leaflet-container .leaflet-popup-content-wrapper a.planFromLink {
+    display: block;
+    width: 49%;
+    margin: 0;
+    float: left;
+    margin-right: 2%;
+    /*border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right: none;*/
+    color: #009AC8;
+    font-size: 12px;
+    border: 2px solid #f6f6f6;
+}
+.leaflet-container .leaflet-popup-content-wrapper a.planToLink {
+    display: inline;
+    width: 49%;
+    margin: 0;
+    float: left;
+    /*border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left: 0;*/
+    background: #009AC8;
+    border: 2px solid #009AC8;
+    color: #fff;
+    font-size: 12px;
+}
+#overlay-screen-size-alert {
+    /*width: 100%;
+    height: 100%;*/
+    position: absolute;
+    background: url('../images/laquila_blur.jpg') center center no-repeat;
+    background-size: cover;
+    display: block;
+    z-index: 998;
+    display: none;
+    height: auto;
+    top: 98px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#overlay-screen-size-alert .overlay-screen-size-alert-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#overlay-screen-size-alert .overlay-screen-size-alert-container .overlay-screen-size-alert-content {
+    margin: 10px 0;
+}
+#overlay-screen-size-alert .overlay-screen-size-alert-container .overlay-screen-size-alert-content > span{
+    background: #009ddc;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+#overlay-screen-size-alert .overlay-screen-size-alert-container .overlay-screen-size-alert-content > img {
+    width: 200px;
+}
+#alert-dialog-box{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 160px;
+    visibility: hidden;
+    z-index: 0;
+    animation: hidden-animation 18s;
+}
+#alert-dialog-box > p{
+    padding: 10px;
+    width: 60%;
+    margin: 0 auto 10px;
+    /*background: rgba(230, 59, 59, 0.9);*/
+    background: rgba(0, 157, 220, 0.9);
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
+.live-button{
+    padding: 4px 10px;
+    /*background: #28a745;*/
+    background: #1DC389;
+    color: #fff;
+    border: 2px solid #1DC389;
+    overflow: hidden;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    /*left: 140px;*/
+    font-size: 1.1em;
+    top: -9px;
+}
+.live-button.active{
+    animation: button-blink 1s infinite alternate;
+    -webkit-animation: button-blink 1s infinite alternate;
+}
+.live-button.active:after{
+    background: #fff;
+    position: absolute;
+    top: 0;
+    content: 'STOP';
+    font-size: 1em;
+    color: #28a745;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 5px 0 5px 7px;
+}
+#show-route-live-button.live-button.active:after{
+    content: none;
+}
+.realtime-bus-marker.animated{
+    -webkit-transition: all ease-in-out 6s;
+    -o-transition: all ease-in-out 6s;
+    transition: all ease-in-out 6s;
+}
+.leaflet-zoom-anim .realtime-bus-marker.animated{
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+.realtime-bus-marker .realtime-bus-icon{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.realtime-bus-marker .realtime-bus-bg{
+    position: absolute;
+    top: -10px;
+    left: -11px;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%;
+    opacity: 0.8;
+    -webkit-animation: realtime-marker-blink 1s infinite alternate ease-out;
+    animation: realtime-marker-blink 1s infinite alternate ease-out;
+    -webkit-transition: background linear 0.5s;
+    -o-transition: background linear 0.5s;
+    transition: background linear 0.5s;
+}
+.realtime-bus-marker.bg-label .realtime-bus-bg{
+    background: #1DC389;
+}
+.realtime-bus-marker.not-updated .realtime-bus-bg{
+    background: #FF4F4F;
+    -webkit-animation: realtime-marker-error 1s 10 normal ease-out;
+    animation: realtime-marker-error 1s 10 normal ease-out;
+}
+#alert-realtime{
+    display: none;
+    padding: 10px 25px;
+    width: 250px;
+    margin: 0;
+    border-radius: 10px;
+    /*color: #155724;*/
+    background: #fff;
+    /* border-color: #c3e6cb; */
+    box-shadow: 0 0 7px #dedede;
+    font-weight: 500;
+    text-align: left;
+    font-size: 1.2em;
+    position: absolute;
+    /* left: 0; */
+    right: 20px;
+    bottom: 80px;
+    z-index: 9;
+}
+#alert-realtime .close-alert-realtime{
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    cursor: pointer;
+}
+#alert-realtime.alert-danger{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+#alert-realtime .state-alert-realtime{
+    font-size: 0.8em;
+    -webkit-animation: realtime-marker-blink 1.5s infinite alternate linear;
+    animation: realtime-marker-blink 1.5s infinite alternate linear;
+
+}
+#tripoptions-geocoder-selector{
+    display: none;
+}
+#show-routes-button{
+    position: fixed;
+    right: 7px;
+    bottom: 50%;
+    padding: 5px 10px;
+    font-size: 25px;
+    border-radius: 5px;
+    background: #fff;
+    color: #009acc;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: 0 0 0 4px rgb(0 0 0 / 5%);
+    box-shadow: 0 0 0 4px rgb(0 0 0 / 5%);
+    z-index: 2;
+    transition: transform 0.5s;
+}
+#show-routes-button.active{
+    transform: translateX(60px);
+}
+#show-route-path-button{
+    position: absolute;
+    left: -56px;
+    top: 65px;
+    padding: 6px 10px;
+    font-size: 25px;
+    border-radius: 50%;
+    background: #009acc;
+    color: #fff;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: 0 0 0 4px rgb(0 0 0 / 5%);
+    box-shadow: 0 0 0 4px rgb(0 0 0 / 5%);
+    z-index: 2;
+}
+#show-route-path-button > a {
+    color: #fff;
+}
+#show-route-live-button{
+    position: absolute;
+    top: 140px;
+    left: -55px;
+    right: unset;
+    padding: 6px 10px;
+    font-size: 25px;
+    border-radius: 50%;
+    background: #28a745;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: 0 0 0 4px rgb(0 0 0 / 5%);
+    box-shadow: 0 0 0 4px rgb(0 0 0 / 5%);
+    z-index: 2;
+}
+#show-route-live-button.active{
+    background: #dc3545;
+}
+#show-route-live-button > a{
+    /*color: #dc3545;*/
+    color: #fff;
+}
+/*#planner-itinWidget .ui-accordion-header[aria-selected="true"]{
+    background: #009acc;
+    color: #fff;
+}
+#planner-itinWidget .ui-accordion-header[aria-selected="true"] .otp-itinsAccord-header-time{
+    color: #fff;
+}*/
+
+
+/* Leaflet */
+.leaflet-top {
+    top: 110px;
+}
+.leaflet-control-layers{
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.leaflet-control-layers-expanded .leaflet-control-layers-base label span{
+    padding: 0 5px;
+    position: relative;
+    top: 4px;
+}
+.leaflet-top.leaflet-right .leaflet-control-layers-overlays{
+    display: none;
+}
+.leaflet-popup-content{
+    min-width: 260px;
+}
+.leaflet-popup-content-wrapper{
+    border-radius: 6px;
+}
+.leaflet-popup-content-wrapper{
+    border-radius: 4px;
+    /*border: 1px solid #cccccc;
+    -webkit-box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.05);*/
+}
+.leaflet-popup-content-wrapper .routeList{
+    max-height: 150px;
+    overflow: scroll;
+    margin: 0;
+    padding: 0 5px;
+    margin-top: 5px;
+    display: block;
+    border: 2px solid #f6f6f6;
+}
+.leaflet-popup-content-wrapper .routeList > li{
+    margin: 10px 10px 0px 15px !important;
+    list-style: disc;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f6f6f6;
+}
+.leaflet-container .leaflet-popup a.leaflet-popup-close-button{
+    top: 13px;
+    right: 25px;
+    font-size: 20px;
+}
+.leaflet-popup > .leaflet-popup-content-wrapper > .leaflet-popup-content > div > div:first-child{
+    padding-right: 30px;
+    margin-bottom: 5px;
+}
+
+/* MOBILE */
+@media (max-width: 300px), (max-height: 544px) {
+    #overlay-screen-size-alert {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    #fl-button-close-mobile-menu{
+        display: block;
+    }
+    .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav .navbar-toggle {
+        top:30px;
+    }
+    .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse.collapse {
+        display: block !important;
+        visibility: visible !important;
+    }
+    #otp-planner-tripViewerWidget.sidebar-tripwidget{
+        top: 95px !important;
+    }
+}
+@media (max-width: 768px) and (max-height: 667px){
+    .leaflet-popup-content-wrapper .routeList {
+        max-height: 85px;
+    }
+}
+@media (max-height: 720px) and (min-width: 768px){
+    .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse.collapse {
+        display: block !important;
+        visibility: visible !important;
+    }
+    /*#otp-planner-optionsWidget {
+        bottom: 0;
+        border-radius: 0;
+        box-shadow: none;
+        left: 0;
+        top: 0;
+        padding: 127px 0 0;
+        z-index: 1;
+    }*/
+    #otp-planner-optionsWidget #otp-planner-optionsWidget-modeSelector-widgets{
+        display: none;
+    }
+}
+@media (max-width: 768px){
+    #show-routes-button{
+        right: unset;
+        bottom: 25px;
+        left: 15px;
+        border-radius: 50%;
+        font-size: 40px;
+        padding: 5px 13px;
+        transform: unset !important;
+    }
+    .fl-nav-mobile-offcanvas.fl-responsive-nav-enabled.fl-shrink-header-enabled .fl-page-header{
+        box-shadow: none;
+    }
+    #alert-realtime {
+        bottom: 15px;
+        right: 10px;
+        top: unset;
+    }
+    #alert-dialog-box {
+        bottom: 0;
+        top: unset;
+    }
+    #alert-dialog-box > p{
+        width: 90%;
+        text-align: justify;
+    }
+    #fl-button-close-mobile-menu{
+        display: block;
+    }
+    .ui-resizable-handle{
+        display: none !important;
+    }
+    .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav .navbar-toggle {
+        top: 30px;
+    }
+    #opendata-footer{
+        display: none;
+    }
+    /* */
+    .leaflet-control-layers-toggle{
+        display:none;
+    }
+    .leaflet-control-zoom.leaflet-bar.leaflet-control{
+
+    }
+    .leaflet-top.leaflet-right {
+        bottom: 30px;
+        right: 0px;
+        top: unset;
+    }
+    .otp-popupMenu{
+        top: unset !important;
+        left: 4%!important;
+        bottom: 20px;
+        width: 92%;
+    }
+    #otp-planner-optionsWidget-locSelector-reverseButton-div{
+        top: 12px !important;
+        right: 5% !important;
+    }
+    #otp-planner-optionsWidget-locSelector-collapseButton-div{
+        display: block;
+        top: 62px;
+        right: 5%
+    }
+    #otp-planner-optionsWidget {
+        inset: 50px 0 auto 0 !important;
+        top: 50px;
+        left: 0;
+        z-index: 10;
+        right: 0;
+        width: 100%;
+        position: fixed;
+        border: none;
+        height: 148px;
+        border-radius: 0;
+        -webkit-transition: height linear .3s;
+        -o-transition: height linear .3s;
+        transition: height linear .3s;
+    }
+    #otp-planner-optionsWidget.collapsed-widget {
+        height: 100%;
+        z-index: 11;
+    }
+    #otp-itinsAccord-widget-scroll{
+        height: 500px;
+        height: 2em;
+    }
+    #otp-planner-optionsWidget-timeSelector-timeSelector > #otp-planner-optionsWidget-timeSelector-depArr{
+        font-weight: 600;
+    }
+    #planner-itinWidget{
+        right: 0 !Important;
+        left: 0 !important;
+        top: 196px !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 0;
+        box-shadow: none;
+        position: fixed;
+        border: none;
+        overflow-y: scroll;
+        /*height: auto;
+        bottom: 0;*/
+        padding-bottom: 10px;
+        z-index: 10;
+        -webkit-transition: all linear .5s;
+        -o-transition: all linear .5s;
+        transition: all linear .5s;
+        padding-top: 0;
+    }
+    /*#planner-itinWidget > .otp-widget-header{
+        line-height: 40px;
+        position: fixed;
+        width: 100%;
+        background: #fff;
+        z-index: 10;
+        top: 198px;
+        border-bottom: 1px solid #f6f6f6;
+        left: 0;
+        right: 0;
+        /*padding: 10px 20px 5px;
+        padding: 12px 14% 5px 15px;
+        text-align: right;
+        color: #f6f6f6;
+    }*/
+    #planner-itinWidget > .otp-widget-header{
+        line-height: 55px;
+        position: fixed;
+        width: 100%;
+        background: #fff;
+        z-index: 10;
+        top: unset;
+        border-bottom: 1px solid #f6f6f6;
+        left: 0;
+        right: 0;
+        padding: 0 14% 0 0;
+        text-align: right;
+    }
+    #planner-itinWidget > .otp-widget-header-buttons{
+        top: 207px;
+        right: 5%;
+        z-index: 11;
+        position: fixed;
+    }
+    #planner-itinWidget #planner-itinWidget-itinsAccord{
+        margin-top: 70px;
+    }
+    #planner-itinWidget > .otp-widget-header-buttons > .otp-widget-header-button{
+        font-size: 24px;
+    }
+    #planner-itinWidget #planner-itinWidget-itinsAccord > .ui-accordion-content{
+        height: auto !important;
+    }
+    #planner-itinWidget.hidden-widget{
+        -webkit-transform: translateY(-1500px);
+        -ms-transform: translateY(-1500px);
+        transform: translateY(-1500px);
+    }
+    /*#show-on-map-button {
+        display: block;
+        !*right: 5%;*!
+        padding-left: 5px;
+        top: 12px;
+        position: absolute;
+        color: #000;
+    }*/
+    #show-on-map-button{
+        display: block;
+        top: 0;
+        position: absolute;
+        margin: 0;
+        padding: 0 0 0 20px;
+        background: #009ddc;
+        color: #fff;
+        width: 50%;
+        text-align: left;
+    }
+    #otp-itinsWidget-header-hidden.show-navigation-header{
+        visibility: visible;
+        -webkit-transform: translate(0px, 82px);
+        -ms-transform: translate(0px, 82px);
+        transform: translate(0px, 82px);
+    }
+    #otp-planner-stopViewerWidget{
+        /*top: 198px !important;*/
+        top: 105px !important;
+        left: 0 !important;
+        width: 100% !important;
+        bottom: 0;
+        right: 0;
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        height: auto;
+    }
+    /*#otp-planner-stopViewerWidget .otp-stopViewer-container{
+        overflow: scroll;
+    }
+    #otp-planner-stopViewerWidget .otp-stopViewer-container .otp-stopViewer-timeList{
+        height: auto;
+        overflow: visible;
+    }*/
+    #otp-planner-tripViewerWidget{
+        top: 105px !important;
+        left: 0px !important;
+        bottom: 0;
+        right: 0;
+        height: auto;
+        width: 100% !important;
+        border-radius: 0px;
+        border: 0px;
+        box-shadow: none;
+    }
+    #otp-planner-tripViewerWidget.sidebar-tripwidget {
+        top: 105px !important;
+        left: 0px !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        height: auto;
+        width: 100% !important;
+        border-radius: 0px;
+        border: 0px;
+        box-shadow: none;
+        z-index: 99 !important;
+    }
+    #otp-planner-tripViewerWidget.sidebar-tripwidget .otp-tripViewer-select{
+        width: calc(100% - 60px);
+    }
+    /*#otp-planner-tripViewerWidget.sidebar-tripwidget #close-tripViewerWidget-button{
+        display: none;
+    }
+    #otp-planner-tripViewerWidget.sidebar-tripwidget .otp-widget-header-buttons{
+        display: block;
+    }*/
+    #otp-planner-tripViewerWidget.sidebar-tripwidget #show-route-path-button{
+        left: unset;
+        right: 20px;
+    }
+    #otp-planner-tripViewerWidget.sidebar-tripwidget #show-route-live-button{
+        left: unset;
+        right: 20px;
+    }
+    #otp-planner-tripViewerWidget .otp-tripViewer-stopList{
+        height: auto;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        top: 200px;
+        overflow: scroll;
+        width: auto !important;
+    }
+    #otp-planner-tripViewerWidget .otp-tripViewer-stopRow .otp-tripViewer-stopRow-img{
+        height: unset;
+    }
+    #otp-planner-optionsWidget-preferredRoutes-selectorWidget, #otp-planner-optionsWidget-bannedRoutes-selectorWidget{
+        top: 198px !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: auto;
+        bottom: 0;
+    }
+    #otp-planner-optionsWidget-preferredRoutes-selectorWidget > div:not([class]), #otp-planner-optionsWidget-bannedRoutes-selectorWidget > div:not([class]){
+        padding: 0 15px;
+    }
+    #otp-planner-optionsWidget-preferredRoutes-selectorWidget > div > div:not([class]), #otp-planner-optionsWidget-bannedRoutes-selectorWidget > div > div:not([class]){
+        float:none !important;
+    }
+    #otp-planner-optionsWidget-preferredRoutes-selectorWidget #otp-planner-optionsWidget-preferredRoutes-selectorWidget-routeList,
+    #otp-planner-optionsWidget-bannedRoutes-selectorWidget #otp-planner-optionsWidget-bannedRoutes-selectorWidget-routeList {
+        width:100%;
+    }
+    #otp-planner-optionsWidget-preferredRoutes-selectorWidget #otp-planner-optionsWidget-preferredRoutes-selectorWidget-selectedList,
+    #otp-planner-optionsWidget-bannedRoutes-selectorWidget #otp-planner-optionsWidget-bannedRoutes-selectorWidget-selectedList {
+        width: 100%;
+        margin-top: 35px;
+    }
+    #otp-planner-optionsWidget-preferredRoutes-selectorWidget .otp-preferredRoutesSelectorWidget-middle,
+    #otp-planner-optionsWidget-bannedRoutes-selectorWidget .otp-preferredRoutesSelectorWidget-middle {
+        position: absolute;
+        /*top: 175px;*/
+        top: 85px; /* su iphone */
+        margin: 0;
+        left: 0;
+        width: 100%;
+    }
+    #otp-planner-optionsWidget-preferredRoutes-selectorWidget .otp-preferredRoutesSelectorWidget-middle > button,
+    #otp-planner-optionsWidget-bannedRoutes-selectorWidget .otp-preferredRoutesSelectorWidget-middle > button{
+        margin: 0 !important;
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    #otp-planner-optionsWidget-preferredRoutes-selectorWidget .otp-preferredRoutesSelectorWidget-middle > br,
+    #otp-planner-optionsWidget-bannedRoutes-selectorWidget .otp-preferredRoutesSelectorWidget-middle > br {
+        display: none;
+    }
+}
+
+@keyframes hidden-animation {
+    0% {visibility: visible; z-index: 2;}
+    50% {opacity: 1}
+    60% {opacity: 0}
+    100% {opacity: 0; z-index: 2;}
+}
+@keyframes realtime-marker-blink {
+    0% {
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 0.8;
+    }
+}
+@-webkit-keyframes realtime-marker-blink {
+    0% {
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 0.8;
+    }
+}
+@keyframes realtime-marker-error {
+    0% {
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 0.8;
+    }
+}
+@-webkit-keyframes realtime-marker-error {
+    0% {
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 0.8;
+    }
+}
+

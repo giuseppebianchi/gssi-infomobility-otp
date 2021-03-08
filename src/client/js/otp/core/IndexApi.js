@@ -260,4 +260,102 @@ otp.core.IndexApi = otp.Class({
         });
     },
 
+    getRfidFromTripname: function(params, callbackTarget, callback) {
+        var url = otp.config.rfidroute_api + params.trip_name;
+        $.ajax(url, {
+            data: {
+                leg: params.leg,
+                from_id: params.from_id,
+                to_id: params.to_id
+            },
+            success: function(data) {
+                data.leg_index = params.leg_index;
+                callback.call(callbackTarget, data);
+            },
+            error: function() {
+                callback.call(callbackTarget, null);
+            }
+        });
+    },
+
+    getRfidFromTripShift: function(params, callbackTarget, callback) {
+        var url = otp.config.rfidroute_api + params.trip_id;
+        $.ajax(url, {
+            data: {
+                check_schedule: false
+            },
+            success: function(data) {
+                data.leg_index = params.leg_index;
+                data.trip_name = params.trip_name;
+                data.trip_max_time = params.trip_max_time;
+                callback.call(callbackTarget, data);
+            },
+            error: function() {
+                callback.call(callbackTarget, null);
+            }
+        });
+    },
+    getRfidFromTripShiftByPattern: function(params, callbackTarget, callback) {
+        var url = otp.config.rfidroute_api;
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: JSON.stringify({
+                trips: params.trips,
+                check_schedule: false
+            }),
+            cache: false,
+            contentType: 'application/json'
+        }).done(function(data) {
+            callback.call(callbackTarget, data);
+        }).fail(function(err) {
+            callback.call(callbackTarget, null);
+        })
+    },
+    getRealTimeDriverid: function(rfids, callbackTarget, callback) {
+        //debugger;
+        var url = otp.config.realtime_api;
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: JSON.stringify({
+                rfids: rfids
+            }),
+            cache: false,
+            contentType: 'application/json'
+        }).done(function(data) {
+            callback.call(callbackTarget, data);
+        }).fail(function(err) {
+            callback.call(callbackTarget, null);
+        })
+    },
+    /*checkRealTimeByDriverid: function(driverid, callbackTarget, callback) {
+        var url = otp.config.realtime_api + driverid;
+        $.ajax(url, {
+            cache: false,
+            success: function(data) {
+                callback.call(callbackTarget, data);
+            },
+            error: function() {
+                callback.call(callbackTarget, null);
+            }
+        });
+    },*/
+    checkRealTimeDriverid: function(rfids, callbackTarget, callback) {
+        //debugger;
+        var url = otp.config.check_realtime_api;
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: JSON.stringify({
+                rfids: rfids
+            }),
+            contentType: 'application/json'
+        }).done(function(data) {
+            callback.call(callbackTarget, data);
+        }).fail(function(err) {
+            callback.call(callbackTarget, null);
+        })
+    }
+
 });

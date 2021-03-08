@@ -92,7 +92,7 @@ otp.widgets.Widget = otp.Class({
 		    });				
 		}
         if(this.minimizable) {
-            $('<div class="otp-widget-header-button">&ndash;</div>').appendTo(buttons)
+            $('<div class="otp-widget-header-button otp-widget-header-button-minimize">&ndash;</div>').appendTo(buttons)
             .click(function(evt) {
 			    evt.preventDefault();
                 this_.minimize();
@@ -104,10 +104,11 @@ otp.widgets.Widget = otp.Class({
             //console.log("widget cm clicked");
         });
         //TRANSLATORS: Minimize widget in context menu
-        this.contextMenu.addItem(_tr("Minimize"), function() {
+        /*this.contextMenu.addItem(_tr("Minimize"), function() {
             this_.minimize();
         //TRANSLATORS: Bring widget to front in context menu
-        }).addItem(_tr("Bring to front"), function() {
+        });*/
+        this.contextMenu.addItem(_tr("Bring to front"), function() {
             this_.bringToFront();            
         //TRANSLATORS: Send widget to back in context menu
         }).addItem(_tr("Send to back"), function() {

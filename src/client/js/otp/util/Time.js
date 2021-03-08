@@ -29,7 +29,8 @@ otp.util.Time = {
         var str = (hrs > 0 ? (ngettext("%d hr", "%d hrs", hrs) + ", ") : "");
         if (mins > 0) {
             //TRANSLATORS: n minute/minutes use short form
-            str += ngettext("%d min", "%d mins", mins);
+            //str += ngettext("%d min", "%d mins", mins);
+            str += mins + " min";
         }
 
         return str;

@@ -52,19 +52,23 @@ otp.core.Map = otp.Class({
         	    layer.getTileUrl = otp.config.getTileUrl;
             }
         }
-        
+
+        const southWest = L.latLng(42.243751, 13.179461);
+        const northEast = L.latLng(42.487859, 13.631379);
+        let bounds = L.latLngBounds(southWest, northEast);
 
         var mapProps = { 
             layers  : [ defaultBaseLayer ],
             center : (otp.config.initLatLng || new L.LatLng(0,0)),
             zoom : (otp.config.initZoom || 2),
-            zoomControl : false
+            zoomControl : false,
+            //maxBounds: bounds
         }
         if(otp.config.minZoom) mapProps['minZoom'] = otp.config.minZoom;  //_.extend(mapProps, { minZoom : otp.config.minZoom });
         if(otp.config.maxZoom) mapProps['maxZoom'] = otp.config.maxZoom; //_.extend(mapProps, { maxZoom : otp.config.maxZoom });
 
         this.lmap = new L.Map('map', mapProps);
-
+        global_map = this.lmap;
         this.layer_control = L.control.layers(this.baseLayers).addTo(this.lmap);
         L.control.zoom({ position : 'topright' }).addTo(this.lmap);
         //this.lmap.addControl(new L.Control.Zoom({ position : 'topright' }));
@@ -138,7 +142,27 @@ otp.core.Map = otp.Class({
         
         this.contextMenu = new otp.core.MapContextMenu(this);
       
-        this.activated = true;        
+        this.activated = true;
+
+        this.lmap.on('popupopen', function(e, t) {
+
+            /*
+            var px = this_.lmap.project(e.target._popup._latlng); // find the pixel location on the map where the popup anchor is
+            const container_height = 350;
+            debugger;
+            let client_point = {
+                clientX: e.target._size.x,
+                clientY: e.target._size.y
+            }
+            const point = this_.lmap.mouseEventToLatLng(client_point);
+            if(document.body.clientWidth < 769 || document.body.clientHeight < 668){
+                this_.lmap.panTo(point);
+            }else{
+                px.y -= container_height/2 + 100 // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
+                this_.lmap.panTo(this_.lmap.unproject(px),{animate: true}); // pan to new center
+            }*/
+
+        });
     },
     
     addContextMenuItem : function(text, clickHandler) {
@@ -146,7 +170,7 @@ otp.core.Map = otp.Class({
     },
     
     activeModuleChanged : function(oldModule, newModule) {
-        
+
         //console.log("actModChanged: "+oldModule+", "+newModule);
         
         // hide module-specific layers for "old" module, if applicable
@@ -185,6 +209,9 @@ otp.core.Map = otp.Class({
     setBounds : function(bounds)
     {
     	this.lmap.fitBounds(bounds);
+    },
+    getMap : function(){
+        return this.lmap;
     },
     
     $ : function() {

@@ -65,7 +65,6 @@ otp.modules.multimodal.MultimodalPlannerModule =
 
         var modeSelector = new otp.widgets.tripoptions.ModeSelector(this.optionsWidget);
         this.optionsWidget.addControl("mode", modeSelector, true);
-
         modeSelector.addModeControl(new otp.widgets.tripoptions.MaxWalkSelector(this.optionsWidget));
         modeSelector.addModeControl(new otp.widgets.tripoptions.MaxBikeSelector(this.optionsWidget));
         modeSelector.addModeControl(new otp.widgets.tripoptions.BikeTriangle(this.optionsWidget));

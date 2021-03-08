@@ -38,16 +38,16 @@ otp.widgets.transit.RouteBasedWidget =
 
         var routeSelectDiv = $('<div class="otp-tripViewer-select notDraggable" />').appendTo(this.mainDiv);
         //TRANSLATORS: Public transit Route: routename (Used in Trip viewer)
-        $('<div style="float: left;">' + _tr('Route:') + '</div>').appendTo(routeSelectDiv);
+        $('<div class="otp-tripViewer-select-text" style="float: left;">' + _tr('Route:') + '</div>').appendTo(routeSelectDiv);
         this.routeSelect = $('<select id="'+this.id+'-routeSelect" style="width:100%;"></select>')
-        .appendTo($('<div style="margin-left:60px;">').appendTo(routeSelectDiv))
+        .appendTo($('<div class="otp-tripViewer-select-list" style="margin-left:60px;">').appendTo(routeSelectDiv))
         .change(function() {
             this_.newRouteSelected();
         });
 
         _.each(module.webapp.indexApi.routes, function(route, key) {
             var optionHtml = '<option>';
-            if(route.routeData.shortName) optionHtml += '('+route.routeData.shortName+') ';
+            if(route.routeData.shortName) optionHtml += route.routeData.shortName+' - ';
             if(route.routeData.longName) optionHtml += route.routeData.longName;
             optionHtml += '</option>';
             this_.routeSelect.append($(optionHtml));
@@ -58,9 +58,9 @@ otp.widgets.transit.RouteBasedWidget =
         var variantSelectDiv = $('<div class="otp-tripViewer-select notDraggable" />').appendTo(this.mainDiv);
         //TRANSLATORS: Public Transit Route variant: Start - end stop (Used in
         //trip viewer)
-        $('<div style="float: left;">' + _tr('Variant:') + '</div>').appendTo(variantSelectDiv);
+        $('<div class="otp-tripViewer-select-text" style="float: left;">' + _tr('Variant:') + '</div>').appendTo(variantSelectDiv);
         this.variantSelect = $('<select id="'+this.id+'-variantSelect" style="width:100%;"></select>')
-        .appendTo($('<div style="margin-left:60px;">').appendTo(variantSelectDiv))
+        .appendTo($('<div class="otp-tripViewer-select-list" style="margin-left:60px;">').appendTo(variantSelectDiv))
         .change(function() {
             this_.newVariantSelected();
         });
@@ -118,7 +118,13 @@ otp.widgets.transit.RouteBasedWidget =
 
         this.variantSelect.empty();
         _.each(route.variants, function(variant) {
-            $('<option value='+ variant.id +'>'+variant.desc+'</option>').appendTo(this_.variantSelect);
+            let trip_route = "";
+            _.each(variant.trip_route, function(item){
+                trip_route += item + " - "
+            })
+            let desc = trip_route + ngettext(" from _stop") + variant.busStopStart + " | " + ngettext(" to _stop") + variant.busStopEnd;
+            //$('<option value='+ variant.id +'>'+variant.desc+'</option>').appendTo(this_.variantSelect);
+            $('<option value='+ variant.id +'>'+desc+'</option>').appendTo(this_.variantSelect);
         });
 
         if(this.activeLeg) {
@@ -136,7 +142,6 @@ otp.widgets.transit.RouteBasedWidget =
         var route = this.module.webapp.indexApi.routes[this.routeId];
         this.activeVariant = route.variants[variantData.id];
         $('#'+this.id+'-variantSelect option:eq('+this.activeVariant.index+')').prop('selected', true);
-
         this.variantSelected(variantData);
     },
 

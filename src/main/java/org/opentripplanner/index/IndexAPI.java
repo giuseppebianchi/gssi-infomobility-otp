@@ -242,6 +242,16 @@ public class IndexAPI {
        return Response.status(Status.OK).entity(PatternShort.list(patterns)).build();
    }
 
+    @GET
+    @Path("/stops/{stopId}/details")
+    public Response getDetailsForStop (@PathParam("stopId") String stopIdString) {
+        FeedScopedId id = GtfsLibrary.convertIdFromString(stopIdString);
+        Stop stop = index.stopForId.get(id);
+        if (stop == null) return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
+        Collection<TripPattern> patterns = index.patternsForStop.get(stop);
+        return Response.status(Status.OK).entity(PatternShort.list(patterns)).build();
+    }
+
     /** Return upcoming vehicle arrival/departure times at the given stop.
      *
      * @param stopIdString Stop ID in Agency:Stop ID format
@@ -257,6 +267,7 @@ public class IndexAPI {
                                          @QueryParam("numberOfDepartures") @DefaultValue("2") int numberOfDepartures,
                                          @QueryParam("omitNonPickups") boolean omitNonPickups) {
         Stop stop = index.stopForId.get(GtfsLibrary.convertIdFromString(stopIdString));
+
         if (stop == null) return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
         return Response.status(Status.OK).entity(index.stopTimesForStop(stop, startTime, timeRange, numberOfDepartures, omitNonPickups )).build();
     }
@@ -271,6 +282,7 @@ public class IndexAPI {
                                                 @PathParam("date") String date,
                                                 @QueryParam("omitNonPickups") boolean omitNonPickups) {
         Stop stop = index.stopForId.get(GtfsLibrary.convertIdFromString(stopIdString));
+
         if (stop == null) return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
         ServiceDate sd;
         try {
@@ -384,23 +396,67 @@ public class IndexAPI {
        }
    }
 
-   /** Return all trips in any pattern on the given route. */
+   /** Return all trips in any pattern on the given route. #NEWAPI*/
    @GET
    @Path("/routes/{routeId}/trips")
    public Response getTripsForRoute (@PathParam("routeId") String routeIdString) {
        FeedScopedId routeId = GtfsLibrary.convertIdFromString(routeIdString);
        Route route = index.routeForId.get(routeId);
        if (route != null) {
-           List<Trip> trips = Lists.newArrayList();
+           List<TripShort> trips_list = Lists.newArrayList();
            Collection<TripPattern> patterns = index.patternsForRoute.get(route);
            for (TripPattern pattern : patterns) {
-               trips.addAll(pattern.getTrips());
+               for (Trip trip : pattern.getTrips()){
+                   TripPattern tripPattern = index.patternForTrip.get(trip);
+                   //TripTimes timesList = pattern.scheduledTimetable.getTripTimes(trip);
+
+                   Timetable table = index.currentUpdatedTimetableForTripPattern(tripPattern);
+
+                   //departureStop_list.add(TripTimeShort.fromTripTimes(table, trip).get(0));
+                   //trips.add(trip);
+                   List<TripTimeShort> times = TripTimeShort.fromTripTimes(table, trip);
+                   TripTimeShort departure = times.get(0);
+                   TripTimeShort arrival = times.get(times.size()-1);
+                   TripShort tripp = new TripShort(trip, departure, arrival, pattern.code);
+                   trips_list.add(tripp);
+
+               }
+               //trips.addAll(pattern.getTrips());
            }
-           return Response.status(Status.OK).entity(TripShort.list(trips)).build();
+           return Response.status(Status.OK).entity(trips_list).build();
        } else { 
            return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
        }
    }
+
+    /** Return all trips in any pattern on the given route.
+    @GET
+    @Path("/routes/{routeId}/trips")
+    public Response getTripsForRoute (@PathParam("routeId") String routeIdString) {
+        FeedScopedId routeId = GtfsLibrary.convertIdFromString(routeIdString);
+        Route route = index.routeForId.get(routeId);
+        if (route != null) {
+            List<Trip> trips = Lists.newArrayList();
+            List<TripTimeShort> departureStop_list = Lists.newArrayList();
+            Collection<TripPattern> patterns = index.patternsForRoute.get(route);
+            for (TripPattern pattern : patterns) {
+                for (Trip trip : pattern.getTrips()){
+                    TripPattern tripPattern = index.patternForTrip.get(trip);
+                    //TripTimes timesList = pattern.scheduledTimetable.getTripTimes(trip);
+
+                    Timetable table = index.currentUpdatedTimetableForTripPattern(tripPattern);
+
+                    departureStop_list.add(TripTimeShort.fromTripTimes(table, trip).get(0));
+                    trips.add(trip);
+
+                }
+                //trips.addAll(pattern.getTrips());
+            }
+            return Response.status(Status.OK).entity(TripShort.list(trips, departureStop_list)).build();
+        } else {
+            return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
+        }
+    }*/
    
    
     // Not implemented, results would be too voluminous.
@@ -482,16 +538,46 @@ public class IndexAPI {
        return Response.status(Status.OK).entity(PatternShort.list(patterns)).build();
    }
 
+   /* #NEWAPI */
    @GET
    @Path("/patterns/{patternId}")
    public Response getPattern (@PathParam("patternId") String patternIdString) {
        TripPattern pattern = index.patternForId.get(patternIdString);
        if (pattern != null) {
-           return Response.status(Status.OK).entity(new PatternDetail(pattern)).build();
+           //List<Trip> trips = Lists.newArrayList();
+           List<TripShort> trips_list = Lists.newArrayList();
+           //List<TripTimeShort> departureStop_list = Lists.newArrayList();
+           for (Trip trip : pattern.getTrips()){
+               TripPattern tripPattern = index.patternForTrip.get(trip);
+               //TripTimes timesList = pattern.scheduledTimetable.getTripTimes(trip);
+
+               Timetable table = index.currentUpdatedTimetableForTripPattern(tripPattern);
+
+               //departureStop_list.add(TripTimeShort.fromTripTimes(table, trip).get(0));
+               //trips.add(trip);
+               List<TripTimeShort> times = TripTimeShort.fromTripTimes(table, trip);
+               TripTimeShort departure = times.get(0);
+               TripTimeShort arrival = times.get(times.size()-1);
+               TripShort tripp = new TripShort(trip, departure, arrival);
+               trips_list.add(tripp);
+           }
+           //return Response.status(Status.OK).entity(trips_list).build();
+           //return Response.status(Status.OK).entity(TripShort.list(trips, departureStop_list)).build();
+           return Response.status(Status.OK).entity(new PatternDetail(pattern, trips_list)).build();
        } else { 
            return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
        }
    }
+    /*@GET
+    @Path("/patterns/{patternId}")
+    public Response getPattern (@PathParam("patternId") String patternIdString) {
+        TripPattern pattern = index.patternForId.get(patternIdString);
+        if (pattern != null) {
+            return Response.status(Status.OK).entity(new PatternDetail(pattern)).build();
+        } else {
+            return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
+        }
+    }*/
 
    @GET
    @Path("/patterns/{patternId}/trips")

@@ -18,20 +18,22 @@ otp.namespace("otp.core");
 otp.core.PopupMenu = otp.Class({
 
     menu    : null,
-    
+    pointer: null,
     suppressHide : false,
     
     initialize : function() {
         var this_ = this;
-        
         this.menu = $('<div class="otp-popupMenu"></div>');
-        
         $(document).bind("click", function(event) {
-            if(this_.suppressHide) {
+            if (this_.suppressHide) {
                 this_.suppressHide = false;
                 return;
             }
             this_.menu.hide();
+            if(this_.pointer != null){
+                this_.map.lmap.removeLayer(this_.pointer)
+            }
+
         });
     },
     

@@ -23,6 +23,7 @@ otp.config = {
         'sl': otp.locale.Slovenian,
         'fr': otp.locale.French,
         'it': otp.locale.Italian,
+        'it-IT': otp.locale.Italian,
         'ca_ES': otp.locale.Catalan,
 	'es': otp.locale.Spanish,
 	'pt': otp.locale.Portuguese
@@ -48,12 +49,38 @@ otp.config = {
      * The OTP web service locations
      */
     hostname : "",
+    resourcePath: "",
+
+    /* DEPLOY
+
+    hostname : "http://51.145.149.130/infomobility",
+
+    resourcePath: "/infomobility/",
+
+    * */
+
+
     //municoderHostname : "http://localhost:8080",
     //datastoreUrl : 'http://localhost:9000',
     // In the 0.10.x API the base path is "otp-rest-servlet/ws"
     // From 0.11.x onward the routerId is a required part of the base path.
     // If using a servlet container, the OTP WAR should be deployed to context path /otp
     restService: "otp/routers/default",
+    //check_realtime_api: "http://localhost:5000/api/bus/filter/driverid",
+    //busposition_ws_url: "ws://localhost:5050",
+
+    //LOCAL API
+    //realtime_api: "http://localhost:5000/api/bus/filter/driverid/realtime",
+    //unitids_api: "http://localhost:5000/api/bus/filter/unitid",
+    //driverids_api: "http://localhost:5000/api/bus/filter/driverid",
+    //rfidroute_api: "http://localhost:4000/api/realtime/rfidshift/",
+
+    //REMOTE API
+    realtime_api: "http://51.145.149.130/gpsdata/api/bus/filter/driverid/realtime",
+    unitids_api: "http://51.145.149.130/gpsdata/api/bus/filter/unitid",
+    driverids_api: "http://51.145.149.130/gpsdata/api/bus/filter/driverid",
+    rfidroute_api: "http://51.145.149.130/rfidroute/api/realtime/rfidshift/",
+
 
     /**
      * Base layers: the base map tile layers available for use by all modules.
@@ -71,38 +98,27 @@ otp.config = {
 
     baseLayers: [
         {
-            name: 'Stamen Terrain',
-            tileUrl: 'http://tile.stamen.com/terrain/{z}/{x}/{y}.png',
-            attribution : 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+            name: 'Default',
+            tileUrl: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         },
         {
-            name: 'Carto Positron',
+            name: 'Satellite',
+            tileUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        },
+        {
+            name: 'Light',
             tileUrl: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
             attribution : 'Map tiles by Carto/MapZen. Map data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
         },
         {
-            name: 'Transport Tiles',
-            tileUrl: 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
-            subdomains : ['a','b','c'],
-            attribution: 'Data from <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors. Tiles from <a href="http://www.thunderforest.com/transport/">Andy Allan</a>'
-        },
-        {
-            name: 'Stamen Toner Lite',
-            tileUrl: 'http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
-            attribution : 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
-        },
-        {
-            name: 'Carto Dark Matter',
-            tileUrl: 'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+            name: 'Stadia',
+            tileUrl: 'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png',
             attribution : 'Map tiles by Carto/MapZen. Map data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
-        },
-        {
-            name: 'OSM Standard Tiles',
-            tileUrl: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            attribution : 'Map data and tiles © OpenStreetMap contributors'
         }
+
     ],
-    
 
     /**
      * Map start location and zoom settings: by default, the client uses the
@@ -114,24 +130,28 @@ otp.config = {
     // initZoom : 14,
     // minZoom : 10,
     // maxZoom : 20,
+
+    initLatLng : new L.LatLng(42.349933, 13.401215),
+    //initZoom : 14,
+    minZoom : 12,
     
     /* Whether the map should be moved to contain the full itinerary when a result is received. */
-    zoomToFitResults    : false,
+    zoomToFitResults    : false, //true on mobile
 
     /**
      * Site name / description / branding display options
      */
 
-    siteName            : "My OTP Instance",
-    siteDescription     : "An OpenTripPlanner deployment.",
+    siteName            : "Infomobilità L'Aquila",
+    siteDescription     : "La soluzione per il trasporto pubblico a L'Aquila.",
     logoGraphic         : 'images/otp_logo_darkbg_40px.png',
     // bikeshareName    : "",
     //Enable this if you want to show frontend language chooser
     showLanguageChooser : true,
 
-    showLogo            : true,
-    showTitle           : true,
-    showModuleSelector  : true,
+    showLogo            : false,
+    showTitle           : false,
+    showModuleSelector  : false,
     metric              : false,
 
 
@@ -151,7 +171,7 @@ otp.config = {
         {
             id : 'planner',
             className : 'otp.modules.multimodal.MultimodalPlannerModule',
-            defaultBaseLayer : 'Stamen Terrain',
+            defaultBaseLayer : 'Light',
             isDefault: true
         },
         {
@@ -174,8 +194,14 @@ otp.config = {
 
     geocoders : [
         {
+            name: 'Nominatim',
+            className: 'otp.core.GeocoderInfomobility',
+            url: "https://nominatim.openstreetmap.org/search/",
+            addressParam: "q"
+        },
+        {
             name: 'OTP built-in geocoder',
-            className: 'otp.core.GeocoderBuiltin'
+            className: 'otp.core.GeocoderBuiltin',
             // URL and query parameter do not need to be set for built-in geocoder.
         }
     ],
@@ -184,7 +210,7 @@ otp.config = {
 
     //This is shown if showLanguageChooser is true
     infoWidgetLangChooser : {
-        title: '<img src="/images/language_icon.svg" onerror="this.onerror=\'\';this.src=\'/images/language_icon.png\'" width="30px" height="30px"/>', 
+        title: '<img src="images/language_icon.svg" onerror="this.onerror=\'\';this.src=\'/images/language_icon.png\'" width="30px" height="30px"/>',
         languages: true
     },
     
@@ -203,7 +229,8 @@ otp.config = {
      */    
      
     timeFormat  : "h:mma",
-    dateFormat  : "MMM Do YYYY"
+    //dateFormat  : "MMM Do YYYY"
+    dateFormat  : "ll"
 
 };
 var options = {
@@ -299,10 +326,10 @@ otp.config.modes = {
         "BUS,WALK"         : _tr("Bus Only"), 
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets)
-        "TRAM,RAIL,SUBWAY,FUNICULAR,GONDOLA,WALK"       : _tr("Rail Only"), 
+//"TRAM,RAIL,SUBWAY,FUNICULAR,GONDOLA,WALK"       : _tr("Rail Only"),
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets)
-        "AIRPLANE,WALK"       : _tr("Airplane Only"),
+//"AIRPLANE,WALK"       : _tr("Airplane Only"),
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets)
         "BICYCLE"             : _tr('Bicycle Only'),
@@ -314,25 +341,25 @@ otp.config.modes = {
         "WALK"                : _tr('Walk Only'),
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets)
-        "CAR"                 : _tr('Drive Only'),
+ //"CAR"                 : _tr('Drive Only'),
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets)
-    "CAR_PARK,WALK,TRANSIT"     : _tr('Park and Ride'),
+//"CAR_PARK,WALK,TRANSIT"     : _tr('Park and Ride'),
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets) http://en.wikipedia.org/wiki/Park_and_ride#Kiss_and_ride
-    "CAR,WALK,TRANSIT"          : _tr('Kiss and Ride'),
+//"CAR,WALK,TRANSIT"          : _tr('Kiss and Ride'),
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets) (Park bicycle at Public transit station and take a
     //transit
-    "BICYCLE_PARK,WALK,TRANSIT" : _tr('Bike and Ride'),
+//"BICYCLE_PARK,WALK,TRANSIT" : _tr('Bike and Ride'),
     //uncomment only if bike rental exists in a map
     // TODO: remove this hack, and provide code that allows the mode array to be configured with different transit modes.
     //       (note that we've been broken for awhile here, since many agencies don't have a 'Train' mode either...this needs attention)
     // IDEA: maybe we start with a big array (like below), and the pull out modes from this array when turning off various modes...
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets)
-    'WALK,BICYCLE_RENT'        : _tr('Rented Bicycle'),
+//'WALK,BICYCLE_RENT'        : _tr('Rented Bicycle'),
     //TRANSLATORS: Travel by: mode of transport (Used in selection in Travel
     //Options widgets)
-    'TRANSIT,WALK,BICYCLE_RENT': _tr('Transit & Rented Bicycle')
+//'TRANSIT,WALK,BICYCLE_RENT': _tr('Transit & Rented Bicycle')
     };
