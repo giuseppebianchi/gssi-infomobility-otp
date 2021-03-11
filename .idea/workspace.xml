@@ -10,14 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/build_graph_configuration.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/disable_maven_when_running_different_configurations.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/java_configuration.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/java_inmemory_configuration.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/maven_configuration.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/disable maven when running different configurations.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +149,7 @@
       <workItem from="1614191866980" duration="85000" />
       <workItem from="1614241795372" duration="140000" />
       <workItem from="1615193426400" duration="1662000" />
-      <workItem from="1615217308219" duration="12365000" />
+      <workItem from="1615217308219" duration="15216000" />
     </task>
     <servers />
   </component>
