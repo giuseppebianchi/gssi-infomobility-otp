@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Java Configuration inMemory" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.opentripplanner.standalone.OTPMain" />
+    <module name="otp" />
+    <option name="PROGRAM_PARAMETERS" value="--build ./data --inMemory" />
+    <option name="VM_PARAMETERS" value="-Xmx4G" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

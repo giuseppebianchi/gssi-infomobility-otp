@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="otp:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/build_graph_configuration.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/disable_maven_when_running_different_configurations.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/java_configuration.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/java_inmemory_configuration.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/maven_configuration.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/disable maven when running different configurations.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectId" id="1Uyv91h5XT7NnzLFNs0x5pJUXeW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.35402298" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/client" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Maven.otp Maven">
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Build Graph" />
+      <item itemvalue="Application.Java Configuration inMemory" />
+      <item itemvalue="Application.Java Configuration" />
+      <item itemvalue="Maven.otp Maven" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="" />
+      <created>1576341494168</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576341494168</updated>
+      <workItem from="1576341497795" duration="555000" />
+      <workItem from="1576342101194" duration="72250000" />
+      <workItem from="1576675725170" duration="3713000" />
+      <workItem from="1576692679626" duration="4806000" />
+      <workItem from="1576702456701" duration="617000" />
+      <workItem from="1576703288614" duration="170000" />
+      <workItem from="1576752576819" duration="357000" />
+      <workItem from="1576760737016" duration="606000" />
+      <workItem from="1576766005115" duration="356000" />
+      <workItem from="1576766470990" duration="84000" />
+      <workItem from="1578074892527" duration="399000" />
+      <workItem from="1578602964966" duration="323000" />
+      <workItem from="1578653025331" duration="303000" />
+      <workItem from="1578654876552" duration="874000" />
+      <workItem from="1578685706039" duration="3819000" />
+      <workItem from="1582740877858" duration="355000" />
+      <workItem from="1593608003911" duration="39000" />
+      <workItem from="1595837658812" duration="602000" />
+      <workItem from="1595839298112" duration="9476000" />
+      <workItem from="1596018327151" duration="746000" />
+      <workItem from="1596043714203" duration="1777000" />
+      <workItem from="1596478137208" duration="429000" />
+      <workItem from="1609194258356" duration="994000" />
+      <workItem from="1609195292624" duration="835000" />
+      <workItem from="1609196181777" duration="1156000" />
+      <workItem from="1609198160952" duration="1903000" />
+      <workItem from="1609200664111" duration="1845000" />
+      <workItem from="1609248724460" duration="16000" />
+      <workItem from="1609710357735" duration="3389000" />
+      <workItem from="1610361578801" duration="2364000" />
+      <workItem from="1612450293349" duration="1749000" />
+      <workItem from="1612789884754" duration="76156000" />
+      <workItem from="1614191866980" duration="85000" />
+      <workItem from="1614241795372" duration="140000" />
+      <workItem from="1615193426400" duration="1662000" />
+      <workItem from="1615217308219" duration="12365000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/client/js/otp/widgets/Widget.js</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

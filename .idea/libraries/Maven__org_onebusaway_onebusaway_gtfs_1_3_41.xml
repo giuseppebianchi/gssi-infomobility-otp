@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.onebusaway:onebusaway-gtfs:1.3.41">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/onebusaway/onebusaway-gtfs/1.3.41/onebusaway-gtfs-1.3.41.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/org/onebusaway/onebusaway-gtfs/1.3.41/onebusaway-gtfs-1.3.41-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/onebusaway/onebusaway-gtfs/1.3.41/onebusaway-gtfs-1.3.41-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

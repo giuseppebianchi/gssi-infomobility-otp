@@ -23,9 +23,11 @@ otp-openlayers-client/src/main/webapp/js/otp-min.js
 gen-java/
 gen-javabean/
 gen-py/
-.idea/
+
 .sonar
 _site/
 /otp
 /otp-batch-analyst
 *.DS_Store
+
+#.idea/

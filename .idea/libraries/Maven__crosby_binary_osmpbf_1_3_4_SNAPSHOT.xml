@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: crosby.binary:osmpbf:1.3.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/crosby/binary/osmpbf/1.3.4-SNAPSHOT/osmpbf-1.3.4-20150914.191218-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/crosby/binary/osmpbf/1.3.4-SNAPSHOT/osmpbf-1.3.4-20150914.191218-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/crosby/binary/osmpbf/1.3.4-SNAPSHOT/osmpbf-1.3.4-20150914.191218-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
