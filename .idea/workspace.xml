@@ -46,7 +46,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.35402298" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -149,7 +149,7 @@
       <workItem from="1614191866980" duration="85000" />
       <workItem from="1614241795372" duration="140000" />
       <workItem from="1615193426400" duration="1662000" />
-      <workItem from="1615217308219" duration="15216000" />
+      <workItem from="1615217308219" duration="18621000" />
     </task>
     <servers />
   </component>

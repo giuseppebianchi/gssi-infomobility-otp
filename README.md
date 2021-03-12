@@ -1,5 +1,5 @@
 # OpenTripPlanner - Infomobility L'Aquila
-OpenTripPlanner (OTP) is an open source multi-modal trip planner. It depends on open data in open standard file formats (GTFS and OpenStreetMap), and includes a REST API for journey planning as well as a map-based Javascript client. \
+OpenTripPlanner (OTP) is an open source multi-modal trip planner. It depends on open data in open standard file formats (GTFS and OpenStreetMap), and includes a REST API for journey planning as well as a map-based Javascript client.  
 [OpenTripPlanner](http://opentripplanner.org) - 
 [OTP Documentation](http://docs.opentripplanner.org/en/dev-1.x/)
 
@@ -88,11 +88,11 @@ If all goes well you should see a success message like the following:
 This build process should produce a JAR file called **otp-x.y.z-shaded.jar** in the **target/** directory which contains all the compiled OTP classes and their dependencies (the external libraries they use).
 
 # Building from Source
-You can follow the same indication explained in the official documentation. \
-http://docs.opentripplanner.org/en/latest/Getting-OTP/ \
+You can follow the same indication explained in the official documentation.  
+http://docs.opentripplanner.org/en/latest/Getting-OTP/  
 You may also choose to build OTP from its source code. If you will be modifying OTP you will need to know how to rebuild it (though your IDE may take care of this build cycle for you).
-> remember to use `-DskipTests in *maven* command`to avoid tests execution
-
+> remember to use `-DskipTests` in *maven* command to avoid tests execution
+``
 # Required Mobility Data
 ### GTFS for Transit Schedules and Stops
 ransport agencies throughout the world provide GTFS schedules to the public. Transitland has a registry of feeds and TransitFeeds also provides an extensive catalog. The best option is often to simply fetch the data directly from a transit operator or agency.
@@ -102,12 +102,12 @@ You'll also need OpenStreetMap data to build a road network for walking, cycling
 Download OSM PBF data for the same geographic region as your GTFS feed, and place this PBF file in the same directory you created for the OSM data.
 
 #### Trimmed Map
-1. **OpenStreetMap Export** (Suggested) \
-   https://www.openstreetmap.org/export#map=11/42.3418/13.4359  \
+1. **OpenStreetMap Export** (Suggested)  
+   https://www.openstreetmap.org/export#map=11/42.3418/13.4359   
    Zomm on the map to get the desired bounded zone to export.
    
 
-2. **Geofabrik + Osmosis** \
+2. **Geofabrik + Osmosis**  
 Geofabrik provides extracts for larger areas like countries or states, from which you can prepare your own smaller bounding-box extracts using Osmosis or osmconvert.
 This [tool](https://boundingbox.klokantech.com/) is useful for determining the geographic coordinates of bounding boxes. The CSV option in that tool produces exactly the format expected by the `osmconvert -b` switch. The `--complete-ways` switch is important to handle roads that cross outside your bounding box.
    ```shell 
@@ -118,7 +118,51 @@ This [tool](https://boundingbox.klokantech.com/) is useful for determining the g
 If you have extracted a smaller PBF file from a larger region, be sure to put only your extract (not the original larger file) in the directory with your GTFS data. Otherwise OTP will try to load both the original file and the extract in a later step.
 # Run OTP as JAR Application
 
+```shell
+$ java -Xmx2G -jar otp-0.19.0-shaded.jar --build /home/username/otp --inMemory
+```
+where /home/username/otp should be the directory where you put your input files.
 
+GTFS and OSM data sets are often very large, and OTP is relatively memory-hungry. You will need at least 1GB of memory when working with the Portland TriMet data set, and several gigabytes for larger inputs. A typical command to start OTP looks like java -Xmx1G -jar otp-0.19.0-shaded.jar <options>. The -Xmx parameter sets the limit on how much memory OTP is allowed to consume. If you have sufficient memory in your computer, set this to a couple of gigabytes (e.g. -Xmx2G); when OTP doesn't have enough memory "breathing room" it can grind to a halt.
+
+It's possible to analyze the GTFS, OSM and any other input data and save the resulting representation of the transit network (what we call a 'graph') to disk. Then when the OTP server is restarted it can reload this pre-built graph, which is significantly faster than building it from scratch. For simplicity, in this introductory tutorial we'll skip saving the graph file. After the graph is built we'll immediately pass it to an OTP server in memory. The command to do so is:
+
+The graph build operation should take about one minute to complete, and then you'll see a Grizzly server running message. At this point you have an OpenTripPlanner server running locally and can open http://localhost:8080/ in a web browser. You should be presented with a web client that will interact with your local OpenTripPlanner instance.
+
+This map-based user interface is in fact sending HTTP GET requests to the OTP server running on your local machine. It can be informative to watch the HTTP requests and responses being generated using the developer tools in your web browser.
+
+OTP's built-in web server will run by default on ports 8080 and 8081. If by any chance some other software is already using those port numbers, you can specify different port numbers with switches like --port 8801 --securePort 8802.
+
+# Command Line Parameters
+Here below are listed only the most relevant parameters. Check full list on:
+http://dev.opentripplanner.org/javadoc/1.4.0/org/opentripplanner/standalone/CommandLineParameters.html
+https://github.com/purushothamgk/OpenTripPlanner/blob/master/src/main/java/org/opentripplanner/standalone/CommandLineParameters.java
+
+| Command | Desc | Default |
+|:---| :--- | :---: |
+|--autoReload| Auto-scan for graphs to register in graph directory. | false
+|--autoScan| Auto-scan for graphs to register in graph directory. | false
+|--basePath| Set the path under which graphs, caches, etc. are stored by default. | /var/otp
+|--bindAddress| Specify which network interface to bind to by address. 0.0.0.0 means all interfaces. | 0.0.0.0
+|--build| Build graphs at specified paths.
+|--cacheDirectory, --cache| The directory under which to cache OSM and NED tiles. | BASE_PATH/cache
+|--clientDirectory, --clientFiles| Path to directory containing local client files to serve. | null
+|--disableFileCache| Disable http server static file cache. Handy for development. | false
+|--files| Files for graph build. | [ ]
+|--graphDirectory, --graphs| Path to directory containing graphs. | BASE_PATH/graphs
+|--help| Print this help message and exit
+|--inMemory| Pass the graph to the server in-memory after building it, without saving to disk.
+|--port| Server port for plain HTTP. | 8080
+|--preFlight| Pass the graph to the server in-memory after building it, and saving to disk.
+|--scriptFile, --script| run the specified OTP script (groovy, python) | null
+|--securePort| Server port for HTTPS. | 8088
+|--server| Run an OTP API server.| false
+|--verbose| Verbose output for debugging |
+|--visualize | Open a graph visualizer window for debugging |
 
 # Deployment
 
+# Real Time
+Only BUS mode is enabled to work with real time data
+
+Real-time data can be provided using either a pull or push system. In a pull configuration, the GTFS-RT consumer polls the real-time provider over HTTP. That is to say, OTP fetches a file from a web server every few minutes. In the push configuration, the consumer opens a persistent connection to the GTFS-RT provider, which then sends incremental updates immediately as they become available. OTP can use both approaches. The OneBusAway GTFS-realtime exporter project provides this kind of streaming, incremental updates over a websocket rather than a single large file.
