@@ -9,6 +9,16 @@ Additional information and instructions are available in the main documentation,
 ### Requirements
 As a Java program, OTP must be run within a Java virtual machine (JVM), which is provided as part of the Java runtime (JRE) or Java development kit (JDK). Run `java -version to check that you have version 1.8 or newer of the JVM installed. If you do not you will need to install a recent OpenJDK or Oracle Java package for your operating system.
 
+# Documentation
+1. [Pre Build JAR](#pre-build-jar)
+2. [Development](#development)
+3. [Building from Source](#building-from-source)
+4. [Required Mobility Data](#required-mobility-data)
+5. [Run OTP as JAR application](#run-otp-as-jar-application)
+6. [Command Line Parameters](#command-line-parameters)
+6. [Deployment](#deployment)
+6. [Real Time](#real-time)
+
 # Pre Built JAR
 - jar shaded file
 Learn how to use it in "Run OTP as application" section below.
