@@ -10,8 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/artifact-itellij.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/artifact_confuguration.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/locale/it-IT.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/locale/it-IT.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/locale/it.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/locale/it.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +46,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.35402298" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -149,7 +153,7 @@
       <workItem from="1614191866980" duration="85000" />
       <workItem from="1614241795372" duration="140000" />
       <workItem from="1615193426400" duration="1662000" />
-      <workItem from="1615217308219" duration="19423000" />
+      <workItem from="1615217308219" duration="28085000" />
     </task>
     <servers />
   </component>

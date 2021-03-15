@@ -1,13 +1,12 @@
 # OpenTripPlanner - Infomobility L'Aquila
 OpenTripPlanner (OTP) is an open source multi-modal trip planner. It depends on open data in open standard file formats (GTFS and OpenStreetMap), and includes a REST API for journey planning as well as a map-based Javascript client.  
-[OpenTripPlanner](http://opentripplanner.org) - 
-[OTP Documentation](http://docs.opentripplanner.org/en/dev-1.x/)
+[OpenTripPlanner](http://opentripplanner.org) - [OTP Documentation](http://docs.opentripplanner.org/en/dev-1.x/)
 
 The main Java **server code** is in `src/main/`. OTP also includes a Javascript **client** based on the Leaflet mapping library in `src/client/`. The Maven **build** produces a JAR file at `target/otp-VERSION.jar` containing all necessary code and dependencies to run OpenTripPlanner.
 Additional information and instructions are available in the main documentation, including a quick introduction.
 
 ### Requirements
-As a Java program, OTP must be run within a Java virtual machine (JVM), which is provided as part of the Java runtime (JRE) or Java development kit (JDK). Run `java -version to check that you have version 1.8 or newer of the JVM installed. If you do not you will need to install a recent OpenJDK or Oracle Java package for your operating system.
+As a Java program, OTP must be run within a Java virtual machine (JVM), which is provided as part of the Java runtime (JRE) or Java development kit (JDK). Run `java -version` to check that you have version `1.8` or newer of the JVM installed. If you do not you will need to install a recent OpenJDK or Oracle Java package for your operating system.
 
 # Documentation
 1. [Pre Build JAR](#pre-build-jar)
@@ -21,7 +20,7 @@ As a Java program, OTP must be run within a Java virtual machine (JVM), which is
 
 # Pre Built JAR
 - jar shaded file
-Learn how to use it in "Run OTP as application" section below.
+Learn how to use it in [Run OTP as application](#run-otp-as-jar-application) section below.
 
 # Development
 http://docs.opentripplanner.org/en/latest/Developers-Guide/
@@ -32,14 +31,23 @@ A Quick guide to setting up the OpenTripPlanner project. *Check next section bel
 You need Git, Maven and Java(JDK) and an IDE installed on your computer, or JDK and Maven embedded in your IDE.
 
 - Clone OpenTripPlanner from GitHub.
+  ```
+  git clone https://github.com/giuseppebianchi/gssi-infomobility-otp.git
+  ```
 - Checkout the desired branch 
   ```
   git checkout dev-1.x
   ```
-- Run ``maven package`` - this will download all dependencies, build the project and run tests.
+- Build the project, download all dependencies and run test (to skip Tests use `-DskipTest`)
+    ```
+  mvn clean package -DskipTests
+    ```
+
+  
+
 - Open the project in your IDE.
 
-If problems occur caused by unavailable maven packages, [here](http://a.org) you can find the required set of maven dependencies, ready to be copied in Home directory.
+If problems occur caused by unavailable maven packages, [here](#) you can find the required set of maven dependencies, ready to be copied in Home directory.
 
 ## Working on OTP in an IDE
 *Suggested Approach*
@@ -57,19 +65,55 @@ Unlike on the command line, the arguments to the JVM and to the main class you a
 
 In the field for the **VM options** you'll want to put your maximum memory parameter (`-Xmx2G`, or whatever limit you want to place on JVM memory usage). 
 The rest of the parameters to OTP itself will go in a different field with a name like **program arguments**.
+Check [Command Line Parameters](#command-line-parameters) section below to learn more obout them.
+
+### Create an artifact configuration for the JAR
+[IntelliJ Documentation](https://www.jetbrains.com/help/idea/compiling-applications.html#run_packaged_jar)
+
+1. From the main menu, select **File | Project Structure** `⌘;` and click **Artifacts**.
+
+2. Click **+**, point to **JAR**, and select **From modules with dependencies**.
+
+3. To the right of the **Main Class** field, click the **Browse button** and select the main class in the dialog that opens (**org.opentripplanner.standalone.OTPMain**) ).
+
+4. IntelliJ IDEA creates the artifact configuration and shows its settings in the right-hand part of the **Project Structure** dialog.
+
+![Build Artifact](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/resources/artifact_confuguration.png?raw=true)
+
+Apply the changes and close the dialog.
+
+#### Build Artifact
+1. From the main menu, select **Build | Build Artifacts**.
+
+2. Point to the created **.jar (otp:jar)** and select **Build**.
+
+If you now look at the **out/artifacts** folder, you'll find your **.jar** file there.
+
+### Prevent Maven to build/run project while using other configurations
+1. From the main menu select **File | Settings/Preferences | Build, Execution, Deployment |Build Tools | Maven**.
+
+2. Click **Maven** and from the list, select **Runner**.
+
+3. On the Runner page, disable **Delegate IDE build/run actions to maven**.
+
+![Prevent Maven Actions](https://resources.jetbrains.com/help/img/idea/2020.3/maven_settings_delegate.png)
+https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/resources/disable_maven_when_running_different_configurations.png
 
 ## Infomobility Configurations
-Configurations that have been used for Infomobility system are stored as *project files* in ``.idea/runConfiguration``.
-[here](http://) you can learn more about OTP's argouments.
-### Data folder
-Before run OpenTripPlanner we need to provide some transit information in `data` directory. If these resources are not available, please check next section "Required Mobility Data".
-In this folder the Transit Graph will be created as well, which can be used and read by OTP without rebuilding the transport network at every run.
-We need to provide:
-- GTFS file, which contains the public transport agency data
-- PBF file, the OpenStreetMap data to build a road network for walking, cycling, and driving.
+Configurations that have been used for *Infomobility* system are stored as *project files* in ``.idea/runConfiguration``.
 
-###Build Graph
-![Filter View](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/resources/disable_maven_when_running_different_configurations.png?raw=true)
+![IDE Java Configuration](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/resources/java_inmemory_configuration.png?raw=true)
+
+### Data folder
+Before run OpenTripPlanner we need to provide some transit information in `data` directory inside project's root:
+- GTFS file, which contains the public transport agency data
+- PBF file, the OpenStreetMap data to build a road network for walking, cycling, and driving. 
+  
+If these resources are not available, please check next section "Required Mobility Data".  
+In this folder the Transit Graph will be created as well, which can be used and read by OTP without rebuilding the transport network at every run.
+
+### Build Graph
+
 - VM Options: `-Xmx4G`
 - CLI arguments: `--build ./data`
 #### Java Configuration inMemory
@@ -81,7 +125,9 @@ We need to provide:
 - CLI arguments: `--autoReload --server --basePath ./data --autoScan --graphs ./data`
 
 ### otp Maven
-This builds executable file `otp-1.5.0-SNAPSHOT-shaded.jar` in `target` directory.
+![IDE Maven Configuration](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/resources/java_inmemory_configuration.png?raw=true)
+
+This builds executable file `otp-x.y.z.-shaded.jar` in `target` directory.
 - Command Line: `clean package -DskipTests`
 - Profiles: `-test`
 
@@ -102,7 +148,7 @@ You can follow the same indication explained in the official documentation.
 http://docs.opentripplanner.org/en/latest/Getting-OTP/  
 You may also choose to build OTP from its source code. If you will be modifying OTP you will need to know how to rebuild it (though your IDE may take care of this build cycle for you).
 > remember to use `-DskipTests` in *maven* command to avoid tests execution
-``
+
 # Required Mobility Data
 ### GTFS for Transit Schedules and Stops
 ransport agencies throughout the world provide GTFS schedules to the public. Transitland has a registry of feeds and TransitFeeds also provides an extensive catalog. The best option is often to simply fetch the data directly from a transit operator or agency.
@@ -122,14 +168,15 @@ Geofabrik provides extracts for larger areas like countries or states, from whic
 This [tool](https://boundingbox.klokantech.com/) is useful for determining the geographic coordinates of bounding boxes. The CSV option in that tool produces exactly the format expected by the `osmconvert -b` switch. The `--complete-ways` switch is important to handle roads that cross outside your bounding box.
    ```shell 
    $ wget http://download.geofabrik.de/north-america/us/oregon-latest.osm.pbf
-   $ osmconvert oregon-latest.osm.pbf -b=-123.043,45.246,-122.276,45.652 --complete-ways -o=portland.pbf
-   $ mv portland.pbf otp ```
+   $ osmconvert center-italy-latest.osm.pbf -b=-123.043,45.246,-122.276,45.652 --complete-ways -o=laquila.pbf
+   $ mv laquila.pbf otp 
+   ```
 
 If you have extracted a smaller PBF file from a larger region, be sure to put only your extract (not the original larger file) in the directory with your GTFS data. Otherwise OTP will try to load both the original file and the extract in a later step.
 # Run OTP as JAR Application
 
 ```shell
-$ java -Xmx2G -jar otp-0.19.0-shaded.jar --build /home/username/otp --inMemory
+$ java -Xmx2G -jar otp-shaded.jar --build /home/username/otp --inMemory
 ```
 where /home/username/otp should be the directory where you put your input files.
 
@@ -155,16 +202,16 @@ https://github.com/purushothamgk/OpenTripPlanner/blob/master/src/main/java/org/o
 |--basePath| Set the path under which graphs, caches, etc. are stored by default. | /var/otp
 |--bindAddress| Specify which network interface to bind to by address. 0.0.0.0 means all interfaces. | 0.0.0.0
 |--build| Build graphs at specified paths.
-|--cacheDirectory, --cache| The directory under which to cache OSM and NED tiles. | BASE_PATH/cache
-|--clientDirectory, --clientFiles| Path to directory containing local client files to serve. | null
-|--disableFileCache| Disable http server static file cache. Handy for development. | false
+|--cacheDirectory, <br> --cache| The directory under which to cache OSM and NED tiles. | BASE_PATH/cache
+|--clientDirectory, <br> --clientFiles| Path to directory containing local client files to serve. | null
+|--disableFileCache | Disable http server static file cache. Handy for development. | false
 |--files| Files for graph build. | [ ]
-|--graphDirectory, --graphs| Path to directory containing graphs. | BASE_PATH/graphs
+|--graphDirectory, <br> --graphs| Path to directory containing graphs. | BASE_PATH/graphs
 |--help| Print this help message and exit
 |--inMemory| Pass the graph to the server in-memory after building it, without saving to disk.
 |--port| Server port for plain HTTP. | 8080
 |--preFlight| Pass the graph to the server in-memory after building it, and saving to disk.
-|--scriptFile, --script| run the specified OTP script (groovy, python) | null
+|--scriptFile, <br> --script| run the specified OTP script (groovy, python) | null
 |--securePort| Server port for HTTPS. | 8088
 |--server| Run an OTP API server.| false
 |--verbose| Verbose output for debugging |
