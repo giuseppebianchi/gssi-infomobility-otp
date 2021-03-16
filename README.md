@@ -104,6 +104,8 @@ Configurations that have been used for *Infomobility* system are stored as *proj
 
 ![IDE Java Configuration](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/resources/java_inmemory_configuration.png?raw=true)
 
+*Example of Run Configuration for Java Application*
+
 ### Data folder
 Before run OpenTripPlanner we need to provide some transit information in `data` directory inside project's root:
 - GTFS file, which contains the public transport agency data
