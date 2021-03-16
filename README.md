@@ -221,6 +221,7 @@ https://github.com/purushothamgk/OpenTripPlanner/blob/master/src/main/java/org/o
 
 # Deployment
 
+
 # Real Time
 Only BUS mode is enabled to work with real time data
 
@@ -252,9 +253,15 @@ Express as an array of objects, where each  object has the following fields:
 ```
 ### Create Geocoder File
 Next, create a new file in `/src/client/js/otp/core/`, using the existing file `Geocoder.js` as starter template, and rename it with the same *value* you specified in the step before in `config.js`, in **classname** property (*GeocoderInfomobility*).
-Then check the parameters you need to provide to API and the success function that you are going to use to read and parse received data.
+Then check the parameters you need to provide for API, and the success function, that you are going to use to read and parse received data.
 
 > `otp.core.GeocoderInfomobility`  
 > path: [src/client/js/otp/core/GeocoderInfomobility.js](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/src/client/js/otp/core/GeocoderInfomobility.js)
 
 However `otp.core.GeocoderInfomobility`  should be renamed, giving the same name of the corresponding service, such as `GeocoderNominatim`, so that *Infomobility* OTP can easily handle more files related to geocoding services (see [Pelias.io](https://pelias.io/)) 
+
+# BaseLayer
+Base layers are maps, typically sourced from external providers like OpenStreetMap or MapBox, that often contain rich and complex cartography and serve to set the geographical context for the other data you add to the map.
+
+Configurations used to change the baselayer source used in the map.
+[Free Tiles Providers](http://leaflet-extras.github.io/leaflet-providers/preview/index.html)
