@@ -193,7 +193,7 @@ This map-based user interface is in fact sending HTTP GET requests to the OTP se
 OTP's built-in web server will run by default on ports 8080 and 8081. If by any chance some other software is already using those port numbers, you can specify different port numbers with switches like --port 8801 --securePort 8802.
 
 # Command Line Parameters
-Here below are listed only the most relevant parameters. Check full list on:
+Here below are listed only the most relevant parameters. Check the whole list of available terms on:
 http://dev.opentripplanner.org/javadoc/1.4.0/org/opentripplanner/standalone/CommandLineParameters.html
 https://github.com/purushothamgk/OpenTripPlanner/blob/master/src/main/java/org/opentripplanner/standalone/CommandLineParameters.java
 
@@ -225,3 +225,36 @@ https://github.com/purushothamgk/OpenTripPlanner/blob/master/src/main/java/org/o
 Only BUS mode is enabled to work with real time data
 
 Real-time data can be provided using either a pull or push system. In a pull configuration, the GTFS-RT consumer polls the real-time provider over HTTP. That is to say, OTP fetches a file from a web server every few minutes. In the push configuration, the consumer opens a persistent connection to the GTFS-RT provider, which then sends incremental updates immediately as they become available. OTP can use both approaches. The OneBusAway GTFS-realtime exporter project provides this kind of streaming, incremental updates over a websocket rather than a single large file.
+
+# Geocoders
+Geocoding is the process of transforming a street address or other description of a location into a (latitude, longitude) coordinate. Reverse geocoding is the process of transforming a (latitude, longitude) coordinate into a (partial) address. The amount of detail in a reverse geocoded location description may vary, for example one might contain the full street address of the closest building, while another might contain only a city name and postal code.
+So Geocoding helps you convert your addresses and place-names into coordinates and display them on a map.  
+
+Nel sistema di Infomobilità è stato impiegato il servizio gratuito di geocoding Nominatim.
+## Geocoding Setup
+### config.js
+> path: [src/client/js/otp/config.js](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/src/client/js/otp/config.js)
+
+First, in `config.js`, we need to specify the list geocoding services for use in address resolution.
+Express as an array of objects, where each  object has the following fields:
+- **name**: <string> the name of the service to be displayed to the user
+- **className**: <string> the name of the class that implements this service
+- **url**: <string> the location of the service's API endpoint
+- **addressParam**: <string> the name of the API parameter used to pass in the user-specifed address string
+#### Nominatim Service
+```json
+{
+    name: 'Nominatim',
+    className: 'otp.core.GeocoderInfomobility',
+    url: "https://nominatim.openstreetmap.org/search/",
+    addressParam: "q"
+}
+```
+### Create Geocoder File
+Next, create a new file in `/src/client/js/otp/core/`, using as starter template the existing file `Geocoder.js`. Then rename it with the same value you specified in the step before in config.js, in classname field (GeocoderInfomobility).
+Check parameters you need to provide to API and the success function that you are going to use to read and parse received data.
+
+> `otp.core.GeocoderInfomobility`  
+> path: [src/client/js/otp/core/GeocoderInfomobility.js](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/src/client/js/otp/core/GeocoderInfomobility.js)
+
+However `otp.core.GeocoderInfomobility`  should be renamed, giving it the same name of the corresponding service, such as `GeocoderNominatim`, so that *Infomobility* OTP can handle easily more files related to geocoding services (see [Pelias.io](https://pelias.io/)) 
