@@ -261,7 +261,7 @@ Then check the parameters you need to provide for API, and the success function,
 However `otp.core.GeocoderInfomobility`  should be renamed, giving the same name of the corresponding service, such as `GeocoderNominatim`, so that *Infomobility* OTP can easily handle more files related to geocoding services (see [Pelias.io](https://pelias.io/)) 
 
 # BaseLayer
-Base layers are maps, typically sourced from external providers like OpenStreetMap or MapBox, that often contain rich and complex cartography and serve to set the geographical context for the other data you add to the map.
+Base layers are maps that contain rich and complex cartography and serve to set the geographical context for the other data you add to the map.
 
 Configurations used to change the baselayer source used in the map.
 [Free Tiles Providers](http://leaflet-extras.github.io/leaflet-providers/preview/index.html)
