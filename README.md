@@ -219,14 +219,6 @@ https://github.com/purushothamgk/OpenTripPlanner/blob/master/src/main/java/org/o
 |--verbose| Verbose output for debugging |
 |--visualize | Open a graph visualizer window for debugging |
 
-# Deployment
-
-
-# Real Time
-Only BUS mode is enabled to work with real time data
-
-Real-time data can be provided using either a pull or push system. In a pull configuration, the GTFS-RT consumer polls the real-time provider over HTTP. That is to say, OTP fetches a file from a web server every few minutes. In the push configuration, the consumer opens a persistent connection to the GTFS-RT provider, which then sends incremental updates immediately as they become available. OTP can use both approaches. The OneBusAway GTFS-realtime exporter project provides this kind of streaming, incremental updates over a websocket rather than a single large file.
-
 # Geocoders
 Geocoding is the process of transforming a street address or other description of a location into a (latitude, longitude) coordinate. Reverse geocoding is the process of transforming a (latitude, longitude) coordinate into a (partial) address. The amount of detail in a reverse geocoded location description may vary, for example one might contain the full street address of the closest building, while another might contain only a city name and postal code.
 So Geocoding helps you convert your addresses and place-names into coordinates and display them on a map.  
@@ -243,7 +235,7 @@ Express as an array of objects, where each  object has the following fields:
 - **url**: <string> the location of the service's API endpoint
 - **addressParam**: <string> the name of the API parameter used to pass in the user-specifed address string
 #### Nominatim Service
-```json
+```js
 {
     name: 'Nominatim',
     className: 'otp.core.GeocoderInfomobility',
@@ -261,7 +253,23 @@ Then check the parameters you need to provide for API, and the success function,
 However `otp.core.GeocoderInfomobility`  should be renamed, giving the same name of the corresponding service, such as `GeocoderNominatim`, so that *Infomobility* OTP can easily handle more files related to geocoding services (see [Pelias.io](https://pelias.io/)) 
 
 # BaseLayer
-Base layers are maps that contain rich and complex cartography and serve to set the geographical context for the other data you add to the map.
-
+Base layers are maps that contain rich and complex cartography and serve to set the geographical context for the other data you add to the map.  
 Configurations used to change the baselayer source used in the map.
+#### CartoDB.Positron Provider
+[Preview](http://leaflet-extras.github.io/leaflet-providers/preview/index.html)
+```js
+{
+    name: 'Light',
+    tileUrl: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+    attribution : 'Map tiles by Carto/MapZen. Map data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+}
+```
 [Free Tiles Providers](http://leaflet-extras.github.io/leaflet-providers/preview/index.html)
+
+# Real Time
+Only BUS mode is enabled to work with real time data
+
+Real-time data can be provided using either a pull or push system. In a pull configuration, the GTFS-RT consumer polls the real-time provider over HTTP. That is to say, OTP fetches a file from a web server every few minutes. In the push configuration, the consumer opens a persistent connection to the GTFS-RT provider, which then sends incremental updates immediately as they become available. OTP can use both approaches. The OneBusAway GTFS-realtime exporter project provides this kind of streaming, incremental updates over a websocket rather than a single large file.
+
+# Deployment
+
