@@ -61,6 +61,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Maven.otp Maven">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -149,7 +160,7 @@
       <workItem from="1614191866980" duration="85000" />
       <workItem from="1614241795372" duration="140000" />
       <workItem from="1615193426400" duration="1662000" />
-      <workItem from="1615217308219" duration="39436000" />
+      <workItem from="1615217308219" duration="40677000" />
     </task>
     <servers />
   </component>

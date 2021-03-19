@@ -278,30 +278,24 @@ Real-time data can be provided using either a pull or push system. In a pull con
 ---
 
 # Open Trip Planner Server
-## Index API  
+## API Resources
+http://dev.opentripplanner.org/apidoc/1.0.0/index.html
+
+### Index API
 http://dev.opentripplanner.org/apidoc/1.0.0/resource_IndexAPI.html
 
-### `GET` /routers/{routerId}/index/stops
-Return a list of all stops within a circle around the given coordinate.
+### PlannerResource
+This is the primary entry point for the trip planning web service. All parameters are passed in the query string. These parameters are defined as fields in the abstract RoutingResource superclass, which also has methods for building routing requests from query parameters. This allows multiple web services to have the same set of query parameters. In order for inheritance to work, the REST resources are request-scoped (constructed at each request) rather than singleton-scoped (a single instance existing for the lifetime of the OTP server).
+```http
+POST /routers/{routerId}/plan
+```
 
-| Name | Type | Description
+| Parameter | Type | Description 
 | :--- | :--- | :--- |
-| detail | query | Choose short or long form of results.
-| lat |  query |
-| lon | query |
-| maxLat | query |
-| maxLon | query |
-| minLat | query |
-| minLon | query |
-| radius | query | 
-| refs | query | Include GTFS entities referenced by ID in the result. 
-
-### `GET` /routers/{routerId}/index/routes/{routeId}/patterns
-Return all stop patterns used by trips on the given route.
-
-| Name | Type | Description
-| :--- | :--- | :--- |
-| routeId | path |
+| `arriveBy` | boolean | Whether the trip should depart or arrive at the specified date and time.
+| `bannedRoutes` |  | The comma-separated list of banned routes. The format is agency_[routename][_routeid], so TriMet_100 (100 is route short name) or Trimet__42 (two underscores, 42 is the route internal ID).
+| `bannedStops` |  | A comma-separated list of banned stops. A stop is banned by ignoring its pre-board and pre-alight edges. This means the stop will be reachable via the street network. Also, it is still possible to travel through the stop. Just boarding and alighting is prohibited. The format is agencyId_stopId, so: TriMet_2107
+| `bannedTrips` |  | The comma-separated list of banned trips. The format is agency_trip[:stop*], so: TriMet_24601 or TriMet_24601:0:1:2:17:18:19
 
 
 
