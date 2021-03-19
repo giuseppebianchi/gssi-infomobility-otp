@@ -283,20 +283,55 @@ http://dev.opentripplanner.org/apidoc/1.0.0/index.html
 
 ### Index API
 http://dev.opentripplanner.org/apidoc/1.0.0/resource_IndexAPI.html
+```http
+/routers/{routerId}/index/clusters
+/routers/{routerId}/index/feeds
+/routers/{routerId}/index/graphql
+/routers/{routerId}/index/patterns
+/routers/{routerId}/index/routes
+/routers/{routerId}/index/services
+/routers/{routerId}/index/stops
+/routers/{routerId}/index/agencies/{feedId}
+/routers/{routerId}/index/clusters/{clusterId}
+/routers/{routerId}/index/patterns/{patternId}
+/routers/{routerId}/index/routes/{routeId}
+/routers/{routerId}/index/services/{serviceId}
+/routers/{routerId}/index/stops/{stopId}
+/routers/{routerId}/index/trips/{tripId}
+/routers/{routerId}/index/agencies/{feedId}/{agencyId}
+/routers/{routerId}/index/patterns/{patternId}/geometry
+/routers/{routerId}/index/patterns/{patternId}/semanticHash
+/routers/{routerId}/index/patterns/{patternId}/stops
+/routers/{routerId}/index/patterns/{patternId}/trips
+/routers/{routerId}/index/routes/{routeId}/patterns
+/routers/{routerId}/index/routes/{routeId}/stops
+/routers/{routerId}/index/routes/{routeId}/trips
+/routers/{routerId}/index/stops/{stopId}/patterns
+/routers/{routerId}/index/stops/{stopId}/routes
+/routers/{routerId}/index/stops/{stopId}/stoptimes
+/routers/{routerId}/index/stops/{stopId}/transfers
+/routers/{routerId}/index/trips/{tripId}/geometry
+/routers/{routerId}/index/trips/{tripId}/semanticHash
+/routers/{routerId}/index/trips/{tripId}/stops
+/routers/{routerId}/index/trips/{tripId}/stoptimes
+/routers/{routerId}/index/agencies/{feedId}/{agencyId}/routes
+/routers/{routerId}/index/stops/{stopId}/stoptimes/{date}
+```
 
-### PlannerResource
+### Planner Resource
 This is the primary entry point for the trip planning web service. All parameters are passed in the query string. These parameters are defined as fields in the abstract RoutingResource superclass, which also has methods for building routing requests from query parameters. This allows multiple web services to have the same set of query parameters. In order for inheritance to work, the REST resources are request-scoped (constructed at each request) rather than singleton-scoped (a single instance existing for the lifetime of the OTP server).
 ```http
 POST /routers/{routerId}/plan
 ```
 
-| Parameter | Type | Description 
+| Parameter | Description | Type 
 | :--- | :--- | :--- |
-| `arriveBy` | boolean | Whether the trip should depart or arrive at the specified date and time.
-| `bannedRoutes` |  | The comma-separated list of banned routes. The format is agency_[routename][_routeid], so TriMet_100 (100 is route short name) or Trimet__42 (two underscores, 42 is the route internal ID).
-| `bannedStops` |  | A comma-separated list of banned stops. A stop is banned by ignoring its pre-board and pre-alight edges. This means the stop will be reachable via the street network. Also, it is still possible to travel through the stop. Just boarding and alighting is prohibited. The format is agencyId_stopId, so: TriMet_2107
-| `bannedTrips` |  | The comma-separated list of banned trips. The format is agency_trip[:stop*], so: TriMet_24601 or TriMet_24601:0:1:2:17:18:19
-
-
-
+| `arriveBy` | Whether the trip should depart or arrive at the specified date and time.
+| `bannedRoutes` | The comma-separated list of banned routes. The format is agency_[routename][_routeid], so TriMet_100 (100 is route short name) or Trimet__42 (two underscores, 42 is the route internal ID).
+| `bannedStops` | A comma-separated list of banned stops. A stop is banned by ignoring its pre-board and pre-alight edges. This means the stop will be reachable via the street network. Also, it is still possible to travel through the stop. Just boarding and alighting is prohibited. The format is agencyId_stopId, so: TriMet_2107
+| `bannedTrips` | The comma-separated list of banned trips. The format is agency_trip[:stop*], so: TriMet_24601 or TriMet_24601:0:1:2:17:18:19
+| `fromPlace` | The start location -- either latitude, longitude pair in degrees or a Vertex label. For example, 40.714476,-74.005966 or mtanyctsubway_A27_S.
+| `intermediatePlaces` |	An ordered list of intermediate locations to be visited (see the fromPlace for format). Parameter can be specified multiple times.
+| `maxWalkDistance` |	The maximum distance (in meters) the user is willing to walk. Defaults to unlimited.
+| `mode` |	The set of modes that a user is willing to use, with qualifiers stating whether vehicles should be parked, rented, etc.
 ## Changes - API Resources
