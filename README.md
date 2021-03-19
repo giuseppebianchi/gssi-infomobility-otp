@@ -273,3 +273,36 @@ Real-time data can be provided using either a pull or push system. In a pull con
 
 # Deployment
 
+
+
+---
+
+# Open Trip Planner Server
+## Index API  
+http://dev.opentripplanner.org/apidoc/1.0.0/resource_IndexAPI.html
+
+### `GET` /routers/{routerId}/index/stops
+Return a list of all stops within a circle around the given coordinate.
+
+| Name | Type | Description
+| :--- | :--- | :--- |
+| detail | query | Choose short or long form of results.
+| lat |  query |
+| lon | query |
+| maxLat | query |
+| maxLon | query |
+| minLat | query |
+| minLon | query |
+| radius | query | 
+| refs | query | Include GTFS entities referenced by ID in the result. 
+
+### `GET` /routers/{routerId}/index/routes/{routeId}/patterns
+Return all stop patterns used by trips on the given route.
+
+| Name | Type | Description
+| :--- | :--- | :--- |
+| routeId | path |
+
+
+
+## Changes - API Resources
