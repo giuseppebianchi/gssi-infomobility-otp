@@ -127,7 +127,7 @@ In this folder the Transit Graph will be created as well, which can be used and 
 - CLI arguments: `--autoReload --server --basePath ./data --autoScan --graphs ./data`
 
 ### otp Maven
-![IDE Maven Configuration](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/resources/java_inmemory_configuration.png?raw=true)
+![IDE Maven Configuration](https://github.com/giuseppebianchi/gssi-infomobility-otp/blob/dev-1.x/resources/maven_configuration.png?raw=true)
 
 This builds executable file `otp-x.y.z.-shaded.jar` in `target` directory.
 - Command Line: `clean package -DskipTests`
@@ -278,6 +278,8 @@ Real-time data can be provided using either a pull or push system. In a pull con
 ---
 
 # Open Trip Planner Server
+`routerId` parameter in URL is 'default'.
+
 ## API Resources
 http://dev.opentripplanner.org/apidoc/1.0.0/index.html
 
