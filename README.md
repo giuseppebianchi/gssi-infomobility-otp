@@ -267,6 +267,12 @@ Configurations used to change the baselayer source used in the map.
 [Free Tiles Providers](http://leaflet-extras.github.io/leaflet-providers/preview/index.html)
 
 # Real Time
+- data flow
+- listthe files involved to build real time features
+- how the code works
+- variables and configurations settings
+
+
 Only BUS mode is enabled to work with real time data
 
 Real-time data can be provided using either a pull or push system. In a pull configuration, the GTFS-RT consumer polls the real-time provider over HTTP. That is to say, OTP fetches a file from a web server every few minutes. In the push configuration, the consumer opens a persistent connection to the GTFS-RT provider, which then sends incremental updates immediately as they become available. OTP can use both approaches. The OneBusAway GTFS-realtime exporter project provides this kind of streaming, incremental updates over a websocket rather than a single large file.
@@ -336,4 +342,6 @@ POST /routers/{routerId}/plan
 | `intermediatePlaces` |	An ordered list of intermediate locations to be visited (see the fromPlace for format). Parameter can be specified multiple times.
 | `maxWalkDistance` |	The maximum distance (in meters) the user is willing to walk. Defaults to unlimited.
 | `mode` |	The set of modes that a user is willing to use, with qualifiers stating whether vehicles should be parked, rented, etc.
-## Changes - API Resources
+
+
+# Changes - API Resources
