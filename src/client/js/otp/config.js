@@ -82,6 +82,15 @@ otp.config = {
     rfidroute_api: "http://51.145.149.130/rfidroute/api/realtime/rfidshift/",
 
 
+    icityaq: {
+        hostname: 'http://51.145.149.130/vetrina/',
+        api: (type) => `wp-json/wp/v2/job_listing?per_page=100&meta_value=${type}`,
+        listing_types: [
+            { type: 'place', label: 'PoI' },
+            { type: 'event', label: 'Eventi' },
+            { type: 'itinerario', label: 'Itinerari' }
+        ]
+    },
     /**
      * Base layers: the base map tile layers available for use by all modules.
      * Expressed as an array of objects, where each object has the following 

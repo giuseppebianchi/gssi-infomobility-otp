@@ -346,3 +346,13 @@ POST /routers/{routerId}/plan
 
 # Changes - API Resources
 ...
+
+# iCityAQ Data Integration
+The client application privides functions to fetching data from IcityAq system, such as PoI, Events and more.
+The REST API used are:
+
+```{hostname_icityaq}/wp-json/wp/v2/job_listing?per_page=100&meta_value={listing_type}```
+
+where:
+- `hostname_icityaq`: is the base URL where iCityAQ is accessible,
+- `listing_type`: *event* | *place* | *itinerario*

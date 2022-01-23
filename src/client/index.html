@@ -970,6 +970,27 @@ $(document).ready(function() {
       screen_size_alert.append(ngettext("Expand your Browser window"))
     }
 
+    //ICITY AQ
+    function prepare_icityaq_navbar(){
+      //append an nav-item for each type available in icityaq, defined in otp.config.icityaq.listing_types
+
+      // create template
+
+      //add an event listener to fetch related data with fetch_icityaq
+    }
+    function fetch_icityaq(listing_type){
+      $.ajax({
+        type: "GET",
+        url: otp.config.icityaq.hostname + otp.config.icityaq.api(listing_type),
+        contentType: 'application/json'
+      }).done(function(results) {
+        //print listing items on map by using leaflet apis with 'global_map'
+      }).fail((err) => {
+        //show error banner
+      })
+    }
+
+
     let fl_page = $("#fl-page"); let fl_page_nav_collapse = $(".fl-page-nav-collapse");
     let options_widget_collapsed = false;
     let itin_widget_hidden = false;
