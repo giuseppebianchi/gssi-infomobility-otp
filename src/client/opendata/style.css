@@ -857,14 +857,17 @@ body, html{
 }
 .otp-stopViewer-timeRow{
     position: absolute;
-    margin-top: 7px;
+    margin-top: 0;
     margin-left: 10px;
     width: 50px;
+}
+.otp-stopViewer-blockRow{
+    display: none;
 }
 .otp-stopViewer-routeRow-short{
     position: absolute;
     margin-left: 55px;
-    margin-top: 5px;
+    margin-top: -5px;
     background: #fff;
     border: 1px solid #aaa;
     padding: 0 5px;

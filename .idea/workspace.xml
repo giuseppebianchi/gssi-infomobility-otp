@@ -10,8 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS 2021 HANDMADE.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021/agency.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021/calendar.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021/calendar_dates.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021/routes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021/shapes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021/stop_times.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021/stops.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021/trips.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Backup/GTFS_24112021_ruote_type_fixed.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/opendata/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/opendata/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,18 +73,7 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="Maven.otp Maven">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Java Configuration inMemory">
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -160,7 +162,13 @@
       <workItem from="1614191866980" duration="85000" />
       <workItem from="1614241795372" duration="140000" />
       <workItem from="1615193426400" duration="1662000" />
-      <workItem from="1615217308219" duration="42769000" />
+      <workItem from="1615217308219" duration="44315000" />
+      <workItem from="1618658030821" duration="323000" />
+      <workItem from="1622550974009" duration="1155000" />
+      <workItem from="1636986437652" duration="2608000" />
+      <workItem from="1640787206442" duration="4833000" />
+      <workItem from="1642581747744" duration="619000" />
+      <workItem from="1642949531480" duration="435000" />
     </task>
     <servers />
   </component>

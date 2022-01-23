@@ -268,7 +268,7 @@ Configurations used to change the baselayer source used in the map.
 
 # Real Time
 - data flow
-- listthe files involved to build real time features
+- files involved to build real time features
 - how the code works
 - variables and configurations settings
 
@@ -345,3 +345,4 @@ POST /routers/{routerId}/plan
 
 
 # Changes - API Resources
+...
