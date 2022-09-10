@@ -139,6 +139,7 @@ public class GraphBuilder implements Runnable {
             load.buildGraph(graph, extra);
 
         graph.summarizeBuilderAnnotations();
+        LOG.info("serialize: " + serializeGraph + ", always rebuild: " + _alwaysRebuild);
         if (serializeGraph) {
             try {
                 graph.save(graphFile);
@@ -302,7 +303,7 @@ public class GraphBuilder implements Runnable {
         if (builderParams.htmlAnnotations) {
             graphBuilder.addModule(new AnnotationsToHTML(params.build, builderParams.maxHtmlAnnotationsPerFile));
         }
-        graphBuilder.serializeGraph = ( ! params.inMemory ) || params.preFlight;
+        //graphBuilder.serializeGraph = ( ! params.inMemory ) || params.preFlight;
         return graphBuilder;
     }
 

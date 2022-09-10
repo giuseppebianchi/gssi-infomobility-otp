@@ -429,6 +429,7 @@ otp.widgets.ItinerariesWidget =
 
                 //true means that that bus has started or is about to start this trip
                 //false means that at the moment the bus is running a different trip
+
                 if(min_time <= current_time && max_time >= current_time){
                     //current trip might be tracked in realtime
                     //get RFID for current leg trip, with tripname value, trip departure stop id, triparrival stop id

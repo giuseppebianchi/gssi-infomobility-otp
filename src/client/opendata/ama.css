@@ -1,0 +1,23 @@
+#opendata-footer, #opendata-header{
+    display: none
+}
+#map{
+    top: 0;
+}
+#alert-dialog-box{
+    top: 20px
+}
+.leaflet-top.leaflet-right{
+    top: 20px
+}
+#planner-itinWidget{
+    top: 100px
+}
+@media (max-width: 768px) {
+    #otp-planner-optionsWidget{
+        top: 0 !important;
+    }
+    #alert-dialog-box{
+        top: unset;
+    }
+}

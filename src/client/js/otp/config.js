@@ -57,7 +57,7 @@ otp.config = {
 
     resourcePath: "/infomobility/",
 
-    * */
+    */
 
 
     //municoderHostname : "http://localhost:8080",

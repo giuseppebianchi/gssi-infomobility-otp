@@ -1375,10 +1375,10 @@ body, html{
         max-height: 85px;
     }
 }
-@media (max-height: 720px) and (min-width: 768px){
+@media (max-height: 720px) and (min-width: 768px) and (max-width: 992px){
     .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse.collapse {
-        display: block !important;
-        visibility: visible !important;
+        display: none !important;
+        visibility: hidden !important;
     }
     /*#otp-planner-optionsWidget {
         bottom: 0;

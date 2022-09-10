@@ -31,3 +31,7 @@ _site/
 *.DS_Store
 
 #.idea/
+
+data/bundle
+data/backup
+data/report

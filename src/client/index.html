@@ -7,7 +7,7 @@
 
 <head>
 <title>Infomobilità L'Aquila</title>
-<!-- <base href="/infomobility/"> -->
+  <!-- <base href="/infomobility/">  -->
 
 <!--  Mobile Viewport Fix -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -223,6 +223,20 @@ Analyst's webinterface was broken by that
 <!-- load ICH templates and create the webapp at startup -->
 <script type="text/javascript" language="javascript">
 $(document).ready(function() {
+
+    // CHECK LAYOUT
+
+    // check params
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if(urlParams.has('style')){
+      var fileref = document.createElement("link");
+      fileref.rel = "stylesheet";
+      fileref.type = "text/css";
+      fileref.href = otp.config.hostname + "/opendata/"+ urlParams.get('style') +".css";
+      document.getElementsByTagName("head")[0].appendChild(fileref)
+    }
+
     var realtime_marker, alert_realtime = $("#alert-realtime"), last_gps_datetime, realtime_interval, multirfid, realtime_markers_layer = L.featureGroup(), bus_list = {}, unitids, busposition_ws, tripname_realtime, fitmap, map_bounds, connection_attempts = 0, realtime_error;
     const EXPIRATION_TIME = 13000, MAX_CONNECTION_ATTEMPTS = 5, DRIVERID_EXPIRATION = 12*60*60*1000, //set expiration time for not updated bus positions and driverid last_update
             TIME_UPDATE = 7000, //time to update real time data
@@ -749,7 +763,7 @@ $(document).ready(function() {
 </header>  <!-- #branding -->
 
 <!-- OPEN DATA HEADER -->
-<div class="fl-builder fl-theme-builder-footer fl-framework-bootstrap-4 fl-preset-default fl-full-width fl-nav-mobile-offcanvas fl-offcanvas-overlay-right fl-shrink-header-enabled fl-responsive-nav-enabled">
+<div id='opendata-header' class="fl-builder fl-theme-builder-footer fl-framework-bootstrap-4 fl-preset-default fl-full-width fl-nav-mobile-offcanvas fl-offcanvas-overlay-right fl-shrink-header-enabled fl-responsive-nav-enabled">
   <div id="fl-page" class="fl-page" style="padding-top: 0px;">
     <header class="fl-page-header fl-page-header-primary fl-page-nav-right fl-page-nav-toggle-icon fl-page-nav-toggle-visible-medium-mobile headroom fl-shrink-header-transition headroom--not-bottom headroom--pinned headroom--top" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
       <div class="fl-page-header-wrap">
@@ -1092,7 +1106,7 @@ $(document).ready(function() {
   })();
 
 </script>
-<div id="alert-dialog-box"><p>Gli orari potrebbero non essere allineati con l'esercizio aggiornato della compagnia di trasporto AMA</p></div>
+<div id="alert-dialog-box" style="display: none"><p>Attenzione! Gli orari potrebbero non essere allineati con l'esercizio aggiornato della compagnia di trasporto AMA</p></div>
 <div id="alert-realtime">Real Time</div>
 
 <div id="overlay-screen-size-alert">
