@@ -91,6 +91,23 @@ otp.config = {
             { type: 'itinerario', label: 'Itinerari' }
         ]
     },
+
+    checkTransitService: {
+        completeUrl: 'http://localhost:8080/otp/routers/default/plan?fromPlace=42.34471596668095%2C13.40134620666504&toPlace=42.36716898804751%2C13.346500396728517&time=9%3A00am&date=09-10-2022&mode=TRANSIT%2CWALK&maxWalkDistance=750&arriveBy=false&wheelchair=false&locale=it',
+        url: 'http://localhost:8080/otp/routers/default/plan',
+        queryParams: {
+            date: (new Date().getMonth()+1) + "-" + new Date().getDate() + "-" + new Date().getFullYear(), // new Date().toLocaleDateString().replaceAll("/", "-") // "MM-gg-YYYY"
+            mode: "TRANSIT,WALK",
+            arriveBy: "false",
+            wheelchair: "false",
+            fromPlace: "42.34471596668095,13.40134620666504",
+            toPlace: "42.36716898804751,13.346500396728517",
+            time: "9:00am",
+            maxWalkDistance: "750",
+            locale: "it"
+        }
+    },
+
     /**
      * Base layers: the base map tile layers available for use by all modules.
      * Expressed as an array of objects, where each object has the following 

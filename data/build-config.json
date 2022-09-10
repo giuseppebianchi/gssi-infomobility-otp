@@ -1,5 +1,5 @@
 {
-  "htmlAnnotations": true,
+  "htmlAnnotations": false,
   "transit": true,
   "streets": false,
   "embedRouterConfig": true,

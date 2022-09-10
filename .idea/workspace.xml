@@ -10,43 +10,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/Backup/ama.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Backup/graphs/ama/Graph.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Backup/graphs/ama/ama.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Backup/gtfs05_fix.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Backup/gtfs_fix.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/build-config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/otp2022/aq.pbf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/otp2022/gtfs.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopSpeedFast1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopSpeedSlow1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopZeroTime1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopZeroTime2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopZeroTime3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopZeroTime4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopZeroTime5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopZeroTime6.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/HopZeroTime7.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/NoFutureDates1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/RepeatedStops1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/StopNotLinkedForTransfers1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/report/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/router-config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/opendata/ama.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Java_Configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Infomobility.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Java_Configuration_inMemory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Java_Configuration_inMemory.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Graph.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/aq.pbf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/gtfs.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/logs/request.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/GTFS 2021 HANDMADE.zip" beforeDir="false" afterPath="$PROJECT_DIR$/data/Backup/export gtfs bianchi fixed.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Graph.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/otp2022/Graph.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ama.pbf" beforeDir="false" afterPath="$PROJECT_DIR$/data/Backup/graphs/ama/ama.pbf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/otp_jar/otp.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/otp_jar/otp.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/build-config.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/build-config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopSpeedFast1.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/HopSpeedFast1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopSpeedSlow1.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/HopSpeedSlow1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopZeroTime1.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/HopZeroTime1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopZeroTime2.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/HopZeroTime2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopZeroTime3.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/HopZeroTime3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopZeroTime4.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/HopZeroTime4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopZeroTime5.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/HopZeroTime5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopZeroTime6.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/HopZeroTime6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/HopZeroTime7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/NoFutureDates1.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/NoFutureDates1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/RepeatedStops1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/StopNotLinkedForTransfers1.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/StopNotLinkedForTransfers1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/report/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/report/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/js/otp/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/js/otp/modules/planner/ItinerariesWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/modules/planner/ItinerariesWidget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/opendata/ama.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/opendata/ama.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/opendata/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/opendata/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/opentripplanner/graph_builder/GraphBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/opentripplanner/graph_builder/GraphBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +84,7 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Infomobility">
+  <component name="RunManager" selected="Application.inMemory">
     <configuration name="Reload Configuration" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.opentripplanner.standalone.OTPMain" />
       <module name="otp" />
@@ -113,6 +99,17 @@
       <module name="otp" />
       <option name="PROGRAM_PARAMETERS" value="--build ./data --inMemory --insecure" />
       <option name="VM_PARAMETERS" value="-Xmx4G" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -219,7 +216,7 @@
       <workItem from="1652825601409" duration="13390000" />
       <workItem from="1654448524003" duration="11239000" />
       <workItem from="1661270176161" duration="9577000" />
-      <workItem from="1662821375272" duration="537000" />
+      <workItem from="1662821375272" duration="3509000" />
     </task>
     <servers />
   </component>

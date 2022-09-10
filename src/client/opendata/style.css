@@ -1109,6 +1109,10 @@ body, html{
     visibility: hidden;
     z-index: 0;
     animation: hidden-animation 18s;
+    display: none;
+}
+#alert-dialog-box.no-trip-found{
+    display: block;
 }
 #alert-dialog-box > p{
     padding: 10px;

@@ -984,6 +984,8 @@ $(document).ready(function() {
       screen_size_alert.append(ngettext("Expand your Browser window"))
     }
 
+    checkTransitService()
+
     //ICITY AQ
     function prepare_icityaq_navbar(){
       //append an nav-item for each type available in icityaq, defined in otp.config.icityaq.listing_types
@@ -1002,6 +1004,22 @@ $(document).ready(function() {
       }).fail((err) => {
         //show error banner
       })
+    }
+
+    // CHECK TRANSIT SERVICE
+    function checkTransitService() {
+      $.ajax(otp.config.checkTransitService.url, {
+        data: otp.config.checkTransitService.queryParams,
+        dataType: 'JSON',
+        traditional: true,
+        success: function (data) {
+          debugger;
+          if (!data.plan) {
+            //show alert
+            $("#alert-dialog-box").addClass("no-trip-found")
+          }
+        }
+      });
     }
 
 
@@ -1106,7 +1124,7 @@ $(document).ready(function() {
   })();
 
 </script>
-<div id="alert-dialog-box" style="display: none"><p>Attenzione! Gli orari potrebbero non essere allineati con l'esercizio aggiornato della compagnia di trasporto AMA</p></div>
+<div id="alert-dialog-box"><p>Attenzione! Gli orari potrebbero non essere allineati con l'esercizio aggiornato della compagnia di trasporto AMA</p></div>
 <div id="alert-realtime">Real Time</div>
 
 <div id="overlay-screen-size-alert">
