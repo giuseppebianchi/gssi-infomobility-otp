@@ -51,6 +51,8 @@ otp.config = {
     hostname : "",
     resourcePath: "",
 
+    localHostname: "http://localhost:8080",
+
     /* DEPLOY
 
     hostname : "http://51.145.149.130/infomobility",
@@ -97,7 +99,7 @@ otp.config = {
 
     checkTransitService: {
         completeUrl: 'http://localhost:8080/otp/routers/default/plan?fromPlace=42.34471596668095%2C13.40134620666504&toPlace=42.36716898804751%2C13.346500396728517&time=9%3A00am&date=09-10-2022&mode=TRANSIT%2CWALK&maxWalkDistance=750&arriveBy=false&wheelchair=false&locale=it',
-        url: 'http://localhost:8080/otp/routers/default/plan',
+        path: '/otp/routers/default/plan',
         queryParams: {
             date: (new Date().getMonth()+1) + "-" + new Date().getDate() + "-" + new Date().getFullYear(), // new Date().toLocaleDateString().replaceAll("/", "-") // "MM-gg-YYYY"
             mode: "TRANSIT,WALK",
