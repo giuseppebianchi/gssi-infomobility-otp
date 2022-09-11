@@ -1,7 +1,4 @@
 {
   "htmlAnnotations": false,
-  "transit": true,
-  "streets": false,
-  "embedRouterConfig": true,
-  "matchBusRoutesToStreets": false
+  "embedRouterConfig": true
 }
