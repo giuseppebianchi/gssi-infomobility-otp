@@ -10,14 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/GTFS_30102022.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/Graph.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/Graph.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/gtfs.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/logs/request.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs/request.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/js/otp/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/js/otp/modules/planner/ItinerariesWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/modules/planner/ItinerariesWidget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/StopViewerWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/StopViewerWidget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/widgets-transit-templates.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/widgets-transit-templates.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +198,7 @@
       <workItem from="1652825601409" duration="13390000" />
       <workItem from="1654448524003" duration="11239000" />
       <workItem from="1661270176161" duration="9577000" />
-      <workItem from="1662821375272" duration="5661000" />
+      <workItem from="1662821375272" duration="6322000" />
     </task>
     <servers />
   </component>

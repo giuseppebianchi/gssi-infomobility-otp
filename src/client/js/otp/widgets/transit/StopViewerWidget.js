@@ -153,7 +153,6 @@ otp.widgets.transit.StopViewerWidget =
         var block_trans = _tr('Block');
 
         for(var i = 0; i < this.times.length; i++) {
-            //debugger;
             var time = this.times[i];
             //time.formattedTime = otp.util.Time.formatItinTime(time.time*1000, otp.config.locale.time.time_format);
             time.formattedTime = moment.utc(time.time*1000).format(otp.config.locale.time.time_format);
@@ -161,7 +160,7 @@ otp.widgets.transit.StopViewerWidget =
             //then in each call separately
             time.to = to_trans;
             time.block = block_trans;
-
+            time.labelName = otp.config.routeNameLabels ? time.routeShortName : time.tripName;
             ich['otp-stopViewer-timeListItem'](time).appendTo(this.timeList);
             var diff = Math.abs(this.activeTime - (time.time + time.serviceDay)*1000);
             if(diff < minDiff) {
@@ -169,7 +168,7 @@ otp.widgets.transit.StopViewerWidget =
                 bestIndex = i;
             }
         }
-        this.timeList.scrollTop(this.timeList.find(".otp-stopViewer-timeListItem")[bestIndex].offsetTop);
+        this.timeList?.scrollTop(this.timeList.find(".otp-stopViewer-timeListItem")[bestIndex].offsetTop);
     },
 
     setActiveTime : function(activeTime) {
