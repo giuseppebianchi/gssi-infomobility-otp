@@ -618,7 +618,7 @@ otp.modules.planner.PlannerModule =
             var quadrant = (leg.from.lat < leg.to.lat ? 's' : 'n')+(leg.from.lon < leg.to.lon ? 'w' : 'e');
             var modeIcon;
             if(leg.mode == "BUS" && highlight==false){
-                if(leg.tripShortName == null){
+                if(leg.tripShortName == null || otp.config.routeNameLabels){
                     modeIcon = this.icons.getModeBubbleBus(quadrant, leg.startTime, leg.mode, true, highlight, leg.routeShortName);
                 }else{
                     modeIcon = this.icons.getModeBubbleBus(quadrant, leg.startTime, leg.mode, true, highlight, leg.tripShortName);
