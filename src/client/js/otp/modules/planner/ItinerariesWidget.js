@@ -321,7 +321,7 @@ otp.widgets.ItinerariesWidget =
                 var segment = $('<div class="otp-itinsAccord-header-segment">'+this.getModeIcon(leg.mode)+'</div>').appendTo(div);
                 //debugger;
                 if(otp.util.Itin.isTransit(leg.mode) && leg.routeShortName  && leg.routeShortName.length <= 6){
-                    if(leg.tripShortName == null){
+                    if(leg.tripShortName == null || otp.config.routeNameLabels){
                         segment.append('<div class="otp-itinsAccord-header-segment-showlabel" style="">'+leg.routeShortName+'</div>');
                     }else{
                         segment.append('<div class="otp-itinsAccord-header-segment-showlabel" style="">'+leg.tripShortName+'</div>');
@@ -374,7 +374,7 @@ otp.widgets.ItinerariesWidget =
             if(mode === "BUS" && route == null)
                 return '<i class="fas fa-bus" style="color: #009acc"></i>';
             else
-                if(trip == null){
+                if(trip == null || otp.config.routeNameLabels){
                     return '<i class="fas fa-bus" style="color: #009acc"></i><div class="otp-itinsAccord-header-segment-showlabel" style="">'+route+'</div>';
                 }else{
                     return '<i class="fas fa-bus" style="color: #009acc"></i><div class="otp-itinsAccord-header-segment-showlabel" style="">'+trip+'</div>';
@@ -412,8 +412,9 @@ otp.widgets.ItinerariesWidget =
             var headerHtml = "<div class='otp-itinAccord-details-row1'>"+this.getModeIcon(leg.mode, leg.routeShortName, leg.tripShortName)+ "<b>" + headerModeText + "</b></div>";
 
             /* BUS POSITION LIVE BUTTON #LIVEBUTTON */
+            //check for realtime vehicles data
             //check if leg.mode is bus
-            if(leg.mode === "BUS"){
+            if(otp.config.realtimeTracking && leg.mode === "BUS"){
                 //check trip departure and arrival time
                 //if departure time is greater than current time, then the bus is not moving yet for that trip, so real time is not available
                 //a tolerance value has been introduced to allow users to to track a bus before departure time.

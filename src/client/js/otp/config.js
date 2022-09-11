@@ -75,6 +75,9 @@ otp.config = {
     //driverids_api: "http://localhost:5000/api/bus/filter/driverid",
     //rfidroute_api: "http://localhost:4000/api/realtime/rfidshift/",
 
+    routeNameLabels: true,
+    realtimeTracking: false,
+
     //REMOTE API
     realtime_api: "http://51.145.149.130/gpsdata/api/bus/filter/driverid/realtime",
     unitids_api: "http://51.145.149.130/gpsdata/api/bus/filter/unitid",
