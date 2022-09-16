@@ -356,3 +356,6 @@ The REST API used are:
 where:
 - `hostname_icityaq`: is the base URL where iCityAQ is accessible,
 - `listing_type`: *event* | *place* | *itinerario*
+
+# GTFS Status Alert
+An alert will be shown if GTFS is not updated.
