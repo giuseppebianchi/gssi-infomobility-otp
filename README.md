@@ -345,7 +345,8 @@ POST /routers/{routerId}/plan
 
 
 # Changes - API Resources
-...
+API has been changed to retrieve information about *tripShortName* and all kind of *trips* for a pattern.
+...(trips, trip_route, tripShortName)
 
 # iCityAQ Data Integration
 The client application privides functions to fetching data from IcityAq system, such as PoI, Events and more.
@@ -359,3 +360,12 @@ where:
 
 # GTFS Status Alert
 An alert will be shown if GTFS is not updated.
+
+# Custom CSS
+Via the query param '**style**' you can specify what CSS must be loaded into the OTP client.
+
+### No Layout
+```js
+style=ama
+```
+has been used to show OTP *without header and footer*.

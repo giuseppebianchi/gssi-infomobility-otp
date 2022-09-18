@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="">
+    <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="GTFS status alert read me">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/Graph.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/Graph.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/logs/request.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs/request.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/StopViewerWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/StopViewerWidget.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/widgets-transit-templates.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/widgets-transit-templates.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,8 +197,37 @@
       <workItem from="1652825601409" duration="13390000" />
       <workItem from="1654448524003" duration="11239000" />
       <workItem from="1661270176161" duration="9577000" />
-      <workItem from="1662821375272" duration="6322000" />
+      <workItem from="1662821375272" duration="12294000" />
     </task>
+    <task id="LOCAL-00001" summary="fix build config">
+      <created>1662933048526</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662933048526</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added route name label check for bubble">
+      <created>1662933263976</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662933263976</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix url to check transit service availability">
+      <created>1662937616805</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662937616805</updated>
+    </task>
+    <task id="LOCAL-00004" summary="GTFS status alert read me">
+      <created>1663360130136</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663360130136</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +259,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="fix build config" />
+    <MESSAGE value="added route name label check for bubble" />
+    <MESSAGE value="fix url to check transit service availability" />
+    <MESSAGE value="service status alert read me" />
+    <MESSAGE value="GTFS status alert read me" />
+    <option name="LAST_COMMIT_MESSAGE" value="GTFS status alert read me" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
