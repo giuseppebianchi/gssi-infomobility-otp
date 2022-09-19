@@ -344,7 +344,7 @@ POST /routers/{routerId}/plan
 | `mode` |	The set of modes that a user is willing to use, with qualifiers stating whether vehicles should be parked, rented, etc.
 
 
-# Changes - API Resources
+# API Response Changes
 API has been changed to retrieve information about *tripShortName* and all kind of *trips* for a pattern.
 ...(trips, trip_route, tripShortName)
 
@@ -369,3 +369,79 @@ Via the query param '**style**' you can specify what CSS must be loaded into the
 style=ama
 ```
 has been used to show OTP *without header and footer*.
+
+# Reloading Graph and GTFS
+1. Remove .zip and .pbf files from folder where OTP is executed;
+2. Lunch OTP with this configuration:
+    ```shell
+    java otp.jar --Xmx4G --build . --inMemory --insecure
+    ```
+    OTP should warn you that no graph was found.
+   
+3. Make a zip file containing a GTFS file and an .pbf map file, providing a different name for each request. I suggest to use the command:
+   ```
+   zip -r bundle.zip ./ama.pbf ./gtfs.zip
+   ```
+4. When the bundle zip file is ready, make a POST request to OTP server as below, adding at the end of the path the name of the agency:
+#### Node Native
+```node
+var http = require('follow-redirects').http;
+var fs = require('fs');
+
+var options = {
+  'method': 'POST',
+  'hostname': 'localhost',
+  'port': 8080,
+  'path': '/otp/routers/<agency-name>',
+  'headers': {
+    'Content-Type': 'application/zip'
+  },
+  'maxRedirects': 20
+};
+
+var req = http.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+var postData = "<file contents here>";
+
+req.write(postData);
+
+req.end();
+```
+
+#### Node Axios
+```node
+var axios = require('axios');
+var data = '<file contents here>';
+
+var config = {
+  method: 'post',
+  url: 'http://localhost:8080/otp/routers/ama',
+  headers: { 
+    'Content-Type': 'application/zip'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+```
