@@ -1008,7 +1008,7 @@ $(document).ready(function() {
 
     // CHECK TRANSIT SERVICE
     function checkTransitService() {
-      $.ajax((otp.config.hostname ? otp.config.hostname : otp.config.localHostname) + otp.config.checkTransitService.path, {
+      $.ajax(otp.config.hostname + otp.config.checkTransitService.path, {
         data: otp.config.checkTransitService.queryParams,
         dataType: 'JSON',
         traditional: true,

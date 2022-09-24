@@ -51,15 +51,16 @@ otp.config = {
     hostname : "",
     resourcePath: "",
 
+
     localHostname: "http://localhost:8080",
 
     /* DEPLOY
 
-    hostname : "http://51.145.149.130/infomobility",
+    hostname : "https://trasporti.opendatalaquila.it/infomobility",
 
     resourcePath: "/infomobility/",
 
-    */
+*/
 
 
     //municoderHostname : "http://localhost:8080",
@@ -88,7 +89,7 @@ otp.config = {
 
 
     icityaq: {
-        hostname: 'http://51.145.149.130/vetrina/',
+        hostname: 'https://51.145.149.130/vetrina/',
         api: (type) => `wp-json/wp/v2/job_listing?per_page=100&meta_value=${type}`,
         listing_types: [
             { type: 'place', label: 'PoI' },
@@ -98,7 +99,7 @@ otp.config = {
     },
 
     checkTransitService: {
-        completeUrl: 'http://localhost:8080/otp/routers/default/plan?fromPlace=42.34471596668095%2C13.40134620666504&toPlace=42.36716898804751%2C13.346500396728517&time=9%3A00am&date=09-10-2022&mode=TRANSIT%2CWALK&maxWalkDistance=750&arriveBy=false&wheelchair=false&locale=it',
+        completeUrl: '/otp/routers/default/plan?fromPlace=42.34471596668095%2C13.40134620666504&toPlace=42.36716898804751%2C13.346500396728517&time=9%3A00am&date=09-10-2022&mode=TRANSIT%2CWALK&maxWalkDistance=750&arriveBy=false&wheelchair=false&locale=it',
         path: '/otp/routers/default/plan',
         queryParams: {
             date: (new Date().getMonth()+1) + "-" + new Date().getDate() + "-" + new Date().getFullYear(), // new Date().toLocaleDateString().replaceAll("/", "-") // "MM-gg-YYYY"
@@ -140,7 +141,7 @@ otp.config = {
         },
         {
             name: 'Light',
-            tileUrl: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+            tileUrl: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
             attribution : 'Map tiles by Carto/MapZen. Map data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
         },
         {
