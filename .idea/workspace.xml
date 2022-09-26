@@ -9,11 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="GTFS status alert read me">
+    <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="deploy branch">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/GTFS_30102022.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/Graph.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/Graph.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/logs/request.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs/request.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +24,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="deploy" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenRunner">
@@ -78,7 +86,7 @@
     <configuration name="inMemory" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.opentripplanner.standalone.OTPMain" />
       <module name="otp" />
-      <option name="PROGRAM_PARAMETERS" value="--build ./data --inMemory --insecure" />
+      <option name="PROGRAM_PARAMETERS" value="--build ./data --inMemory" />
       <option name="VM_PARAMETERS" value="-Xmx4G" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -197,7 +205,7 @@
       <workItem from="1652825601409" duration="13390000" />
       <workItem from="1654448524003" duration="11239000" />
       <workItem from="1661270176161" duration="9577000" />
-      <workItem from="1662821375272" duration="12294000" />
+      <workItem from="1662821375272" duration="19821000" />
     </task>
     <task id="LOCAL-00001" summary="fix build config">
       <created>1662933048526</created>
@@ -227,7 +235,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663360130136</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updated hostname to support  HTTPS api">
+      <created>1664054182665</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664054182665</updated>
+    </task>
+    <task id="LOCAL-00006" summary="deploy branch">
+      <created>1664055383154</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1664055383154</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +286,9 @@
     <MESSAGE value="fix url to check transit service availability" />
     <MESSAGE value="service status alert read me" />
     <MESSAGE value="GTFS status alert read me" />
-    <option name="LAST_COMMIT_MESSAGE" value="GTFS status alert read me" />
+    <MESSAGE value="updated hostname to support  HTTPS api" />
+    <MESSAGE value="deploy branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy branch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

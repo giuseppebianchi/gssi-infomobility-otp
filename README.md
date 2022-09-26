@@ -383,6 +383,24 @@ has been used to show OTP *without header and footer*.
    zip -r bundle.zip ./ama.pbf ./gtfs.zip
    ```
 4. When the bundle zip file is ready, make a POST request to OTP server as below, adding at the end of the path the name of the agency:
+```
+POST  /routers/{routerId}
+```
+Build a graph from data in the ZIP file posted over the wire, associating it with the given router ID. This method will be selected when the Content-Type is application/zip.
+
+<sub>Request Parameters</sub>
+
+| name | type | default | constraints | description |
+| ---- | ---- | ------- | ----------- | ----------- |
+| routerId | path | 		 	 
+| preEvict | query	| true | boolean | before reloading each graph, evict the existing graph. This will prevent memory usage from increasing during the reload, but routing will be unavailable on this routerId for the duration of the operation |
+
+<sub>Request Body</sub>
+
+| media type | data type |
+| ---------- | --------- |
+| application/zip |
+
 #### Node Native
 ```node
 var http = require('follow-redirects').http;
