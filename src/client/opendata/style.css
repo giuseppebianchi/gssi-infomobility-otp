@@ -250,7 +250,7 @@ body, html{
     height: 35px;
     font-size: 16px;
     font-weight: 400;
-    padding-left: 35px;
+    padding-left: 40px;
     outline: none;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
@@ -644,6 +644,8 @@ body, html{
     color: #fff;
     padding: 0 5px;
     border-radius: 4px;
+    width: 60px;
+    text-align: center;
 }
 .otp-itinStartRow, .otp-itinEndRow{
     position:relative;
@@ -690,14 +692,17 @@ body, html{
 .otp-itin-leg-endpointDesc{
     font-size: 1em;
     border-left: 2px solid #f6f6f6;
+    margin-left: 60px;
 }
 .otp-itin-leg-endpointDescSub{
     font-size: 1em;
     border-left: 2px solid #f6f6f6;
     display: inline-block;
+    margin-left: 65px;
 }
 .otp-itin-leg-buffer{
     border-left: 2px solid #f6f6f6;
+    margin-left: 65px;
 }
 .otp-itin-leg-elapsedDesc{
     padding-top: 5px;
@@ -866,7 +871,7 @@ body, html{
 }
 .otp-stopViewer-routeRow-short{
     position: absolute;
-    margin-left: 55px;
+    margin-left: 60px;
     margin-top: -5px;
     background: #fff;
     border: 1px solid #aaa;

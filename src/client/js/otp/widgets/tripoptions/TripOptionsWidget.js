@@ -219,7 +219,9 @@ otp.widgets.tripoptions.LocationsSelector =
             //TODO: Maybe change to Start and Destination
             start: pgettext('template', "Start"),
             end: _tr("End"),
-            geocoder: _tr("Geocoder")
+            geocoder: _tr("Geocoder"),
+            start_trip_option: _tr("start_trip_option"),
+            end_trip_option: _tr("end_trip_option")
         }).appendTo(this.$());
 
         this.tripWidget.module.on("startChanged", $.proxy(function(latlng, name) {
@@ -390,10 +392,10 @@ otp.widgets.tripoptions.TimeSelector =
                 });
             })
 
-        $('#'+this.id+'-time-time').val(moment().format(otp.config.locale.time.time_format))
+        $('#'+this.id+'-time-time').val(moment().format(otp.config.timeFormat))
         .change(function(e){
             if(e.currentTarget.value == ""){
-                e.currentTarget.value = moment().format(otp.config.locale.time.time_format);
+                e.currentTarget.value = moment().format(otp.config.timeFormat);
             }
             this_.tripWidget.inputChanged({
                 time : e.currentTarget.value
@@ -551,7 +553,6 @@ otp.widgets.tripoptions.ModeSelector =
     doAfterLayout : function() {
         var this_ = this;
         $("#"+this.id).change(function() {
-            debugger;
             this_.tripWidget.inputChanged({
                 mode : _.keys(this_.modes)[this.selectedIndex],
             });

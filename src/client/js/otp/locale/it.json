@@ -232,5 +232,7 @@
     "This itinerary departs on a different day from the previous one": "Questo itinerario parte in un giorno diverso rispetto al precedente",
     "This itinerary departs on a different day than the one searched for": "Questo itinerario parte in un giorno differente rispetto a quello inserito nella ricerca",
     "Screen size not supported": "Dimensione schermo non supportata",
-    "Expand your Browser window": "Espandi la finestra del Browser"
+    "Expand your Browser window": "Espandi la finestra del Browser",
+    "start_trip_option": "Da",
+    "end_trip_option": "A"
 }

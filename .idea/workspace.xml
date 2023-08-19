@@ -9,14 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="deploy branch">
+    <list default="true" id="684756b6-b2bc-4542-a5db-580c1d8923ef" name="Default Changelist" comment="setup ivu API">
+      <change afterPath="$PROJECT_DIR$/src/client/js/otp/locale/en-EN.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/js/otp/locale/en-US.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/GTFS_30102022.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/GTFS_30102022-2.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/Graph.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/Graph.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/logs/request.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs/request.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/js/otp/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/core/GeocoderInfomobility.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/core/GeocoderInfomobility.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/locale/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/locale/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/locale/it-IT.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/locale/it-IT.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/locale/it.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/locale/it.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/StopViewerWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/widgets/transit/StopViewerWidget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/widgets/tripoptions/TripOptionsWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/widgets/tripoptions/TripOptionsWidget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/js/otp/widgets/tripoptions/tripoptions-templates.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/js/otp/widgets/tripoptions/tripoptions-templates.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/opendata/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/opendata/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="deploy" />
+        <entry key="$PROJECT_DIR$" value="feature/ivu-integration" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/client/js/otp/locale" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -60,6 +69,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/client/js/otp/locale" />
       <recent name="$PROJECT_DIR$/data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -205,7 +215,9 @@
       <workItem from="1652825601409" duration="13390000" />
       <workItem from="1654448524003" duration="11239000" />
       <workItem from="1661270176161" duration="9577000" />
-      <workItem from="1662821375272" duration="19821000" />
+      <workItem from="1662821375272" duration="33420000" />
+      <workItem from="1679262541301" duration="7000" />
+      <workItem from="1692377400670" duration="7078000" />
     </task>
     <task id="LOCAL-00001" summary="fix build config">
       <created>1662933048526</created>
@@ -249,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664055383154</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="setup ivu API">
+      <created>1665952481275</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1665952481275</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +307,8 @@
     <MESSAGE value="GTFS status alert read me" />
     <MESSAGE value="updated hostname to support  HTTPS api" />
     <MESSAGE value="deploy branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy branch" />
+    <MESSAGE value="setup ivu API" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup ivu API" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

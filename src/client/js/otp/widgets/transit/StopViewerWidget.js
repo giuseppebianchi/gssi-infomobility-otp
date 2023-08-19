@@ -168,7 +168,7 @@ otp.widgets.transit.StopViewerWidget =
                 bestIndex = i;
             }
         }
-        this.timeList?.scrollTop(this.timeList.find(".otp-stopViewer-timeListItem")[bestIndex].offsetTop);
+        this.timeList?.scrollTop(this.timeList.find(".otp-stopViewer-timeListItem")[bestIndex]?.offsetTop);
     },
 
     setActiveTime : function(activeTime) {

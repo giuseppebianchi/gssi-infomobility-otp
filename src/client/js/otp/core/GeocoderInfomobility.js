@@ -32,14 +32,15 @@ otp.core.GeocoderInfomobility = otp.Class({
             "addressdetails": 1,
             "limit": 10,
             "viewbox": "13.20900,42.46804,13.59901,42.21428",
+            "bounded": 1,
             "accept-language": "it",
             "countrycodes": "it",
-            "bounded": 1,
+            "q": address,
         };
         //params[this.addressParam] = address;
 
         // Avoid out-of-order responses from the geocoding service. see #1419
-        lastXhr = $.ajax(this.url + address, {
+        lastXhr = $.ajax(this.url, {
             data : params,
             type: "get",
             success: function(data, status, xhr) {

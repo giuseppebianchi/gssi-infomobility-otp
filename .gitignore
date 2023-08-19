@@ -35,5 +35,6 @@ _site/
 data/bundle/
 data/backup/
 data/report/
+data/logs/*
 data/*.zip
 data/*.obj

@@ -18,6 +18,8 @@ otp.config = {
     //File should be loaded in index.html
     locales : {
         'en': otp.locale.English,
+        'en-EN': otp.locale.English,
+        'en-US': otp.locale.English,
         'de': otp.locale.German,
         'pl': otp.locale.Polish,
         'sl': otp.locale.Slovenian,
@@ -228,7 +230,7 @@ otp.config = {
         {
             name: 'Nominatim',
             className: 'otp.core.GeocoderInfomobility',
-            url: "https://nominatim.openstreetmap.org/search/",
+            url: "https://nominatim.openstreetmap.org/search",
             addressParam: "q"
         },
         {
@@ -260,7 +262,7 @@ otp.config = {
      * Formats to use for date and time displays, expressed as ISO-8601 strings.
      */    
      
-    timeFormat  : "h:mma",
+    timeFormat  : "HH:mm",
     //dateFormat  : "MMM Do YYYY"
     dateFormat  : "ll"
 
